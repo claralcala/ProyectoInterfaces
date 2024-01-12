@@ -12,5 +12,6 @@ public class App
         System.out.println("Hola buenas es una prueba");
         System.out.println("Hola a todos");
         System.out.println("hola soy MIGUE");
+        System.out.println("Hola soy CLARA");
     }
 }
