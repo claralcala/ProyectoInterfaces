@@ -192,7 +192,7 @@ public class Login extends JFrame {
 		
 		panelX = new JPanel();
 		panelX.setBackground(new Color(30, 33, 57));
-		panelX.setBounds(0, 0, 50, 45);
+		panelX.setBounds(0, 0, 33, 45);
 		panel.add(panelX);
 		panelX.setLayout(null);
 		
@@ -212,11 +212,11 @@ public class Login extends JFrame {
 			// cuando sale el raton vuelve al color original.
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Color colorFondo = new Color(55, 26, 44);
+				Color colorFondo = new Color(35, 33, 45);
 				panelX.setBackground(colorFondo);
 			}
 		});
-		lblX.setBounds(0, 0, 50, 45);
+		lblX.setBounds(0, 0, 33, 45);
 		panelX.add(lblX);
 		lblX.setForeground(new Color(216, 200, 187));
 		lblX.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // cursor que cuando pasa por encima cambia al icono de la mano en el raton.
@@ -250,5 +250,33 @@ public class Login extends JFrame {
 		separator1_1_1.setBackground(new Color(255, 255, 255));
 		separator1_1_1.setBounds(371, 426, 226, 8);
 		panel.add(separator1_1_1);
+		
+		final JPanel panel_ = new JPanel();
+		panel_.setLayout(null);
+		panel_.setBackground(new Color(30, 33, 57));
+		panel_.setBounds(35, 0, 33, 45);
+		panel.add(panel_);
+		
+		JLabel lbl_ = new JLabel("_");
+		lbl_.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_.setBackground(Color.blue);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setExtendedState(JFrame.ICONIFIED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Color colorFondo = new Color(35, 33, 45);
+				panel_.setBackground(colorFondo);
+			}
+		});
+		lbl_.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_.setForeground(new Color(216, 200, 187));
+		lbl_.setFont(new Font("Roboto Black", Font.PLAIN, 20));
+		lbl_.setBounds(0, 0, 33, 45);
+		panel_.add(lbl_);
 	}
 }
