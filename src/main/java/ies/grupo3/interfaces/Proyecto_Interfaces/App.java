@@ -1,19 +1,28 @@
 package ies.grupo3.interfaces.Proyecto_Interfaces;
 
+import java.awt.EventQueue;
+
+import vista.VentanaPrincipal;
+
 /**
- * Hello world!
+ * Clase main para ejecutar la aplicación
  *
  */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-        System.out.println("Hola buenas es una prueba");
-        System.out.println("Hola a todos");
-        System.out.println("hola soy MIGUE");
-        System.out.println("Hola soy CLARA");
-        System.out.println("Hola soy el loco");
+    	EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				
+				try {
+					VentanaPrincipal ventana = new VentanaPrincipal();
+					ventana.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
         
     }
 }
