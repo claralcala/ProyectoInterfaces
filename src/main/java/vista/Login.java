@@ -14,7 +14,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ConsultasBD;
 import controlador.Eventos;
 import javax.swing.ImageIcon;
 
@@ -168,14 +171,16 @@ public class Login extends JFrame {
 			// Muesta un cuadro de diálogo informativo con los datos de inicio de sesión.
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				 javax.swing.JOptionPane.showMessageDialog(Login.this, "Te has logueado con Usuario: " + txtIngreseUsuario.getText() + " con la contraseña: " + String.valueOf(pwdcontra.getPassword()), "Información", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+				// javax.swing.JOptionPane.showMessageDialog(Login.this, "Te has logueado con Usuario: " + txtIngreseUsuario.getText() + " con la contraseña: " + String.valueOf(pwdcontra.getPassword()), "Información", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 				//Esto hay que cambiarlo para meter la función de la base de datos
-				 if(txtIngreseUsuario.getText().equals("usuario") && String.valueOf(pwdcontra.getPassword()).equals("usuario")) {
-					 setVisible(false);
-					 VentanaPrincipal menu = new VentanaPrincipal();
-					 menu.setVisible(true);
-					 
-				 } 
+		
+				if (ConsultasBD.consultarUsuario(txtIngreseUsuario.getText(), pwdcontra.getText())==true){
+					((Login) SwingUtilities.getWindowAncestor(panelEntrar)).dispose();
+				}
+				 
+				 
+				 
+				 
 			}
 		});
 		lblEntrar.setHorizontalAlignment(SwingConstants.CENTER);
