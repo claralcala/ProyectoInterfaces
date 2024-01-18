@@ -26,6 +26,8 @@ import java.awt.Font;
 import java.awt.Label;
 import java.awt.Color;
 
+
+
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
