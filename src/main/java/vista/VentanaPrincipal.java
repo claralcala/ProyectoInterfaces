@@ -114,7 +114,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("Sesion");
-		mnNewMenu.setForeground(new Color(255, 255, 255));
+		mnNewMenu.setForeground(new Color(243, 235, 219));
 		menuBar.add(mnNewMenu);
 		
 		mnNewMenu.setToolTipText(Texto.toolMenu);
@@ -177,7 +177,7 @@ public class VentanaPrincipal extends JFrame {
 		
 		
 		JMenu mnNewMenu_2 = new JMenu("Version");
-		mnNewMenu_2.setForeground(new Color(255, 255, 255));
+		mnNewMenu_2.setForeground(new Color(243, 235, 219));
 		menuBar.add(mnNewMenu_2);
 		
 		mnNewMenu_2.setToolTipText(Texto.toolVersion2);
@@ -209,6 +209,7 @@ public class VentanaPrincipal extends JFrame {
 		    }
 		});
 
+		btnIniciarSesion.setBackground(new Color (243, 235, 219));
 		btnIniciarSesion.setBounds(745, 434, 165, 42);
 		contentPane.add(btnIniciarSesion);
 
@@ -230,6 +231,7 @@ public class VentanaPrincipal extends JFrame {
 		});
 		
 		btnRegister.setBounds(992, 434, 165, 42);
+		btnRegister.setBackground(new Color (243, 235, 219));
 		contentPane.add(btnRegister);
 		
 		JButton btnSalir = new JButton("Salir");
@@ -251,6 +253,7 @@ public class VentanaPrincipal extends JFrame {
 		        }
 		    }
 		});
+		btnSalir.setBackground(new Color (243, 235, 219));
 		btnSalir.setBounds(827, 498, 243, 37);
 		contentPane.add(btnSalir);
 		
@@ -263,7 +266,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("<html>Bienvenido a Urban Stride, tu destino para zapatillas exclusivas y estilo inigualable! Sumérgete en el mundo de la moda urbana con nuestra amplia selección de calzado único que fusiona la comodidad con el diseño vanguardista.<br><br>En Urban Stride, no solo vendemos zapatillas; ofrecemos una experiencia. Cada par cuenta una historia de innovación y autenticidad, cuidadosamente seleccionado para satisfacer los gustos más exigentes.<br><br>Explora nuestra colección y descubre la fusión perfecta entre la moda urbana y la funcionalidad. En Urban Stride, no solo caminas, ¡defines tu propio estilo con cada paso!<br><br>¡Bienvenido a la revolución del calzado urbano! Urban Stride, donde la exclusividad y la moda se encuentran en cada esquina de la ciudad.</html>");
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setForeground(new Color(243, 235, 219));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_2.setBounds(715, 193, 499, 222);
 		lblNewLabel_2.setToolTipText(Texto.toolDescripcion);
