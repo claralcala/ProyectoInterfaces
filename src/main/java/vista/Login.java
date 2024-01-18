@@ -203,7 +203,7 @@ public class Login extends JFrame {
 		
 		final JLabel lblNoTeSabes = new JLabel("Registrate aquí.");
 		
-		Eventos.noTeSabesLaContrasenia(lblNoTeSabes);
+		Eventos.noTeSabesLaContrasenia(lblNoTeSabes, this);
 		
 		lblNoTeSabes.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNoTeSabes.setForeground(new Color(243, 235, 219));
