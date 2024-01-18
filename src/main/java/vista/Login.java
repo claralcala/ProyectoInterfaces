@@ -184,6 +184,7 @@ public class Login extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				 javax.swing.JOptionPane.showMessageDialog(Login.this, "Te has logueado con Usuario: " + txtIngreseUsuario.getText() + " con la contraseña: " + String.valueOf(pwdcontra.getPassword()), "Información", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+				//Esto hay que cambiarlo para meter la función de la base de datos
 				 if(txtIngreseUsuario.getText().equals("usuario") && String.valueOf(pwdcontra.getPassword()).equals("usuario")) {
 					 setVisible(false);
 					 VentanaPrincipal menu = new VentanaPrincipal();
