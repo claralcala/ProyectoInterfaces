@@ -65,16 +65,16 @@ public class ConsultasBD {
     }
 	
 	
-	public static void consultarUsuario(Usuario usuario) {
+	public static void consultarUsuario(String username, String password) {
 		Conexion con = new Conexion();
         Connection cn = null;
 
         try {
-            String sql = "SELECT username, contrasena FROM usuario WHERE username = ?";
+        	String sql = "SELECT username, contrasena FROM usuario WHERE username = ?";
             cn = con.conectar();
             PreparedStatement pst = cn.prepareStatement(sql);
 
-            pst.setString(1, usuario.getUsername());
+            pst.setString(1, username);
 
             ResultSet rs = pst.executeQuery();
 
@@ -83,7 +83,7 @@ public class ConsultasBD {
                 String passCorrecto = rs.getString("contrasena");
 
                 // Verificar la contraseña encriptada
-                if (verificarPassword(usuario.getContrasena(), passCorrecto)) {
+                if (verificarPassword(password, passCorrecto)) {
                     JOptionPane.showMessageDialog(null, "Login correcto. Bienvenido " + usernameCorrecto);
                 } else {
                     JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
