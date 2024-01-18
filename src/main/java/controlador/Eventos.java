@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import vista.Login;
 import vista.Registro;
+import vista.VentanaPrincipal;
 
 
 
@@ -99,7 +100,21 @@ public class Eventos {
 			}
 		});
     }
-    	
+    
+    public static void btnBack(JLabel lblBack, Login login) {
+    	lblBack.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+				ventanaPrincipal.setVisible(true);
+				login.dispose();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblBack.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+		});
+    }
  }
     
     

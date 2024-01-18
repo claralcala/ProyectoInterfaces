@@ -249,18 +249,9 @@ public class Login extends JFrame {
 		panel.add(lblLogo);
 		
 		JLabel lblBack = new JLabel("");
-		lblBack.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
-				ventanaPrincipal.setVisible(true);
-				dispose();
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lblBack.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			}
-		});
+		
+		Eventos.btnBack(lblBack, this);
+		
 		lblBack.setIcon(new ImageIcon(Login.class.getResource("/imagenes/back-2_icon-icons.com_62858.png")));
 		lblBack.setBounds(35, 564, 54, 53);
 		panel.add(lblBack);
