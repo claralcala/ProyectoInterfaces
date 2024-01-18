@@ -289,7 +289,7 @@ public class Login extends JFrame {
 				lblEntrar.setToolTipText(Texto.toolEntrar);
 				lbl_.setToolTipText(Texto.toolMinimizar);
 				lblX.setToolTipText(Texto.toolCerrar);
-				
+				lblBack.setToolTipText(Texto.toolVolver);
 				
 				//Atajos
 				
