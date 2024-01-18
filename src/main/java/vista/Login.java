@@ -40,18 +40,7 @@ public class Login extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	int xMouse, yMouse;
 	//Eventos eventos = new Eventos();
@@ -193,6 +182,8 @@ public class Login extends JFrame {
 				 } 
 			}
 		});
+		
+		
 		lblEntrar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEntrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // cursor que cuando pasa por encima cambia al icono de la mano en el raton.
 		lblEntrar.setFont(new Font("Roboto", Font.PLAIN, 20));
@@ -207,7 +198,7 @@ public class Login extends JFrame {
 		
 		JLabel lblX = new JLabel("X");
 		
-		Eventos.botonX(lblX, panelX);
+		//Eventos.botonX(lblX, panelX);
 		
 		/**lblX.addMouseListener(new MouseAdapter() {
 			//mouseClick en un Jlabel ya que he quitado la barra superior.
@@ -236,7 +227,7 @@ public class Login extends JFrame {
 		
 		final JLabel lblNoTeSabes = new JLabel("No te sabes la contraseña? pincha aquí.");
 		
-		Eventos.noTeSabesLaContrasenia(lblNoTeSabes);
+		//Eventos.noTeSabesLaContrasenia(lblNoTeSabes);
 		
 		/*lblNoTeSabes.addMouseListener(new MouseAdapter() {
 			@Override

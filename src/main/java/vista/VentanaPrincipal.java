@@ -42,21 +42,7 @@ public class VentanaPrincipal extends JFrame {
 	 JButton btnRegister, btnIniciarSesion;
 
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					frame = new VentanaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
@@ -102,12 +88,12 @@ public class VentanaPrincipal extends JFrame {
 		        UIManager.put("OptionPane.yesButtonText", "Sí");
 		        UIManager.put("OptionPane.noButtonText", "No");
 
-		        int result = JOptionPane.showConfirmDialog(frame,
+		        int result = JOptionPane.showConfirmDialog(VentanaPrincipal.this,
 		                "¿Estás seguro de que quieres salir de la aplicación?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
 
 		        if (result == JOptionPane.YES_OPTION) {
 		  
-		            frame.dispose();
+		            dispose();
 		        }
 		    }
         }, keyStroke3, JComponent.WHEN_IN_FOCUSED_WINDOW);
@@ -178,12 +164,12 @@ public class VentanaPrincipal extends JFrame {
 			        UIManager.put("OptionPane.yesButtonText", "Sí");
 			        UIManager.put("OptionPane.noButtonText", "No");
 
-			        int result = JOptionPane.showConfirmDialog(frame,
+			        int result = JOptionPane.showConfirmDialog(VentanaPrincipal.this,
 			                "¿Estás seguro de que quieres salir de la aplicación?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
 
 			        if (result == JOptionPane.YES_OPTION) {
 			  
-			            frame.dispose();
+			            dispose();
 			        }
 			    }
 		});
@@ -255,12 +241,12 @@ public class VentanaPrincipal extends JFrame {
 		        UIManager.put("OptionPane.yesButtonText", "Sí");
 		        UIManager.put("OptionPane.noButtonText", "No");
 
-		        int result = JOptionPane.showConfirmDialog(frame,
+		        int result = JOptionPane.showConfirmDialog(VentanaPrincipal.this,
 		                "¿Estás seguro de que quieres salir de la aplicación?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
 
 		        if (result == JOptionPane.YES_OPTION) {
 		  
-		            frame.dispose();
+		            dispose();
 		        }
 		    }
 		});
