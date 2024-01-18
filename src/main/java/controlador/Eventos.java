@@ -27,9 +27,9 @@ public class Eventos {
 	 * @param lblNoTeSabes 
 	 */
 
- 
 
-    public static void noTeSabesLaContrasenia(JLabel lblNoTeSabes, Login login) {
+
+    public static void noTeSabesLaContrasenia(final JLabel lblNoTeSabes, final Login login) {
 
         lblNoTeSabes.addMouseListener(new MouseAdapter() {
             @Override
@@ -51,6 +51,8 @@ public class Eventos {
             }
         });
     }
+    
+    
     /**
      * 			Metodo de la funcionalidad del boton de cerrar.
      * 			Eventos dentro de la funcion son al entrar al cliquear y al salir.

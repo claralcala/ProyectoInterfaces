@@ -9,10 +9,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import modelo.Usuario;
+import vista.Login;
+import vista.TiendaPrincipal;
 
 public class ConsultasBD {
+	
+	private static JPanel panelEntrar;
 	
 	
 	public static void guardarUsuario(Usuario usuario) throws HeadlessException {
@@ -65,7 +71,7 @@ public class ConsultasBD {
     }
 	
 	
-	public static void consultarUsuario(String username, String password) {
+	public static boolean consultarUsuario(String username, String password) {
 		Conexion con = new Conexion();
         Connection cn = null;
 
@@ -85,11 +91,19 @@ public class ConsultasBD {
                 // Verificar la contraseña encriptada
                 if (verificarPassword(password, passCorrecto)) {
                     JOptionPane.showMessageDialog(null, "Login correcto. Bienvenido " + usernameCorrecto);
+                    TiendaPrincipal tp = new TiendaPrincipal();
+                    tp.setVisible(true);
+                    
+                    return true;
+                    
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+                    return false;
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+                return false;
             }
 
         } catch (Exception e) {
@@ -104,6 +118,8 @@ public class ConsultasBD {
                 }
             }
         }
+        
+        return false;
     }
 	
 	
