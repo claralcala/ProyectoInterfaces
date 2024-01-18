@@ -3,12 +3,10 @@ package vista;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
-import java.awt.Event;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,12 +15,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
-import com.sun.java.swing.plaf.windows.resources.windows;
-
 import controlador.Eventos;
-
-import java.awt.event.MouseMotionAdapter;
 import javax.swing.ImageIcon;
 
 public class Login extends JFrame {
@@ -40,7 +33,18 @@ public class Login extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Login frame = new Login();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	int xMouse, yMouse;
 	//Eventos eventos = new Eventos();
@@ -81,6 +85,7 @@ public class Login extends JFrame {
 		panel.add(lblUsuario);
 		
 		txtIngreseUsuario = new JTextField();
+		
 		txtIngreseUsuario.addMouseListener(new MouseAdapter() {
 			// Verificar si el campo de texto de usuario contiene el texto predeterminado.
 			@Override
@@ -121,6 +126,7 @@ public class Login extends JFrame {
 		panel.add(separator1_1);
 		
 		pwdcontra = new JPasswordField();
+		
 		pwdcontra.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -182,8 +188,6 @@ public class Login extends JFrame {
 				 } 
 			}
 		});
-		
-		
 		lblEntrar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEntrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // cursor que cuando pasa por encima cambia al icono de la mano en el raton.
 		lblEntrar.setFont(new Font("Roboto", Font.PLAIN, 20));
@@ -198,26 +202,8 @@ public class Login extends JFrame {
 		
 		JLabel lblX = new JLabel("X");
 		
-		//Eventos.botonX(lblX, panelX);
+		Eventos.botonX(lblX, panelX, this);
 		
-		/**lblX.addMouseListener(new MouseAdapter() {
-			//mouseClick en un Jlabel ya que he quitado la barra superior.
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-			}
-			//mouseClick segundo evento que hago que se ponga de color rojo cuando el raton pasa por encima.
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				panelX.setBackground(Color.red);
-			}
-			// cuando sale el raton vuelve al color original.
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Color colorFondo = new Color(10, 27, 5);
-				panelX.setBackground(colorFondo);
-			}
-		});*/
 		lblX.setBounds(0, 0, 33, 45);
 		panelX.add(lblX);
 		lblX.setForeground(new Color(216, 200, 187));
@@ -225,35 +211,19 @@ public class Login extends JFrame {
 		lblX.setFont(new Font("Roboto Black", Font.PLAIN, 20));
 		lblX.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		final JLabel lblNoTeSabes = new JLabel("No te sabes la contraseña? pincha aquí.");
+		final JLabel lblNoTeSabes = new JLabel("Registrate aquí.");
 		
-		//Eventos.noTeSabesLaContrasenia(lblNoTeSabes);
+		Eventos.noTeSabesLaContrasenia(lblNoTeSabes);
 		
-		/*lblNoTeSabes.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				javax.swing.JOptionPane.showMessageDialog(Login.this, "Usuario: usuario \n"
-						+ "Contrasenia: usuario ", "Informacion", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				 lblNoTeSabes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-				 lblNoTeSabes.setForeground(Color.green);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblNoTeSabes.setForeground(new Color(216, 200, 187));
-			}
-		});*/
 		lblNoTeSabes.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNoTeSabes.setForeground(new Color(243, 235, 219));
 		lblNoTeSabes.setFont(new Font("Roboto", Font.PLAIN, 12));
-		lblNoTeSabes.setBounds(293, 468, 229, 33);
+		lblNoTeSabes.setBounds(398, 468, 113, 33);
 		panel.add(lblNoTeSabes);
 		
 		JSeparator separator1_1_1 = new JSeparator();
 		separator1_1_1.setBackground(new Color(255, 255, 255));
-		separator1_1_1.setBounds(302, 500, 217, 8);
+		separator1_1_1.setBounds(302, 493, 201, 8);
 		panel.add(separator1_1_1);
 		
 		final JPanel panel_ = new JPanel();
@@ -263,21 +233,9 @@ public class Login extends JFrame {
 		panel.add(panel_);
 		
 		JLabel lbl_ = new JLabel("_");
-		lbl_.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				panel_.setBackground(Color.blue);
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				setExtendedState(JFrame.ICONIFIED);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Color colorFondo = new Color(10, 27, 5);
-				panel_.setBackground(colorFondo);
-			}
-		});
+		
+		Eventos.botonMinimiza(lbl_, panel_, this);
+		
 		lbl_.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // cursor que cuando pasa por encima cambia al icono de la mano en el raton.
 		lbl_.setForeground(new Color(216, 200, 187));
@@ -285,9 +243,33 @@ public class Login extends JFrame {
 		lbl_.setBounds(0, 0, 33, 45);
 		panel_.add(lbl_);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/imagenes/logo (1).png")));
-		lblNewLabel.setBounds(293, 85, 240, 196);
-		panel.add(lblNewLabel);
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setIcon(new ImageIcon(Login.class.getResource("/imagenes/logo (1).png")));
+		lblLogo.setBounds(293, 85, 240, 196);
+		panel.add(lblLogo);
+		
+		JLabel lblBack = new JLabel("");
+		lblBack.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+				ventanaPrincipal.setVisible(true);
+				dispose();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblBack.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+		});
+		lblBack.setIcon(new ImageIcon(Login.class.getResource("/imagenes/back-2_icon-icons.com_62858.png")));
+		lblBack.setBounds(35, 564, 54, 53);
+		panel.add(lblBack);
+		
+		JLabel lblNoTienesCuenta = new JLabel("¿No tienes cuenta?");
+		lblNoTienesCuenta.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNoTienesCuenta.setForeground(new Color(243, 235, 219));
+		lblNoTienesCuenta.setFont(new Font("Roboto", Font.PLAIN, 12));
+		lblNoTienesCuenta.setBounds(297, 468, 113, 33);
+		panel.add(lblNoTienesCuenta);
 	}
 }
