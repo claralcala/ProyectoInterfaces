@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.HeadlessException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -14,7 +15,7 @@ import modelo.Usuario;
 public class ConsultasBD {
 	
 	
-	public void guardarUsuario(Usuario usuario) {
+	public static void guardarUsuario(Usuario usuario) throws HeadlessException {
 		Conexion con = new Conexion();
         Connection conexion = null;
 
@@ -64,7 +65,7 @@ public class ConsultasBD {
     }
 	
 	
-	public void consultarUsuario(Usuario usuario) {
+	public static void consultarUsuario(Usuario usuario) {
 		Conexion con = new Conexion();
         Connection cn = null;
 
@@ -106,7 +107,7 @@ public class ConsultasBD {
     }
 	
 	
-	private boolean usuarioExistente(String username) throws SQLException {
+	private static boolean usuarioExistente(String username) throws SQLException {
 		Conexion con = new Conexion();
         Connection cn = null;
 
@@ -138,7 +139,7 @@ public class ConsultasBD {
         return false;
     }
 	
-	private String hashPassword(String password) {
+	private static String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hashedBytes = md.digest(password.getBytes());
@@ -157,7 +158,7 @@ public class ConsultasBD {
     }
 
 	
-    private boolean verificarPassword(String inputPassword, String storedPassword) {
+    private static boolean verificarPassword(String inputPassword, String storedPassword) {
         String hashedInputPassword = hashPassword(inputPassword);
         return hashedInputPassword.equals(storedPassword);
     }

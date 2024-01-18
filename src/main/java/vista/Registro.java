@@ -19,6 +19,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import controlador.ConsultasBD;
+import modelo.Usuario;
+
 public class Registro extends JFrame {
 
 	private JPanel contentPane, panelX;
@@ -291,9 +294,21 @@ public class Registro extends JFrame {
         panel.add(btnRegistrarse);
         btnRegistrarse.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Lógica para registrarse aquí
-                // Puedes acceder a los datos ingresados con txtNombre.getText(), txtApellidos.getText(), etc.
-                // Implementa la lógica de registro según tus necesidades.
+            	
+            	Usuario u = new Usuario();
+            	
+            	u.setUsername(txtUsername.getText());
+            	u.setContrasena(txtPassword.getText());
+            	u.setCorreo_electronico(txtCorreo.getText());
+            	u.setDireccion(txtDireccion.getText());
+            	u.setNombre(txtNombre.getText());
+            	u.setApellidos(txtApellidos.getText());
+            	u.setTelefono(txtTelefono.getText());
+            	
+            	ConsultasBD.guardarUsuario(u);
+            	borrarCampos();
+            	
+                
             }
         });
 
@@ -312,5 +327,16 @@ public class Registro extends JFrame {
         });
        
     }
+	
+	public void borrarCampos() {
+		txtUsername.setText(null);
+		txtNombre.setText(null);
+		txtApellidos.setText(null);
+		txtPassword.setText(null);
+		txtCorreo.setText(null);
+		txtTelefono.setText(null);
+		txtDireccion.setText(null);
+		
+	}
 
 }
