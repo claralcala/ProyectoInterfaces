@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import vista.Login;
+import vista.Registro;
 
 
 
@@ -24,12 +25,13 @@ public class Eventos {
 	 * 
 	 * @param lblNoTeSabes 
 	 */
-    public static void noTeSabesLaContrasenia(JLabel lblNoTeSabes) {
+    public static void noTeSabesLaContrasenia(JLabel lblNoTeSabes, Login login) {
         lblNoTeSabes.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                javax.swing.JOptionPane.showMessageDialog(null, "Usuario: usuario \n"
-                        + "Contrasenia: usuario ", "Informacion", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+               Registro registro = new Registro();
+               registro.setVisible(true);
+               login.dispose();
             }
 
             @Override
