@@ -41,6 +41,8 @@ public class Login extends JFrame {
 	public Component lblNoTeSabes;
 	private KeyStroke atajo;
 	
+	private JLabel lblBack;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -261,7 +263,7 @@ public class Login extends JFrame {
 		lblLogo.setBounds(293, 85, 240, 196);
 		panel.add(lblLogo);
 		
-		JLabel lblBack = new JLabel("");
+		 lblBack = new JLabel("");
 		lblBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

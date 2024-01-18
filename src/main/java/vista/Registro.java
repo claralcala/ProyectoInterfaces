@@ -239,7 +239,7 @@ public class Registro extends JFrame {
         txtDireccion.setBackground(new Color(10, 27, 5));
         txtDireccion.setBorder(null);
         txtDireccion.setFont(new Font("Roboto Light", Font.PLAIN, 15));
-        txtDireccion.setBounds(858, 106, 390, 22);
+        txtDireccion.setBounds(871, 106, 390, 22);
         panel.add(txtDireccion);
         txtDireccion.setColumns(10);
 
@@ -260,7 +260,7 @@ public class Registro extends JFrame {
         txtUsername.setBackground(new Color(10, 27, 5));
         txtUsername.setBorder(null);
         txtUsername.setFont(new Font("Roboto Light", Font.PLAIN, 15));
-        txtUsername.setBounds(926, 198, 390, 22);
+        txtUsername.setBounds(954, 198, 390, 22);
         panel.add(txtUsername);
         txtUsername.setColumns(10);
 
@@ -281,7 +281,7 @@ public class Registro extends JFrame {
         txtPassword.setBackground(new Color(10, 27, 5));
         txtPassword.setBorder(null);
         txtPassword.setFont(new Font("Roboto Light", Font.PLAIN, 15));
-        txtPassword.setBounds(858, 269, 390, 22);
+        txtPassword.setBounds(878, 257, 390, 22);
         panel.add(txtPassword);
         txtUsername.setColumns(10);
 
@@ -336,19 +336,7 @@ public class Registro extends JFrame {
 		lblBack.setBounds(35, 532, 54, 53);
 		panel.add(lblBack);
 
-        // Botón Volver
-        JButton btnVolver = new JButton("Volver");
-        btnVolver.setBackground(new Color(254, 250, 192));
-        btnVolver.setBounds(772, 547, 220, 33);
-        panel.add(btnVolver);
-        btnVolver.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Lógica para volver a la ventana de inicio de sesión
-                dispose(); // Cerrar la ventana actual
-                VentanaPrincipal frame = new VentanaPrincipal(); // Crear una nueva instancia de la ventana de inicio de sesión
-                frame.setVisible(true); // Hacer visible la nueva ventana
-            }
-        });
+        
         
       //TooltipText
         txtNombre.setToolTipText(Texto.toolName);
