@@ -1,7 +1,6 @@
 package vista;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
@@ -25,6 +24,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Label;
 import java.awt.Color;
+import utiles.Texto;
 
 
 
@@ -33,13 +33,14 @@ public class VentanaPrincipal extends JFrame {
 	private JPanel contentPane;
 	private Login login = new Login ();
 	private Registro registro = new Registro();	
-	 private static VentanaPrincipal frame;
+	private static VentanaPrincipal frame;
 	 
 	 private JMenuItem menuIniciarSesion, menuRegistro;
 	 
 	 KeyStroke keyStroke, keyStroke2;
 	 
 	 JButton btnRegister, btnIniciarSesion;
+	 
 
 
 
@@ -105,7 +106,7 @@ public class VentanaPrincipal extends JFrame {
 		lblNewLabel.setBounds(0, 63, 660, 495);
 		contentPane.add(lblNewLabel);
 		
-		lblNewLabel.setToolTipText("Imagen de la tienda oficial de Urban Stride");
+		lblNewLabel.setToolTipText(Texto.toolImg);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(new Color(10, 27, 5));
@@ -116,12 +117,12 @@ public class VentanaPrincipal extends JFrame {
 		mnNewMenu.setForeground(new Color(255, 255, 255));
 		menuBar.add(mnNewMenu);
 		
-		mnNewMenu.setToolTipText("Menu para realizar diferentes acciones");
+		mnNewMenu.setToolTipText(Texto.toolMenu);
 		
 		menuIniciarSesion = new JMenuItem("Iniciar Sesion");
 		mnNewMenu.add(menuIniciarSesion);
 		
-		menuIniciarSesion.setToolTipText("Boton que te llevará a la ventana para poder iniciar sesion en Urban Stride");
+		menuIniciarSesion.setToolTipText(Texto.toolIncioSesion);
 
 		menuIniciarSesion.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -140,7 +141,7 @@ public class VentanaPrincipal extends JFrame {
 		 menuRegistro = new JMenuItem("Registrarse");
 		mnNewMenu.add(menuRegistro);
 		
-		menuRegistro.setToolTipText("Boton que te llevará al registro en Urban Stride");
+		menuRegistro.setToolTipText(Texto.toolRegistro);
 		
 		menuRegistro.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -157,7 +158,7 @@ public class VentanaPrincipal extends JFrame {
 		JMenuItem menuSalir = new JMenuItem("Salir");
 		mnNewMenu.add(menuSalir);
 		
-		menuSalir.setToolTipText("Boton para cerrar la aplicacion de Urban Stride");
+		menuSalir.setToolTipText(Texto.toolSalir);
 		
 		menuSalir.addActionListener(new ActionListener() {
 			 public void actionPerformed(ActionEvent e) {
@@ -179,13 +180,13 @@ public class VentanaPrincipal extends JFrame {
 		mnNewMenu_2.setForeground(new Color(255, 255, 255));
 		menuBar.add(mnNewMenu_2);
 		
-		mnNewMenu_2.setToolTipText("Version en la que se encuentra Urban Stride");
+		mnNewMenu_2.setToolTipText(Texto.toolVersion2);
 		
 		JLabel lblVersion = new JLabel("<html>La aplicación <b>URBAN STRIDE</b> se encuentra en la versión 1.0</html>");
 		mnNewMenu_2.add(lblVersion);
 		
 		
-		lblVersion.setToolTipText("Version actual de Urban Stride");
+		lblVersion.setToolTipText(Texto.toolVersion);
 		
 		JMenu menuAtajos = new JMenu("Atajos");
 		menuAtajos.setForeground(new Color(255, 255, 255));
@@ -197,7 +198,7 @@ public class VentanaPrincipal extends JFrame {
 		btnIniciarSesion = new JButton("Iniciar Sesion");
 		btnIniciarSesion.setFont(new Font("Dialog", Font.PLAIN, 14));
 
-		btnIniciarSesion.setToolTipText("Botón que te llevará a la ventana para poder iniciar sesión en Urban Stride");
+		btnIniciarSesion.setToolTipText(Texto.toolIncioSesion);
 
 		btnIniciarSesion.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -208,14 +209,14 @@ public class VentanaPrincipal extends JFrame {
 		    }
 		});
 
-		btnIniciarSesion.setBounds(776, 434, 131, 22);
+		btnIniciarSesion.setBounds(745, 434, 165, 42);
 		contentPane.add(btnIniciarSesion);
 
 		
 		btnRegister = new JButton("Registrarse");
 		btnRegister.setFont(new Font("Dialog", Font.PLAIN, 14));
 		
-		btnRegister.setToolTipText("Boton que te llevará al registro en Urban Stride");
+		btnRegister.setToolTipText(Texto.toolRegistro);
 		
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -228,12 +229,12 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		
-		btnRegister.setBounds(986, 434, 131, 22);
+		btnRegister.setBounds(992, 434, 165, 42);
 		contentPane.add(btnRegister);
 		
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.setFont(new Font("Dialog", Font.PLAIN, 14));
-		btnSalir.setToolTipText("Botón para cerrar la aplicación de Urban Stride");
+		btnSalir.setToolTipText(Texto.toolSalir);
 
 
 		btnSalir.addActionListener(new ActionListener() {
@@ -250,13 +251,13 @@ public class VentanaPrincipal extends JFrame {
 		        }
 		    }
 		});
-		btnSalir.setBounds(868, 487, 187, 22);
+		btnSalir.setBounds(827, 498, 243, 37);
 		contentPane.add(btnSalir);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/imagenes/logo (1).png")));
 		
-		lblNewLabel_1.setToolTipText("Logotipo de Urban Stride");
+		lblNewLabel_1.setToolTipText(Texto.toolLogo);
 		
 		lblNewLabel_1.setBounds(834, 0, 221, 195);
 		contentPane.add(lblNewLabel_1);
@@ -265,7 +266,7 @@ public class VentanaPrincipal extends JFrame {
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel_2.setBounds(715, 193, 499, 222);
-		lblNewLabel_2.setToolTipText("Descripcion de lo que trata Urban Stride");
+		lblNewLabel_2.setToolTipText(Texto.toolDescripcion);
 		
 		contentPane.add(lblNewLabel_2);
 		

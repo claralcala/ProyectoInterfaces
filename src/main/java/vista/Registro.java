@@ -6,27 +6,32 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ConsultasBD;
 import modelo.Usuario;
+import utiles.Texto;
 
 public class Registro extends JFrame {
 
 	private JPanel contentPane, panelX;
 	
 	private JTextField txtNombre, txtApellidos, txtCorreo, txtTelefono, txtDireccion, txtUsername, txtPassword;
+	private KeyStroke atajo;
 	
 	
 	private JLabel lblBack;
@@ -330,10 +335,54 @@ public class Registro extends JFrame {
 		lblBack.setIcon(new ImageIcon(Login.class.getResource("/imagenes/back-2_icon-icons.com_62858.png")));
 		lblBack.setBounds(35, 532, 54, 53);
 		panel.add(lblBack);
+
+        // Botón Volver
+        JButton btnVolver = new JButton("Volver");
+        btnVolver.setBackground(new Color(254, 250, 192));
+        btnVolver.setBounds(772, 547, 220, 33);
+        panel.add(btnVolver);
+        btnVolver.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Lógica para volver a la ventana de inicio de sesión
+                dispose(); // Cerrar la ventana actual
+                VentanaPrincipal frame = new VentanaPrincipal(); // Crear una nueva instancia de la ventana de inicio de sesión
+                frame.setVisible(true); // Hacer visible la nueva ventana
+            }
+        });
+        
+      //TooltipText
+        txtNombre.setToolTipText(Texto.toolName);
+        txtApellidos.setToolTipText(Texto.toolSurnames);
+        txtCorreo.setToolTipText(Texto.toolEmail);
+        txtTelefono.setToolTipText(Texto.toolPhone);
+        txtDireccion.setToolTipText(Texto.toolAdress);
+        txtUsername.setToolTipText(Texto.toolNameUser);
+        txtPassword.setToolTipText(Texto.toolPass);
+        lblNewLabel.setToolTipText(Texto.toolLogo);
+        lblX.setToolTipText(Texto.toolCerrar);
+        lbl_.setToolTipText(Texto.toolMinimizar);
+        btnRegistrarse.setToolTipText(Texto.toolBotonRegister);
+        
+        
+      //Atajos
+		
+      		atajo = KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_DOWN_MASK);
+              getRootPane().registerKeyboardAction(new ActionListener() {
+                  
+                  public void actionPerformed(ActionEvent e) {
+                  	VentanaPrincipal ventana = new VentanaPrincipal();
+                      ventana.setVisible(true);
+                      dispose();
+                  }
+              }, atajo, JComponent.WHEN_IN_FOCUSED_WINDOW);
+        
+        
+        
+
        
     }
 	
-	public void borrarCampos() {
+	public void borrarCampos(){
 		txtUsername.setText("");
 		txtNombre.setText("");
 		txtApellidos.setText("");
@@ -343,5 +392,10 @@ public class Registro extends JFrame {
 		txtDireccion.setText("");
 		
 	}
+	
+	
+	
+	
+
 
 }
