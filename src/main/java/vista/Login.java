@@ -17,6 +17,11 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import com.sun.java.swing.plaf.windows.resources.windows;
+
+import controlador.Eventos;
+
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.ImageIcon;
 
@@ -49,6 +54,7 @@ public class Login extends JFrame {
 	}
 
 	int xMouse, yMouse;
+	//Eventos eventos = new Eventos();
 	
 	public Login() {
 		setResizable(false);
@@ -67,7 +73,7 @@ public class Login extends JFrame {
 		
 		JPanel panel = new JPanel();
 		
-		panel.setBackground(new Color(13, 34, 6));
+		panel.setBackground(new Color(10, 27, 5));
 		panel.setBounds(0, 0, 822, 654);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -199,7 +205,10 @@ public class Login extends JFrame {
 		
 		
 		JLabel lblX = new JLabel("X");
-		lblX.addMouseListener(new MouseAdapter() {
+		
+		Eventos.botonX(lblX, panelX);
+		
+		/**lblX.addMouseListener(new MouseAdapter() {
 			//mouseClick en un Jlabel ya que he quitado la barra superior.
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -216,7 +225,7 @@ public class Login extends JFrame {
 				Color colorFondo = new Color(10, 27, 5);
 				panelX.setBackground(colorFondo);
 			}
-		});
+		});*/
 		lblX.setBounds(0, 0, 33, 45);
 		panelX.add(lblX);
 		lblX.setForeground(new Color(216, 200, 187));
@@ -225,7 +234,10 @@ public class Login extends JFrame {
 		lblX.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		final JLabel lblNoTeSabes = new JLabel("No te sabes la contraseña? pincha aquí.");
-		lblNoTeSabes.addMouseListener(new MouseAdapter() {
+		
+		Eventos.noTeSabesLaContrasenia(lblNoTeSabes);
+		
+		/*lblNoTeSabes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				javax.swing.JOptionPane.showMessageDialog(Login.this, "Usuario: usuario \n"
@@ -240,7 +252,7 @@ public class Login extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				lblNoTeSabes.setForeground(new Color(216, 200, 187));
 			}
-		});
+		});*/
 		lblNoTeSabes.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNoTeSabes.setForeground(new Color(243, 235, 219));
 		lblNoTeSabes.setFont(new Font("Roboto", Font.PLAIN, 12));
@@ -285,10 +297,5 @@ public class Login extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/imagenes/logo (1).png")));
 		lblNewLabel.setBounds(293, 85, 240, 196);
 		panel.add(lblNewLabel);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(10, 27, 5));
-		panel_1.setBounds(190, 25, 469, 601);
-		panel.add(panel_1);
 	}
 }
