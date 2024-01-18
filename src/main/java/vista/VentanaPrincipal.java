@@ -34,6 +34,12 @@ public class VentanaPrincipal extends JFrame {
 	private Login login = new Login ();
 	private Registro registro = new Registro();	
 	 private static VentanaPrincipal frame;
+	 
+	 private JMenuItem menuIniciarSesion, menuRegistro;
+	 
+	 KeyStroke keyStroke, keyStroke2;
+	 
+	 JButton btnRegister, btnIniciarSesion;
 
 
 	/**
@@ -71,18 +77,18 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		
-		KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK);
+		keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK);
         getRootPane().registerKeyboardAction(new ActionListener() {
-            @Override
+            
             public void actionPerformed(ActionEvent e) {
                 login.setVisible(true);
                 dispose();
             }
         }, keyStroke, JComponent.WHEN_IN_FOCUSED_WINDOW);
         
-        KeyStroke keyStroke2 = KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK);
+        keyStroke2 = KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK);
         getRootPane().registerKeyboardAction(new ActionListener() {
-            @Override
+            
             public void actionPerformed(ActionEvent e) {
                 registro.setVisible(true);
                 dispose();
@@ -91,7 +97,7 @@ public class VentanaPrincipal extends JFrame {
         
         KeyStroke keyStroke3 = KeyStroke.getKeyStroke(KeyEvent.VK_E, KeyEvent.CTRL_DOWN_MASK);
         getRootPane().registerKeyboardAction(new ActionListener() {
-            @Override
+           
             public void actionPerformed(ActionEvent e) {
 		        UIManager.put("OptionPane.yesButtonText", "Sí");
 		        UIManager.put("OptionPane.noButtonText", "No");
@@ -126,7 +132,7 @@ public class VentanaPrincipal extends JFrame {
 		
 		mnNewMenu.setToolTipText("Menu para realizar diferentes acciones");
 		
-		JMenuItem menuIniciarSesion = new JMenuItem("Iniciar Sesion");
+		menuIniciarSesion = new JMenuItem("Iniciar Sesion");
 		mnNewMenu.add(menuIniciarSesion);
 		
 		menuIniciarSesion.setToolTipText("Boton que te llevará a la ventana para poder iniciar sesion en Urban Stride");
@@ -145,7 +151,7 @@ public class VentanaPrincipal extends JFrame {
 
 		
 		
-		JMenuItem menuRegistro = new JMenuItem("Registrarse");
+		 menuRegistro = new JMenuItem("Registrarse");
 		mnNewMenu.add(menuRegistro);
 		
 		menuRegistro.setToolTipText("Boton que te llevará al registro en Urban Stride");
@@ -202,7 +208,7 @@ public class VentanaPrincipal extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("<html>Iniciar Sesion -- CTRL IZQ + Q <br> Registro -- CTRL IZQ + W <br> Salir -- CTRL IZQ + E</html>");
 		menuAtajos.add(lblNewLabel_3);
 		
-		JButton btnIniciarSesion = new JButton("Iniciar Sesion");
+		btnIniciarSesion = new JButton("Iniciar Sesion");
 		btnIniciarSesion.setFont(new Font("Dialog", Font.PLAIN, 14));
 
 		btnIniciarSesion.setToolTipText("Botón que te llevará a la ventana para poder iniciar sesión en Urban Stride");
@@ -220,7 +226,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(btnIniciarSesion);
 
 		
-		JButton btnRegister = new JButton("Registrarse");
+		btnRegister = new JButton("Registrarse");
 		btnRegister.setFont(new Font("Dialog", Font.PLAIN, 14));
 		
 		btnRegister.setToolTipText("Boton que te llevará al registro en Urban Stride");
@@ -235,6 +241,7 @@ public class VentanaPrincipal extends JFrame {
 				
 			}
 		});
+		
 		btnRegister.setBounds(986, 434, 131, 22);
 		contentPane.add(btnRegister);
 		
