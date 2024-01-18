@@ -29,22 +29,12 @@ public class Login extends JFrame {
 	public JPanel panelEntrar;
 	public JLabel lblContrasea;
 	public Component lblNoTeSabes;
+	JLabel lblBack;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	int xMouse, yMouse;
 	//Eventos eventos = new Eventos();
@@ -248,7 +238,7 @@ public class Login extends JFrame {
 		lblLogo.setBounds(293, 85, 240, 196);
 		panel.add(lblLogo);
 		
-		JLabel lblBack = new JLabel("");
+		lblBack = new JLabel("");
 		lblBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

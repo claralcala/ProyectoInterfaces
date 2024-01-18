@@ -24,7 +24,7 @@ public class Eventos {
 	 * 
 	 * @param lblNoTeSabes 
 	 */
-    public static void noTeSabesLaContrasenia(JLabel lblNoTeSabes) {
+    public static void noTeSabesLaContrasenia(final JLabel lblNoTeSabes) {
         lblNoTeSabes.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -52,7 +52,7 @@ public class Eventos {
      * @param panelX Panel que contiene el JLabel.
      * @param login login  Para darle contexto a la hora de cerrar la ventana.
      */
-    public static void botonX(JLabel lblX, JPanel panelX, Login login) {
+    public static void botonX(JLabel lblX, final JPanel panelX, final Login login) {
     	lblX.addMouseListener(new MouseAdapter() {
 			//mouseClick en un Jlabel ya que he quitado la barra superior.
 			@Override
@@ -80,7 +80,7 @@ public class Eventos {
      * @param panel_ Panel que contiene el JLabel.
      * @param login  Para darle contexto a la hora de cerrar la ventana.
      */
-    public static void botonMinimiza(JLabel lbl_, JPanel panel_, Login login) {
+    public static void botonMinimiza(JLabel lbl_, final JPanel panel_, final Login login) {
     	lbl_.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
