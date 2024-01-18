@@ -350,6 +350,7 @@ public class Registro extends JFrame {
         lblX.setToolTipText(Texto.toolCerrar);
         lbl_.setToolTipText(Texto.toolMinimizar);
         btnRegistrarse.setToolTipText(Texto.toolBotonRegister);
+        lblBack.setToolTipText(Texto.toolVolver);
         
         
       //Atajos
