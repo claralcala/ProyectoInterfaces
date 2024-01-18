@@ -6,6 +6,9 @@ import java.awt.Cursor;
 import java.awt.Event;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -15,15 +18,18 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.sun.java.swing.plaf.windows.resources.windows;
 
 import controlador.Eventos;
+import utiles.Texto;
 
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 
 public class Login extends JFrame {
 
@@ -36,6 +42,7 @@ public class Login extends JFrame {
 	public JPanel panelEntrar;
 	public JLabel lblContrasea;
 	public Component lblNoTeSabes;
+	KeyStroke atajo;
 
 	/**
 	 * Launch the application.
@@ -289,5 +296,33 @@ public class Login extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/imagenes/logo (1).png")));
 		lblNewLabel.setBounds(293, 85, 240, 196);
 		panel.add(lblNewLabel);
+		
+		
+		
+		
+		//ToolTipText
+		
+		lblNewLabel.setToolTipText(Texto.toolLogo);
+		txtIngreseUsuario.setToolTipText(Texto.toolUser);
+		pwdcontra.setToolTipText(Texto.toolPass);
+		lblNoTeSabes.setToolTipText(Texto.toolNewAccount);
+		lblEntrar.setToolTipText(Texto.toolEntrar);
+		lbl_.setToolTipText(Texto.toolMinimizar);
+		lblX.setToolTipText(Texto.toolCerrar);
+		
+		
+		//Atajos
+		
+		atajo = KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_DOWN_MASK);
+        getRootPane().registerKeyboardAction(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e) {
+            	VentanaPrincipal ventana = new VentanaPrincipal();
+                ventana.setVisible(true);
+                dispose();
+            }
+        }, atajo, JComponent.WHEN_IN_FOCUSED_WINDOW);
+		
+		
 	}
 }
