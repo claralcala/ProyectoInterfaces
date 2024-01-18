@@ -329,13 +329,13 @@ public class Registro extends JFrame {
     }
 	
 	public void borrarCampos() {
-		txtUsername.setText(null);
-		txtNombre.setText(null);
-		txtApellidos.setText(null);
-		txtPassword.setText(null);
-		txtCorreo.setText(null);
-		txtTelefono.setText(null);
-		txtDireccion.setText(null);
+		txtUsername.setText("");
+		txtNombre.setText("");
+		txtApellidos.setText("");
+		txtPassword.setText("");
+		txtCorreo.setText("");
+		txtTelefono.setText("");
+		txtDireccion.setText("");
 		
 	}
 
