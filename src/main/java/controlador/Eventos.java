@@ -26,7 +26,7 @@ public class Eventos {
 	 * @param lblNoTeSabes 
 	 */
 
-    public static void noTeSabesLaContrasenia(final JLabel lblNoTeSabes) {
+ 
 
     public static void noTeSabesLaContrasenia(JLabel lblNoTeSabes, Login login) {
 
