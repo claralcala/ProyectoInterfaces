@@ -18,7 +18,7 @@ import vista.TiendaPrincipal;
 
 public class ConsultasBD {
 	
-	private static JPanel panelEntrar;
+	
 	
 	
 	public static void guardarUsuario(Usuario usuario) throws HeadlessException {
