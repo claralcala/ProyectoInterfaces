@@ -1,11 +1,1298 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <style type="text/css">
+        ol {
+            margin: 0;
+            padding: 0
+        }
+
+        table td,
+        table th {
+            padding: 0
+        }
+
+        .c15 {
+            padding-top: 18pt;
+            padding-bottom: 6pt;
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: justify;
+            height: 16pt
+        }
+
+        .c12 {
+            color: #434343;
+            font-weight: 400;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 14pt;
+            font-family: "Arial";
+            font-style: normal
+        }
+
+        .c7 {
+            color: #000000;
+            font-weight: 400;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 16pt;
+            font-family: "Arial";
+            font-style: normal
+        }
+
+        .c8 {
+            padding-top: 18pt;
+            padding-bottom: 6pt;
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: center
+        }
+
+        .c14 {
+            padding-top: 20pt;
+            padding-bottom: 6pt;
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: center
+        }
+
+        .c1 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.15;
+            orphans: 2;
+            widows: 2;
+            text-align: left;
+            height: 11pt
+        }
+
+        .c9 {
+            color: #000000;
+            font-weight: 400;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 20pt;
+            font-family: "Arial";
+            font-style: normal
+        }
+
+        .c4 {
+            color: #000000;
+            font-weight: 400;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 11pt;
+            font-family: "Arial";
+            font-style: normal
+        }
+
+        .c2 {
+            color: #000000;
+            font-weight: 700;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 11pt;
+            font-family: "Arial";
+            font-style: normal
+        }
+
+        .c10 {
+            padding-top: 16pt;
+            padding-bottom: 4pt;
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: center
+        }
+
+        .c3 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.15;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .c0 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.15;
+            orphans: 2;
+            widows: 2;
+            text-align: center
+        }
+
+        .c5 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.15;
+            orphans: 2;
+            widows: 2;
+            text-align: justify
+        }
+
+        .c11 {
+            background-color: #ffffff;
+            max-width: 451.4pt;
+            padding: 72pt 72pt 72pt 72pt
+        }
+
+        .c6 {
+            height: 11pt
+        }
+
+        .c13 {
+            font-weight: 700
+        }
+
+        .title {
+            padding-top: 0pt;
+            color: #000000;
+            font-size: 26pt;
+            padding-bottom: 3pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .subtitle {
+            padding-top: 0pt;
+            color: #666666;
+            font-size: 15pt;
+            padding-bottom: 16pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        li {
+            color: #000000;
+            font-size: 11pt;
+            font-family: "Arial"
+        }
+
+        p {
+            margin: 0;
+            color: #000000;
+            font-size: 11pt;
+            font-family: "Arial"
+        }
+
+        h1 {
+            padding-top: 20pt;
+            color: #000000;
+            font-size: 20pt;
+            padding-bottom: 6pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h2 {
+            padding-top: 18pt;
+            color: #000000;
+            font-size: 16pt;
+            padding-bottom: 6pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h3 {
+            padding-top: 16pt;
+            color: #434343;
+            font-size: 14pt;
+            padding-bottom: 4pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h4 {
+            padding-top: 14pt;
+            color: #666666;
+            font-size: 12pt;
+            padding-bottom: 4pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h5 {
+            padding-top: 12pt;
+            color: #666666;
+            font-size: 11pt;
+            padding-bottom: 4pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h6 {
+            padding-top: 12pt;
+            color: #666666;
+            font-size: 11pt;
+            padding-bottom: 4pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            font-style: italic;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+    </style>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>hola</h1>
+
+<body class="c11 doc-content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <a class="navbar-brand text-white" href="#">Urban Stride</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="#">Home <span class="sr-only">(actual))</span></a>
+                </li>
+                <!-- Add more navigation items as needed -->
+            </ul>
+        </div>
+    </nav>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h1 class="c14" id="h.8v155pgc4wxg"><span class="c9">Introducci&oacute;n </span></h1>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Urban Stride es la aplicaci&oacute;n de escritorio de la tienda del mismo nombre,
+            realizada en Java haciendo uso de Java Swing para el dise&ntilde;o y la codificaci&oacute;n de la parte de
+            interfaz gr&aacute;fica. Los datos se almacenan en una base de datos local MySQL.</span></p>
+    <p class="c5"><span class="c4">El objetivo de la aplicaci&oacute;n es hacer las veces de tienda, el usuario
+            podr&aacute; crear su cuenta de usuario, loguearse y, posteriormente, una vez que est&eacute; implementada
+            esa funci&oacute;n, comprar y visualizar su historial de pedidos.</span></p>
+    <p class="c5 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Este manual busca, en primer lugar, explicar c&oacute;mo se empaqueta y ejecuta la
+            misma. En segundo lugar, se explicar&aacute; al usuario c&oacute;mo se hace uso de la aplicaci&oacute;n,
+            as&iacute; como las distintas funciones que pueden llevarse a cabo con ella y, por &uacute;ltimo, se
+            repasar&aacute; la estructura interna y c&oacute;mo est&aacute; estructurado el c&oacute;digo de la
+            aplicaci&oacute;n.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h1 class="c14" id="h.ruscku83mn4y"><span class="c9">Manual de empaquetado de la aplicaci&oacute;n</span></h1>
+    <p class="c0 c6"><span class="c2"></span></p>
+    <p class="c5"><span class="c4">Para proceder a empaquetar, lo primero que debemos hacer es buscar el proyecto
+            deseado, en nuestro caso es el siguiente:</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 400.15px; height: 231.41px;"><img
+                alt="" src="images/image32.png"
+                style="width: 400.15px; height: 231.41px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c3"><span class="c4">Para comenzar a empaquetar la aplicaci&oacute;n, tendremos que seleccionar el
+            proyecto una vez lo tengamos identificado y le daremos click derecho sobre el mismo y le daremos a
+            &ldquo;Export&rdquo;.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 412.65px; height: 265.41px;"><img
+                alt="" src="images/image56.png"
+                style="width: 412.65px; height: 265.41px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5"><span>Una vez que le damos a </span><span class="c13">&ldquo;Export&rdquo;</span><span>, como hemos
+            visto en la imagen anterior, esta acci&oacute;n nos llevar&aacute; a una nueva ventana, en la cual tendremos
+            que seleccionar </span><span class="c13">&ldquo;Java&gt;Runnable JAR file&gt;Next&rdquo;. </span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 390.15px; height: 413.49px;"><img
+                alt="" src="images/image63.png"
+                style="width: 390.15px; height: 413.49px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5"><span>Esto nos llevar&aacute; a esta nueva ventana, en la cual comprobaremos que estamos haciendo el
+            JAR del proyecto que realmente queremos, y la ruta donde queramos que se nos guarde el ejecutable, en
+            nuestro caso lo pondremos en el escritorio para poder encontrarlo r&aacute;pidamente y le daremos el nombre
+            de </span><span class="c13">&ldquo;urbanstride&rdquo;,</span><span class="c4">&nbsp;como podremos ver en la
+            siguiente imagen:</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 411.15px; height: 343.43px;"><img
+                alt="" src="images/image28.png"
+                style="width: 411.15px; height: 343.43px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5"><span>Como podemos ver, una vez le damos a </span><span class="c13">Finish</span><span>, se nos
+        </span><span class="c13">generar&aacute; el ejecutable</span><span class="c4">&nbsp;en el escritorio:</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 129.00px; height: 111.00px;"><img
+                alt="" src="images/image19.png"
+                style="width: 129.00px; height: 111.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Para terminar de comprobar si funciona correctamente, le daremos doble click sobre el
+            ejecutable que hemos generado en el paso anterior y, en caso de que todo haya ido correctamente, se nos
+            deber&iacute;a abrir la ventana principal de nuestra aplicaci&oacute;n.</span></p>
+    <p class="c5"><span class="c4">En nuestro caso, como podemos observar, ha funcionado correctamente:</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 268.00px;"><img
+                alt="" src="images/image31.png"
+                style="width: 601.70px; height: 268.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <h1 class="c14" id="h.7qyi8m2njqdw"><span class="c9">Manual de ejecuci&oacute;n de la aplicaci&oacute;n</span></h1>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Bien, para comenzar a explicar el siguiente apartado, vamos a proceder a comentar los
+            distintos modos con los cuales podemos llegar a ejecutar la aplicaci&oacute;n.</span></p>
+    <p class="c5"><span>El </span><span class="c13">primer modo</span><span>&nbsp;que vamos a ver es ejecutando el
+        </span><span class="c13">ejecutable</span><span class="c4">&nbsp;de la aplicaci&oacute;n mediante un doble click
+            sobre el mismo, es decir, buscar&iacute;amos nuestro ejecutable primeramente.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 129.00px; height: 111.00px;"><img
+                alt="" src="images/image19.png"
+                style="width: 129.00px; height: 111.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c5"><span>Una vez lo tenemos, le daremos </span><span class="c13">doble click</span><span
+            class="c4">&nbsp;y se nos deber&iacute;a ejecutar la aplicaci&oacute;n, como podemos observar.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 268.00px;"><img
+                alt="" src="images/image31.png"
+                style="width: 601.70px; height: 268.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">El segundo modo en el cual podemos lanzar la aplicaci&oacute;n es mediante la consola
+            de Windows, la cual se llama &ldquo;cmd&rdquo;.</span></p>
+    <p class="c5"><span class="c4">Una vez estamos dentro de cmd, deberemos ejecutar el siguiente comando:
+            &ldquo;cd/ruta_del_jar&rdquo;. En nuestro caso, el comando se ver&iacute;a tal que as&iacute;:</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 313.00px; height: 48.00px;"><img
+                alt="" src="images/image55.png"
+                style="width: 602.00px; height: 132.51px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c3"><span>Bien, una vez estamos en el directorio en el cual se encuentra el ejecutable, procederemos a
+            ejecutar la aplicaci&oacute;n mediante el siguiente comando:</span><span class="c13">&nbsp;&ldquo;java -jar
+            nombre_del_archivo.jar&rdquo;. </span><span class="c4">Como podemos observar, a nosotros nos quedar&iacute;a
+            el comando tal que as&iacute;:</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 554.00px; height: 51.00px;"><img
+                alt="" src="images/image55.png"
+                style="width: 602.00px; height: 132.01px; margin-left: 0.00px; margin-top: -40.99px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span><span class="c4">&nbsp; </span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Si todo ha ido bien, al lanzar el comando anterior se nos deber&iacute;a abrir la
+            aplicaci&oacute;n, como podemos ver en la siguiente imagen:</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 268.00px;"><img
+                alt="" src="images/image31.png"
+                style="width: 601.70px; height: 268.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h1 class="c14" id="h.evw6wb319een"><span class="c9">Manual de uso de la aplicaci&oacute;n</span></h1>
+    <p class="c0 c6"><span class="c2"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Lo primero que haremos para ver un correcto uso de la aplicaci&oacute;n ser&aacute;
+            inicializarla, una vez la tengamos abierta, nos dispondremos a explicar su funcionamiento.</span></p>
+    <p class="c3"><span class="c4">Bien, una vez la aplicaci&oacute;n est&aacute; abierta, lo primero que nos
+            encontraremos ser&aacute; la ventana principal.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 266.67px;"><img
+                alt="" src="images/image58.png"
+                style="width: 601.70px; height: 266.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c3"><span class="c4">En esta ventana, como podemos observar a simple vista, podemos ver tres botones, los
+            cuales son para navegar entre las distintas opciones de la aplicaci&oacute;n, y un men&uacute; con tres
+            opciones las cuales veremos a continuaci&oacute;n.</span></p>
+    <p class="c3"><span class="c4">Bien, en el men&uacute; de la p&aacute;gina principal veremos la siguiente
+            informaci&oacute;n: &ldquo;Sesi&oacute;n-Versi&oacute;n-Atajos&rdquo; Vamos a ver la informaci&oacute;n que
+            tiene cada uno de estos item del men&uacute;. </span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h3 class="c10" id="h.yehr70q2nlgw"><span class="c12">Sesi&oacute;n</span></h3>
+    <p class="c3"><span class="c4">En el caso de sesi&oacute;n, nos vamos a encontrar nuevamente unas opciones, la
+            cuales servir&aacute;n para ir a la ventana de Login, Registro o para salir de la aplicaci&oacute;n.</span>
+    </p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 283.00px; height: 132.00px;"><img
+                alt="" src="images/image62.png"
+                style="width: 283.00px; height: 132.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c3"><span class="c4">Como podemos ver, al darle a iniciar sesi&oacute;n o Registrarse nos lleva a cada una
+            de sus ventanas correspondientes.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h3 class="c10" id="h.c3ime5xggkyf"><span class="c12">Login</span></h3>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 480.00px;"><img
+                alt="" src="images/image24.png"
+                style="width: 601.70px; height: 480.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h3 class="c10" id="h.jn7nv0917mjd"><span class="c12">Registro</span></h3>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 273.33px;"><img
+                alt="" src="images/image18.png"
+                style="width: 601.70px; height: 273.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">En caso de darle a salir, se nos cerrar&aacute; la aplicaci&oacute;n.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h3 class="c10" id="h.8n3emq8v1141"><span class="c12">Versi&oacute;n</span></h3>
+    <p class="c3"><span class="c4">En esta opci&oacute;n del men&uacute; veremos un peque&ntilde;o mensaje en el cual
+            nos dar&aacute; un poco de informaci&oacute;n acerca de la versi&oacute;n de la aplicaci&oacute;n:</span>
+    </p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 441.00px; height: 76.00px;"><img
+                alt="" src="images/image44.png"
+                style="width: 441.00px; height: 76.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <h3 class="c10" id="h.hpcdnyovp6wc"><span class="c12">Atajos</span></h3>
+    <p class="c5"><span class="c4">Como veremos a continuaci&oacute;n, en este apartado podemos ver los diferentes
+            atajos que podemos usar dentro de la aplicaci&oacute;n, estos atajos son los siguientes. Los atajos de
+            iniciar sesi&oacute;n o registro nos llevar&aacute;n a sus respectivas p&aacute;ginas. El de salir
+            cerrar&aacute; la aplicaci&oacute;n.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 300.00px; height: 101.00px;"><img
+                alt="" src="images/image71.png"
+                style="width: 300.00px; height: 101.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <h3 class="c10" id="h.ds6jp879danl"><span class="c12">Botones en la p&aacute;gina principal</span></h3>
+    <p class="c5"><span class="c4">Con estos botones podemos hacer lo mismo que en el apartado Sesi&oacute;n del
+            men&uacute; que hemos visto previamente, es decir, podremos ir a la p&aacute;gina de login, a la de registro
+            o salir de la aplicaci&oacute;n.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 272.00px;"><img
+                alt="" src="images/image41.png"
+                style="width: 601.70px; height: 272.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <h3 class="c10" id="h.nlcon92x4b6k"><span class="c12">Tooltips p&aacute;gina principal</span></h3>
+    <p class="c0 c6"><span class="c2"></span></p>
+    <p class="c5"><span class="c4">En caso de duda en alguno de los apartados que podemos encontrar, podremos dejar el
+            puntero del rat&oacute;n encima del objeto deseado para que nos salga un peque&ntilde;o texto de ayuda, el
+            cual nos dice qu&eacute; hace dicho objeto o apartado. Esto se puede realizar tanto en los botones como en
+            los items del men&uacute;.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 265.33px;"><img
+                alt="" src="images/image75.png"
+                style="width: 601.70px; height: 265.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <h3 class="c10" id="h.rxiu2plqbq0j"><span class="c12">P&aacute;gina iniciar sesi&oacute;n</span></h3>
+    <p class="c5"><span class="c4">En esta ventana de la aplicaci&oacute;n nos encontraremos el login de la
+            aplicaci&oacute;n, donde tendremos que introducir nuestro nombre de usuario y contrase&ntilde;a.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 530.39px; height: 421.31px;"><img
+                alt="" src="images/image74.png"
+                style="width: 530.39px; height: 421.31px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c3"><span class="c4">En caso de no introducir los datos de usuario, si intentamos iniciar sesi&oacute;n
+            nos saldr&aacute; el siguiente mensaje de que el usuario no ha sido encontrado:</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 496.50px; height: 393.51px;"><img
+                alt="" src="images/image10.png"
+                style="width: 496.50px; height: 393.51px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c3"><span class="c4">En caso de poner el nombre de usuario pero no poner la contrase&ntilde;a, nos
+            saldr&aacute; el mensaje de que la contrase&ntilde;a es incorrecta:</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 479.50px; height: 378.34px;"><img
+                alt="" src="images/image66.png"
+                style="width: 479.50px; height: 378.34px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Y el &uacute;ltimo caso que podemos ver es en el que pongamos el usuario y
+            contrase&ntilde;a correctos. Entonces nos aparecer&aacute; un mensaje indicando que el inicio de
+            sesi&oacute;n ha sido correcto:</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 530.50px; height: 423.87px;"><img
+                alt="" src="images/image84.png"
+                style="width: 530.50px; height: 423.87px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5"><span class="c4">En caso de que hayamos llegado al login pero no tengamos usuario creado podremos
+            darle al apartado de &ldquo;&iquest;No tienes cuenta? Reg&iacute;strate aqu&iacute;&rdquo; para as&iacute;
+            llevarnos a la p&aacute;gina de registro para poder darnos de alta como usuarios.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 466.67px;"><img
+                alt="" src="images/image47.png"
+                style="width: 601.70px; height: 466.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Como podemos ver, nos lleva correctamente a la p&aacute;gina de registrar: </span>
+    </p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 300.00px;"><img
+                alt="" src="images/image5.png"
+                style="width: 601.70px; height: 300.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span>Otro de los apartados que podemos ver es el </span><span
+            class="c13">bot&oacute;n</span><span>&nbsp;que aparece en la </span><span class="c13">zona inferior
+            izquierda,</span><span>&nbsp;el cual sirve para ir nuevamente a la p&aacute;gina de inicio,</span><span
+            class="c13">&nbsp;o</span><span>&nbsp;tambi&eacute;n podemos usar el atajo de teclado &ldquo;</span><span
+            class="c13">ctrl izq + T</span><span>&rdquo; </span><span class="c13">para volver</span><span>&nbsp;a la
+            citada p&aacute;gina de inicio.</span><span class="c13">&nbsp;</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 480.00px;"><img
+                alt="" src="images/image69.png"
+                style="width: 601.70px; height: 480.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c3"><span class="c4">Como podemos ver, nos lleva correctamente a la p&aacute;gina esperada.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 272.00px;"><img
+                alt="" src="images/image41.png"
+                style="width: 601.70px; height: 272.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h3 class="c10" id="h.gg3o5246h3fe"><span class="c12">P&aacute;gina registo</span></h3>
+    <p class="c5"><span>Vamos a proceder a explicar el funcionamiento de la p&aacute;gina de registro. En esta pantalla
+            lo que tenemos son los diferentes campos que el usuario deber&aacute; rellenar correctamente para poder ser
+            dado de alta en la base de datos. Aparte de los campos que hay para rellenar tambi&eacute;n encontraremos un
+        </span><span class="c13">bot&oacute;n</span><span>&nbsp;en la zona inferior izquierda, el cual nos
+            llevar&aacute; a la p&aacute;gina de inicio, </span><span class="c13">o</span><span>&nbsp;podemos usar el
+            atajo de teclado &ldquo;</span><span class="c13">ctrl izq + T</span><span class="c4">&rdquo;, al igual que
+            en la pantalla de login.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 285.33px;"><img
+                alt="" src="images/image70.png"
+                style="width: 601.70px; height: 285.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">En caso de intentar registrar un nombre de usuario que ya existe en la base de datos,
+            nos saltar&aacute; un error diciendo que ese nombre ya est&aacute; en uso, como podemos ver a
+            continuaci&oacute;n:</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 300.00px;"><img
+                alt="" src="images/image29.png"
+                style="width: 601.70px; height: 300.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">En caso de a&ntilde;adir a un usuario con un nombre de usuario &uacute;nico, se nos
+            a&ntilde;adir&aacute; correctamente y ya podremos empezar a usarlo para iniciar sesi&oacute;n en la
+            aplicaci&oacute;n.</span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <h1 class="c14" id="h.ng6blni707a4"><span class="c9">Manual de estructura interna y codificaci&oacute;n de la
+            aplicaci&oacute;n</span></h1>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">El c&oacute;digo est&aacute; dividido siguiendo el patr&oacute;n MVC
+            (modelo-vista-controlador). Aqu&iacute; podemos ver la estructura de carpetas y clases del proyecto:</span>
+    </p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 482.00px; height: 825.00px;"><img
+                alt="" src="images/image26.png"
+                style="width: 482.00px; height: 825.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c3"><span class="c4">A continuaci&oacute;n, describiremos la codificaci&oacute;n de cada una de las clases
+            que componen el proyecto.</span></p>
+    <p class="c3"><span class="c4">&nbsp;</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h2 class="c8" id="h.e8pywk2t4s5u"><span class="c7">Conexi&oacute;n</span></h2>
+    <p class="c3"><span class="c4">La clase Conexion, tal y como su nombre indica, es la encargada de establecer la
+            conexi&oacute;n con la base de datos MySQL y se encuentra en el paquete &ldquo;controlador&rdquo;. </span>
+    </p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 400.00px;"><img
+                alt="" src="images/image50.png"
+                style="width: 601.70px; height: 400.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Lo primero que hace es crear una instancia de la clase Connection de java.sql.
+        </span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 457.00px; height: 62.00px;"><img
+                alt="" src="images/image42.png"
+                style="width: 457.00px; height: 62.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Lo siguiente son los datos de conexi&oacute;n a la base de datos, que se declaran a
+            trav&eacute;s de String. Estos datos deben incluir necesariamente el driver de MySQL, el usuario de la base
+            de datos (en nuestro caso, root), la contrase&ntilde;a para conectarse a la base de datos (ad1234) y la URL.
+            Recordemos que en nuestro caso la base de datos se encuentra en local, usando el puerto por defecto de
+            MySQL, 3306.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 78.67px;"><img
+                alt="" src="images/image15.png"
+                style="width: 601.70px; height: 78.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Lo &uacute;ltimo es una funci&oacute;n a la que llamaremos cuando necesitemos hacer
+            algo en la base de datos. Esta funci&oacute;n inicializa la instancia de Conection que creamos previamente
+            usando los datos que ya hemos declarado y, por &uacute;ltimo, devuelve esa instancia de la clase Connection
+            (en nuestro caso, se llama &ldquo;con&rdquo;).</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 224.00px;"><img
+                alt="" src="images/image52.png"
+                style="width: 601.70px; height: 224.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h2 class="c8" id="h.g5xp3r6eo6dw"><span class="c7">ConsultasBD</span></h2>
+    <h2 class="c15" id="h.kgupakpvsp4t"><span class="c7"></span></h2>
+    <p class="c5"><span class="c4">Esta clase tambi&eacute;n forma parte del paquete &ldquo;conexion&rdquo;. En este
+            caso, es donde realizamos las consultas a la base de datos y tambi&eacute;n tenemos otros m&eacute;todos que
+            sirven para prop&oacute;sitos como encriptar o desencriptar la contrase&ntilde;a. Los veremos uno por
+            uno.</span></p>
+    <p class="c5"><span class="c4">En primer lugar, tenemos el m&eacute;todo guardarUsuario.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 376.00px;"><img
+                alt="" src="images/image81.png"
+                style="width: 601.70px; height: 376.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5"><span class="c4">Este m&eacute;todo recibe por par&aacute;metro un objeto Usuario y lo que hace es
+            guardarlo en la base de datos. </span></p>
+    <p class="c5"><span class="c4">Lo primero es crear una instancia de la clase Conexion que ya explicamos previamente.
+            Luego, y muy importante, creamos una variable String para la contrase&ntilde;a encriptada. La
+            contrase&ntilde;a se encripta llamando a un m&eacute;todo que posteriormente veremos.</span></p>
+    <p class="c5"><span class="c4">Luego toca la sentencia SQL, que en este caso, ser&aacute; de insert. Nosotros
+            usaremos un PreparedStatement porque es seguro ante ataques como la inyecci&oacute;n SQL. Comprobaremos si
+            el nombre de usuario ya existe porque, en nuestro caso, debe ser &uacute;nico. El m&eacute;todo para esto lo
+            explicaremos tambi&eacute;n despu&eacute;s. </span></p>
+    <p class="c5"><span class="c4">Posteriormente especificamos todos los par&aacute;metros que se insertar&aacute;n,
+            que corresponden a los atributos de nuestra clase Usuario. Ejecutamos la actualizaci&oacute;n sobre la base
+            de datos (es decir, el insert), y avisamos del resultado al usuario de la aplicaci&oacute;n con JOptionPane.
+            &nbsp;Lo &uacute;ltimo es cerrar la conexi&oacute;n.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">El segundo m&eacute;todo es consultarUsuario y lo que hace es permitir el login. Se
+            le pasa por par&aacute;metro el usuario y la contrase&ntilde;a que obtendremos de los campos de texto de la
+            aplicaci&oacute;n.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 488.00px;"><img
+                alt="" src="images/image46.png"
+                style="width: 601.70px; height: 488.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Al igual que antes, establecemos la conexi&oacute;n y usamos PreparedStatement. Luego
+            lo que hacemos es inicializar unas variables con lo que obtenemos de la base de datos, estas variables las
+            usamos para comparar con los datos que obtenemos por par&aacute;metro. De esta forma, si el usuario
+            introduce un username o una contrase&ntilde;a que no corresponden, le podemos avisar mediante JOptionPane,
+            igual que antes. Para verificar la contrase&ntilde;a usamos un m&eacute;todo espec&iacute;fico porque
+            necesitamos desencriptarla. </span></p>
+    <p class="c5"><span class="c4">La raz&oacute;n por la que este m&eacute;todo devuelve un booleano es porque lo
+            necesitamos para cerrar la ventana de Login. Solo si es true, la ventana de Login se cerrar&aacute; y
+            aparecer&aacute; una instancia de la ventana de la tienda, para que el usuario pueda proceder a realizar un
+            pedido.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Con el m&eacute;todo usuarioExistente lo que hacemos es comprobar si ese nombre de
+            usuario ya existe.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 412.00px;"><img
+                alt="" src="images/image60.png"
+                style="width: 601.70px; height: 412.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5"><span class="c4">Lo que hace es simplemente establecer una consulta que cuente los usuarios con
+            determinado username que se le pasa por par&aacute;metro. Si hay 1, es que ese nombre de usuario ya existe.
+            Si no, devolvemos false, porque ese nombre de usuario no est&aacute; en uso, as&iacute; que puede
+            registrarse sin problema. </span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Los &uacute;ltimos dos m&eacute;todos sirven para encriptar y desencriptar la
+            contrase&ntilde;a.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 288.00px;"><img
+                alt="" src="images/image48.png"
+                style="width: 601.70px; height: 288.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Con hashPassword usamos la clase MessageDigest y la codificaci&oacute;n SHA-256. Esto
+            lo que hace es convertir la contrase&ntilde;a en un array de bytes. Luego lo reconvertimos a String para
+            poder insertarlo en la BD (porque en nuestra base de datos la contrase&ntilde;a es de tipo VARCHAR).</span>
+    </p>
+    <p class="c5"><span class="c4">El m&eacute;todo verificarPassword lo que hace es comprobar que la contrase&ntilde;a
+            que se la pasa por par&aacute;metro (inputPassword) coincide con la que est&aacute; almacenada en la base de
+            datos. Lo primero es obtener el hash de la contrase&ntilde;a pasada por par&aacute;metro. Si coincide con el
+            hash almacenado en la base de datos, lo devolvemos como verdadero. La contrase&ntilde;a es correcta.</span>
+    </p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h2 class="c8" id="h.mytf3v5mdk9z"><span class="c7">Eventos</span></h2>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">La clase &ldquo;Eventos&rdquo; se encuentra en el paquete &ldquo;controlador&rdquo;,
+            y es la encargada de controlar los eventos de las acciones de &ldquo;JLabel&rdquo; u otros componentes que
+            se encuentren en la clase Login.</span></p>
+    <p class="c5 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">&ldquo;Registrate aqu&iacute;&rdquo; es un JLabel con un texto y acciones, es la
+            primera funci&oacute;n que se encuentra en la clase Eventos:</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 400.00px;"><img
+                alt="" src="images/image33.png"
+                style="width: 601.70px; height: 400.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5"><span class="c4">En la acci&oacute;n de hacer &ldquo;click&rdquo; simplemente se crea una instancia de
+            la clase &ldquo;Registro&rdquo; y visualizamos el JFrame de esa clase, mientras que hacemos un dispose() de
+            la clase &ldquo;Login&rdquo;.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">&ldquo;Bot&oacute;nX&rdquo; es un panel con un JLabel dentro y
+            &rdquo;bot&oacute;n_&rdquo; &nbsp;es id&eacute;ntico al botonX, ya que solo cambian los colores y la
+            acci&oacute;n de cerrar ventana o minimizar la ventana.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 292.00px;"><img
+                alt="" src="images/image27.png"
+                style="width: 601.70px; height: 292.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5"><span class="c4">Al hacer click cerramos la ventana.</span></p>
+    <p class="c5"><span class="c4">Cuando entra el rat&oacute;n, cambia al color rojo.</span></p>
+    <p class="c5"><span class="c4">Cuando sale el rat&oacute;n, vuelve al color inicial.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Diferencia con el &ldquo;bot&oacute;n_&rdquo; respecto al
+            &ldquo;bot&oacute;nX&rdquo;:</span></p>
+    <p class="c5 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">&ldquo;bot&oacute;nX&rdquo; = login.dispose();</span></p>
+    <p class="c5"><span class="c4">&ldquo;Bot&oacute;n_&rdquo; = login.setExtendedState(JFrame.ICONIFIED);</span></p>
+    <p class="c5"><span class="c4">Colores = X es rojo. _ es azul.</span></p>
+    <p class="c5 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">&ldquo;Bot&oacute;nMinimiza&rdquo;:</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 300.00px;"><img
+                alt="" src="images/image20.png"
+                style="width: 601.70px; height: 300.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c3"><span class="c4">Es igual que el bot&oacute;n de X, lo que cambia es lo anterior nombrado.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">&ldquo;Bot&oacute;n Back&rdquo;. Con la acci&oacute;n de hacer click, crea una
+            instancia de la ventana principal y hacemos un setVisible de esa clase y un dispose() de la clase
+            actual.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 280.00px;"><img
+                alt="" src="images/image22.png"
+                style="width: 601.70px; height: 280.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h2 class="c8" id="h.2g64kg2gwovd"><span class="c7">Main</span></h2>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">La clase App sirve de clase Main para ejecutar la aplicaci&oacute;n. En esta clase
+            simplemente creamos y hacemos visible una instancia de nuestra VentanaPrincipal.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 277.33px;"><img
+                alt="" src="images/image45.png"
+                style="width: 601.70px; height: 277.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <h2 class="c8" id="h.1vxyewgwrogh"><span class="c7">Modelo Usuario</span></h2>
+    <p class="c5"><span class="c4">Es simplemente la clase modelo/objeto que usaremos para insertar usuarios en la base
+            de datos. Contiene los atributos de la clase, el constructor vac&iacute;o, los getters y setters y el
+            m&eacute;todo toString.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 344.00px; height: 383.00px;"><img
+                alt="" src="images/image40.png"
+                style="width: 344.00px; height: 383.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5"><span class="c4">Los atributos son el id, username, contrase&ntilde;a, nombre, apellidos, correo
+            electr&oacute;nico, tel&eacute;fono y direcci&oacute;n. El id se genera autom&aacute;ticamente de forma
+            autoincremental en MySQL, por lo que nosotros no tenemos que preocuparnos por &eacute;l. </span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h2 class="c8" id="h.2uxug74e11y2"><span class="c7">Texto: Manu</span></h2>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">La clase &ldquo;Texto&rdquo; se encuentra en el paquete &ldquo;utiles&rdquo;, esta
+            clase es la encargada de guardar todos los ToolTipText que hemos introducido en las clases de
+            &ldquo;VentanaPrincipal&rdquo;, &ldquo;Login&rdquo;, &ldquo;Registro&rdquo;. </span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 186.67px;"><img
+                alt="" src="images/image2.png"
+                style="width: 601.70px; height: 186.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 141.33px;"><img
+                alt="" src="images/image36.png"
+                style="width: 601.70px; height: 141.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 157.33px;"><img
+                alt="" src="images/image1.png"
+                style="width: 601.70px; height: 157.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Estos ToolTipText se introducen para proporcionar informaci&oacute;n adicional al
+            usuario, mejorar la usabilidad, facilitar la accesibilidad y evitar confusiones. </span></p>
+    <p class="c5 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Estos ToolTipText, una vez declarados en la clase &ldquo;Texto&rdquo;, los llamamos
+            en las clases que les corresponden.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Llamada de ToolTipText en la &ldquo;VentanaPrincipal&rdquo;: </span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 484.00px; height: 32.00px;"><img
+                alt="" src="images/image78.png"
+                style="width: 484.00px; height: 32.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Introducimos el nombre de la variable en vez de introducir el mensaje que deseamos
+            llamamos a la clase &ldquo;Texto&rdquo; y elegimos el nombre que le hemos introducido de manera que al
+            colocar el cursor te mostrar&aacute; el mensaje que le hemos indicado en la clase
+            &ldquo;Texto&rdquo;.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 265.33px;"><img
+                alt="" src="images/image21.png"
+                style="width: 601.70px; height: 265.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 399.00px; height: 188.00px;"><img
+                alt="" src="images/image12.png"
+                style="width: 399.00px; height: 188.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">El mismo proceso que realizamos en la &ldquo;VentanaPrincipal&rdquo; lo realizamos en
+            el &ldquo;Login&rdquo; y &ldquo;Registro&rdquo;.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">En la pantalla &ldquo;Login&rdquo;realizamos la llamada de los ToolTipText que se
+            encuentran en la clase &ldquo;Texto&rdquo;.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 471.50px; height: 146.87px;"><img
+                alt="" src="images/image53.png"
+                style="width: 471.50px; height: 146.87px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">En la pantalla &ldquo;Registro&rdquo;realizamos la llamada de los ToolTipText que se
+            encuentran en la clase &ldquo;Texto&rdquo;.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 479.00px; height: 221.00px;"><img
+                alt="" src="images/image68.png"
+                style="width: 479.00px; height: 221.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h2 class="c8" id="h.504ek0v3nnt6"><span class="c7">Login</span></h2>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">La clase &ldquo;Login&rdquo; se encuentra en el paquete &ldquo;vista&rdquo;. Extiende
+            de JFrame y es la encargada de dar visibilidad a la entrada del usuario a la aplicaci&oacute;n y conectar
+            con la base de datos con la informaci&oacute;n del usuario.</span></p>
+    <p class="c5"><span class="c4">El primer c&oacute;digo a destacar es quitar la barra superior del programa, ya que
+            vamos a realizar nuestra propia edici&oacute;n de botones.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 101.33px;"><img
+                alt="" src="images/image54.png"
+                style="width: 601.70px; height: 101.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 73.33px;"><img
+                alt="" src="images/image4.png"
+                style="width: 601.70px; height: 73.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">El campo de texto donde el usuario introduce su nick tiene una acci&oacute;n que
+            cuando es presionado borra el campo de informaci&oacute;n que dice &ldquo;Ingrese su &nbsp;nombre de
+            usuario&rdquo;.</span></p>
+    <p class="c5 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">La segunda condici&oacute;n interviene en el campo de texto Password, que hace un
+            efecto din&aacute;mico sobre los campos de texto del nick y password, esto quiere decir que cuando se hace
+            clic en uno de los campos el otro se restablece y viceversa.</span></p>
+    <p class="c5 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Campo ingreseUsuario.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 177.33px;"><img
+                alt="" src="images/image17.png"
+                style="width: 601.70px; height: 177.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Campo Contrase&ntilde;a.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 180.00px;"><img
+                alt="" src="images/image49.png"
+                style="width: 601.70px; height: 180.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Bot&oacute;n Entrar.</span></p>
+    <p class="c5"><span class="c4">Tiene acci&oacute;n el JLabel que act&uacute;a como bot&oacute;n y son: al salir, al
+            entrar y al hacer clic. Al salir y entrar se cambian los colores y eso le da un efecto de bot&oacute;n, y le
+            a&ntilde;adimos que cuando el cursor pase por encima, cambie a una mano.</span></p>
+    <p class="c5"><span class="c4">Al hacer clic hace una consulta a la base de datos.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 292.00px;"><img
+                alt="" src="images/image80.png"
+                style="width: 601.70px; height: 292.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span>Aqu&iacute; llamamos a la clase evento, en este caso de forma est&aacute;tica, y utilizamos el
+            m&eacute;todo que describimos en la clase &ldquo;Eventos.java&rdquo;. Le pasamos </span><span>el
+            JLabel</span><span class="c4">, el panel y el contexto de la clase.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 68.00px;"><img
+                alt="" src="images/image25.png"
+                style="width: 601.70px; height: 68.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">En &ldquo;Reg&iacute;strate aqu&iacute;&rdquo;, igual que el anterior, utilizamos el
+            m&eacute;todo de la clase Eventos.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 48.00px;"><img
+                alt="" src="images/image43.png"
+                style="width: 601.70px; height: 48.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Bot&oacute;n minimizar.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 54.67px;"><img
+                alt="" src="images/image16.png"
+                style="width: 601.70px; height: 54.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Bot&oacute;n back, para volver.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 46.67px;"><img
+                alt="" src="images/image3.png"
+                style="width: 601.70px; height: 46.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h2 class="c8" id="h.h7kmj7ok88cy"><span class="c7">Registro</span></h2>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">La clase Registro pertenece al paquete de &ldquo;vista&rdquo; y es una instancia de
+            JFrame. Corresponde, por tanto, a la parte de interfaz gr&aacute;fica de la aplicaci&oacute;n. Tal y como su
+            nombre indica, sirve para que el usuario se registre en la aplicaci&oacute;n.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 400.00px;"><img
+                alt="" src="images/image7.png"
+                style="width: 601.70px; height: 400.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Los primeros datos que encontramos corresponden a la personalizaci&oacute;n de
+            nuestra ventana con colores, l&iacute;mites, tama&ntilde;o&hellip; Tambi&eacute;n aparece el logo de la
+            marca, que insertamos en un Jlabel, y una etiqueta tambi&eacute;n informativa que har&aacute; que el usuario
+            sepa que sirve para registrarse.</span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 365.33px;"><img
+                alt="" src="images/image57.png"
+                style="width: 601.70px; height: 365.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Luego tenemos panel y etiquetas con un X para cerrar la ventana, ya que nosotros
+            hemos eliminado el panel superior que sale por defecto, ya que nuestra soluci&oacute;n es m&aacute;s
+            est&eacute;tica. Cuando pulsamos el JLabel X, cerramos la ventana.</span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 310.67px;"><img
+                alt="" src="images/image77.png"
+                style="width: 601.70px; height: 310.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5"><span class="c4">Tenemos tambi&eacute;n lo mismo pero para minimizar nuestra aplicaci&oacute;n. Se
+            trata de un panel y una etiqueta igual que antes.</span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c0"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 597.33px;"><img
+                alt="" src="images/image67.png"
+                style="width: 601.70px; height: 597.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Luego pasamos a los componentes de registro. Para cada atributo de la clase tenemos
+            un JLabel informativo para que el usuario sepa qu&eacute; dato tiene que insertar, un campo de texto
+            JTextfield y un separador que es simplemente est&eacute;tico. </span></p>
+    <p class="c5"><span class="c4">Nosotros les hemos quitado los bordes a los JTextfield.</span></p>
+    <p class="c0 c6"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 569.00px; height: 466.00px;"><img
+                alt="" src="images/image72.png"
+                style="width: 569.00px; height: 466.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c5"><span class="c4">A continuaci&oacute;n tenemos un JButton que sirve para registrarse. Al pulsarlo, lo
+            que hacemos es crear una instancia de la clase Usuario, hacemos set de todos los atributos (usando el texto
+            que se haya insertado en los campos de texto) y llamamos al m&eacute;todo de guardarUsuario. Luego limpiamos
+            los campos de texto con un m&eacute;todo que posteriormente explicaremos tambi&eacute;n.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 205.33px;"><img
+                alt="" src="images/image73.png"
+                style="width: 601.70px; height: 205.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c3"><span class="c4">Para volver usamos un JLabel personalizado con un icono que va bien con el tema de
+            colores de nuestra aplicaci&oacute;n. Al pulsarla, volvemos a la pantalla principal.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 537.00px; height: 268.00px;"><img
+                alt="" src="images/image6.png"
+                style="width: 537.00px; height: 268.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c3"><span class="c4">Luego tenemos los ToolTips. Estos sirven para dar una pista al usuario sobre
+            qu&eacute; hace cada componente, es un aspecto que ayuda a la accesibilidad y la usabilidad de la
+            aplicaci&oacute;n. </span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 206.67px;"><img
+                alt="" src="images/image39.png"
+                style="width: 601.70px; height: 206.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Tambi&eacute;n tenemos un atajo de teclado para volver. Haciendo uso de la clase
+            KeyStroke, cuando pulsamos CTRL + T podemos volver a la pantalla principal.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 327.00px; height: 221.00px;"><img
+                alt="" src="images/image23.png"
+                style="width: 327.00px; height: 221.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Por &uacute;ltimo tenemos el m&eacute;todo para borrarCampos, este m&eacute;todo lo
+            que hace es setear el texto de todos los JTextField a vac&iacute;o.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <h2 class="c8" id="h.jp2miny5yddz"><span class="c7">Ventana Principal</span></h2>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">La clase &ldquo;VentanaPrincipal&rdquo; se encuentra en el paquete
+            &ldquo;vista&rdquo;, esta clase es la primera ventana que aparece al ejecutar la aplicaci&oacute;n. Extiende
+            de Frame.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">El Frame consta de:</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 214.67px;"><img
+                alt="" src="images/image37.png"
+                style="width: 601.70px; height: 214.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Lo primero que le hemos quitado es la barra de t&iacute;tulo y decoraci&oacute;n con
+            el siguiente comando: </span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 575.00px; height: 23.00px;"><img
+                alt="" src="images/image79.png"
+                style="width: 575.00px; height: 23.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Le hemos a&ntilde;adido un color de fondo con el siguiente comando: </span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 395.00px; height: 29.00px;"><img
+                alt="" src="images/image34.png"
+                style="width: 395.00px; height: 29.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Lo siguiente que encontramos son los atajos de teclado, encontramos 3 atajos
+            diferentes:</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">CTRL + Q &rarr; Nos dirigimos hacia el inicio de sesi&oacute;n en Urban
+            Stride.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 125.33px;"><img
+                alt="" src="images/image82.png"
+                style="width: 601.70px; height: 125.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">CTRL + W &rarr; Nos dirigimos hacia el registro en Urban Stride.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 137.33px;"><img
+                alt="" src="images/image14.png"
+                style="width: 601.70px; height: 137.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span>CTRL + E &rarr; &nbsp;Nos dirigimos a cerrar la aplicaci&oacute;n de Urban Stride.</span><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 182.67px;"><img
+                alt="" src="images/image59.png"
+                style="width: 601.70px; height: 182.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Al hacer uso de este atajo, te saldr&aacute; una ventana emergente preguntando al
+            usuario si realmente desea salir. </span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">&nbsp;As&iacute; el usuario podr&aacute; asegurarse de su salida.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">En caso de hacer clic en &ldquo;S&iacute;&rdquo;, saldr&aacute; de la
+            aplicaci&oacute;n, y en caso de realizar el clic en &ldquo;No&rdquo;, se mantendr&aacute; la
+            aplicaci&oacute;n abierta.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 363.00px; height: 123.00px;"><img
+                alt="" src="images/image61.png"
+                style="width: 363.00px; height: 123.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">A continuaci&oacute;n encontramos una imagen de la tienda de Urban Stride: </span>
+    </p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 96.00px;"><img
+                alt="" src="images/image30.png"
+                style="width: 601.70px; height: 96.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">La imagen se encuentra en el paquete &ldquo;imagenes&rdquo;, donde tenemos
+            introducidas todas las im&aacute;genes que usamos en la aplicaci&oacute;n.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 304.00px; height: 129.00px;"><img
+                alt="" src="images/image9.png"
+                style="width: 304.00px; height: 129.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Encontramos el men&uacute; que hemos realizado en la pantalla principal:</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">En el Apartado de Sesi&oacute;n encontramos 3 opciones diferentes:</span></p>
+    <p class="c3"><span class="c4">&nbsp;</span></p>
+    <p class="c5"><span class="c13">Iniciar Sesi&oacute;n</span><span class="c4">: Al hacer clic en esta opci&oacute;n
+            se cerrar&aacute; la ventana principal y se le redirigir&aacute; al login, para as&iacute; poder loguearse
+            en Urban Stride.</span></p>
+    <p class="c5 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c13">Registrarse:</span><span class="c4">&nbsp;Al hacer clic en esta opci&oacute;n se le
+            cerrar&aacute; la ventana principal y se le redirigir&aacute; al registro en Urban Stride para as&iacute;
+            poder crearse su cuenta de usuario.</span></p>
+    <p class="c5 c6"><span class="c4"></span></p>
+    <p class="c5"><span class="c13">Salir:</span><span class="c4">&nbsp;Al hacer clic en esta opci&oacute;n se
+            abrir&aacute; una ventana emergente preguntando al usuario si desea salir.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 367.49px; height: 453.50px;"><img
+                alt="" src="images/image35.png"
+                style="width: 367.49px; height: 453.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">En el apartado de Versi&oacute;n: </span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Encontramos un Label indicando al usuario la versi&oacute;n en la que se encuentra la
+            aplicaci&oacute;n de Urban Stride.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 305.33px;"><img
+                alt="" src="images/image65.png"
+                style="width: 601.70px; height: 305.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Otra opci&oacute;n del men&uacute; es la parte de Atajos: </span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c5"><span class="c4">Esta opci&oacute;n le informa al usuario de los atajos que contiene la
+            aplicaci&oacute;n de Urban Stride, as&iacute; podemos darle un uso de la aplicaci&oacute;n m&aacute;s
+            sencillo. Le hemos introducido un Label indic&aacute;ndole los tipos de atajos que puede realizar.</span>
+    </p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 632.00px; height: 105.47px;"><img
+                alt="" src="images/image51.png"
+                style="width: 632.00px; height: 105.47px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Este c&oacute;digo hace referencia a este apartado de la interfaz
+            gr&aacute;fica:</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 212.00px; height: 46.00px;"><img
+                alt="" src="images/image64.png"
+                style="width: 212.00px; height: 46.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">El siguiente apartado que encontramos es los botones que vemos en la
+            &ldquo;VentanaPrincipal&rdquo;.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Encontramos 3 tipos de botones:</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c13">Iniciar Sesi&oacute;n:</span><span class="c4">&nbsp; Al hacer click, llevar&aacute;
+            a la pantalla de Login y podr&aacute; loguearse sin ning&uacute;n problema.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 516.00px; height: 213.00px;"><img
+                alt="" src="images/image38.png"
+                style="width: 516.00px; height: 213.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c13">Registrarse:</span><span class="c4">&nbsp; El usuario al hacer clic le
+            llevar&aacute; a la pantalla de Registro y &nbsp;podr&aacute; registrarse sin ning&uacute;n problema.</span>
+    </p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 305.33px;"><img
+                alt="" src="images/image83.png"
+                style="width: 601.70px; height: 305.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c2"></span></p>
+    <p class="c3"><span class="c13">Salir:</span><span class="c4">&nbsp;El usuario al hacer clic le saldr&aacute; una
+            ventana emergente que le pregunta al usuario si desea salir, en caso de realizar en clic en
+            &ldquo;S&iacute;&rdquo; se cerrar&aacute; la aplicaci&oacute;n de Urban Stride, en caso contrario y que haga
+            clic en &ldquo;No&rdquo;, la aplicaci&oacute;n de Urban Stride permanecer&aacute; abierta.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 161.33px;"><img
+                alt="" src="images/image8.png"
+                style="width: 601.70px; height: 161.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Lo siguiente que encontramos es el logotipo de Urban Stride: </span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 82.67px;"><img
+                alt="" src="images/image76.png"
+                style="width: 601.70px; height: 82.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Podemos observar una ruta que es donde se encuentra esta imagen, que la encontramos
+            dentro del paquete &ldquo;imagenes&rdquo;.</span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 304.00px; height: 129.00px;"><img
+                alt="" src="images/image9.png"
+                style="width: 304.00px; height: 129.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Y por &uacute;ltimo, encontramos la descripci&oacute;n de Urban Stride para informar
+            al usuario de lo que trata esta marca.</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 144.00px;"><img
+                alt="" src="images/image11.png"
+                style="width: 601.70px; height: 144.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c1"><span class="c4"></span></p>
+    <p class="c3"><span class="c4">Todo lo explicado anteriormente es de lo que consta la clase
+            &ldquo;VentanaPrincipal&rdquo;. As&iacute; es como se ve dicha ventana:</span></p>
+    <p class="c3"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 262.67px;"><img
+                alt="" src="images/image13.png"
+                style="width: 601.70px; height: 262.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title=""></span></p>
+    <div>
+        <p class="c1"><span class="c4"></span></p>
+    </div>
 </body>
+
 </html>
