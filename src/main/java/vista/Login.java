@@ -268,6 +268,7 @@ public class Login extends JFrame {
 		lblNoTienesCuenta.setBounds(297, 468, 113, 33);
 		panel.add(lblNoTienesCuenta);
 
+
 		// ToolTipText
 
 		lblLogo.setToolTipText(Texto.toolLogo);
@@ -290,6 +291,32 @@ public class Login extends JFrame {
 				dispose();
 			}
 		}, atajo, JComponent.WHEN_IN_FOCUSED_WINDOW);
+
+
+		//ToolTipText Login
+		
+				lblLogo.setToolTipText(Texto.toolLogo);
+				txtIngreseUsuario.setToolTipText(Texto.toolUser);
+				pwdcontra.setToolTipText(Texto.toolPass);
+				lblNoTeSabes.setToolTipText(Texto.toolNewAccount);
+				lblEntrar.setToolTipText(Texto.toolEntrar);
+				lbl_.setToolTipText(Texto.toolMinimizar);
+				lblX.setToolTipText(Texto.toolCerrar);
+				lblBack.setToolTipText(Texto.toolVolver);
+				
+				//Atajos
+				
+				atajo = KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_DOWN_MASK);
+		        getRootPane().registerKeyboardAction(new ActionListener() {
+		            
+		            public void actionPerformed(ActionEvent e) {
+		            	VentanaPrincipal ventana = new VentanaPrincipal();
+		                ventana.setVisible(true);
+		                dispose();
+		            }
+		        }, atajo, JComponent.WHEN_IN_FOCUSED_WINDOW);
+		
+		
 
 	}
 }
