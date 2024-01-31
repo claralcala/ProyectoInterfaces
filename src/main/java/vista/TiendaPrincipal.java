@@ -76,6 +76,24 @@ public class TiendaPrincipal extends JFrame {
         topPanel.setBackground(new Color(186, 201, 92));
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
 
+        // Etiqueta para cerrar
+        closeLabel = new JLabel("X");
+        closeLabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                dispose();
+            }
+            public void mouseEntered(MouseEvent e) {
+                closeLabel.setForeground(Color.RED);
+            }
+            public void mouseExited(MouseEvent e) {
+                closeLabel.setForeground(Color.BLACK);
+            }
+        });
+        setLabelStyle(closeLabel);
+        topPanel.add(closeLabel);
+        
+        int spacerWidth = 10; // Ajusta este valor según sea necesario
+        topPanel.add(Box.createHorizontalStrut(spacerWidth));
         
         
      // Etiqueta para minimizar
@@ -88,27 +106,15 @@ public class TiendaPrincipal extends JFrame {
                 minimizeLabel.setForeground(Color.GRAY);
             }
             public void mouseExited(MouseEvent e) {
-                minimizeLabel.setForeground(new Color(216, 200, 187));
+                minimizeLabel.setForeground(Color.BLACK);
             }
         });
         setLabelStyle(minimizeLabel);
         topPanel.add(minimizeLabel);
+        
+        
 
-        // Etiqueta para cerrar
-        closeLabel = new JLabel("X");
-        closeLabel.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                dispose();
-            }
-            public void mouseEntered(MouseEvent e) {
-                closeLabel.setForeground(Color.RED);
-            }
-            public void mouseExited(MouseEvent e) {
-                closeLabel.setForeground(new Color(216, 200, 187));
-            }
-        });
-        setLabelStyle(closeLabel);
-        topPanel.add(closeLabel);
+       
 
         
         
