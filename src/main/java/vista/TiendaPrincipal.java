@@ -73,7 +73,7 @@ public class TiendaPrincipal extends JFrame {
         
         JPanel topPanel = new JPanel();
         topPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        topPanel.setBackground(new Color(186, 201, 92));
+        topPanel.setBackground(new Color(10, 27, 5));
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
 
         
@@ -120,7 +120,6 @@ public class TiendaPrincipal extends JFrame {
         JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 5));
         JTextField searchField = new JTextField(20);
         leftPanel.add(searchField);
-        leftPanel.setBackground(new Color(186, 201, 92));
         JLabel searchLabel = new JLabel();
         searchLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/lupadef.png"))); 
         leftPanel.add(searchLabel);
@@ -134,7 +133,6 @@ public class TiendaPrincipal extends JFrame {
         // Panel para los elementos a la derecha (carrito, botón de logout y etiqueta de volver)
         JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
-        rightPanel.setBackground(new Color(186, 201, 92));
         JLabel editProfileLabel = new JLabel("Editar perfil");
         editProfileLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/perfil.png"))); 
         rightPanel.add(editProfileLabel);
@@ -185,7 +183,6 @@ public class TiendaPrincipal extends JFrame {
 	            // Panel para cada producto
 	            JPanel productPanel = new JPanel(new BorderLayout());
 	            productPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-	            productPanel.setBackground(new Color(249, 248, 113));
 
 	            // Etiqueta para el nombre del producto
 	            JLabel nameLabel = new JLabel(productos[i], JLabel.CENTER);
@@ -194,7 +191,6 @@ public class TiendaPrincipal extends JFrame {
 	            // Panel interno para la imagen y el botón
 	            JPanel innerPanel = new JPanel();
 	            innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.Y_AXIS));
-	            innerPanel.setBackground(new Color(249, 248, 113));
 
 	            // Etiqueta para la imagen
 	            JLabel imageLabel = new JLabel();
@@ -206,7 +202,6 @@ public class TiendaPrincipal extends JFrame {
 	            JButton addToCartButton = new JButton("Añadir al Carrito");
 	            buttonPanel.add(addToCartButton);
 	            innerPanel.add(buttonPanel);
-	            buttonPanel.setBackground(new Color(249, 248, 113));
 
 	            // Botón para añadir al carrito
 	           
@@ -244,7 +239,7 @@ public class TiendaPrincipal extends JFrame {
 	
 	 private void setLabelStyle(JLabel label) {
 	        label.setFont(new Font("Roboto Black", Font.PLAIN, 20));
-	        label.setForeground(Color.BLACK);
+	        label.setForeground(new Color(216, 200, 187));
 	        label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	        label.setHorizontalAlignment(SwingConstants.CENTER);
 	    }
