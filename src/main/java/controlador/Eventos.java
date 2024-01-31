@@ -26,9 +26,6 @@ public class Eventos {
 	 * 
 	 * @param lblNoTeSabes 
 	 */
-
-
-
     public static void noTeSabesLaContrasenia(final JLabel lblNoTeSabes, final Login login) {
 
         lblNoTeSabes.addMouseListener(new MouseAdapter() {
@@ -51,15 +48,13 @@ public class Eventos {
             }
         });
     }
-    
-    
     /**
-     * 			Metodo de la funcionalidad del boton de cerrar.
-     * 			Eventos dentro de la funcion son al entrar al cliquear y al salir.
-     * 
-     * @param lblX  JLabel al que se le da funcionalidad.
-     * @param panelX Panel que contiene el JLabel.
-     * @param login login  Para darle contexto a la hora de cerrar la ventana.
+     * Metodo de la funcionalidad del boton de cerrar.
+     * Eventos dentro de la funcion son al entrar al cliquear y al salir.
+     *
+     * @param lblX  	JLabel al que se le da funcionalidad.
+     * @param panelX 	Panel que contiene el JLabel.
+     * @param login 	login Para darle contexto a la hora de cerrar la ventana.
      */
     public static void botonX(JLabel lblX, final JPanel panelX, final Login login) {
     	lblX.addMouseListener(new MouseAdapter() {
@@ -82,8 +77,8 @@ public class Eventos {
 		});
     }
     /**
-	 * 			Metodo de la funcionalidad del boton de minimizar.
-	 * 			Eventos dentro de la funcion son al entrar al cliquear y al salir.
+	 * Metodo de la funcionalidad del boton de minimizar.
+	 * Eventos dentro de la funcion son al entrar al cliquear y al salir.
      * 
      * @param lbl_	 JLabel al que se le da funcionalidad.
      * @param panel_ Panel que contiene el JLabel.
@@ -106,8 +101,13 @@ public class Eventos {
 			}
 		});
     }
-    
-    public static void btnBack(final JLabel lblBack, final Login login) {
+    /**
+     * Eventos del boton back que lleva a la vista principal.
+     * 
+     * @param lblBack	
+     * @param login
+     */
+    public static void btnBack(JLabel lblBack, Login login) {
     	lblBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
