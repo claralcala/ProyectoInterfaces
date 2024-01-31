@@ -10,14 +10,19 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -29,6 +34,11 @@ public class TiendaPrincipal extends JFrame {
 	private JPanel contentPane;
 	
 	private JPanel panelX;
+	
+	private JButton addToCartButton;
+	
+	JLabel minimizeLabel;
+	JLabel closeLabel;
 
 	/**
 	 * Launch the application.
@@ -60,32 +70,96 @@ public class TiendaPrincipal extends JFrame {
         setLocationRelativeTo(null); // Centrar ventana
 
         // Panel superior
+        
         JPanel topPanel = new JPanel();
         topPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        topPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        topPanel.setBackground(new Color(10, 27, 5));
+        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
 
-        // Componentes del panel superior
+        
+        
+     // Etiqueta para minimizar
+       minimizeLabel = new JLabel("_");
+        minimizeLabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                setExtendedState(JFrame.ICONIFIED);
+            }
+            public void mouseEntered(MouseEvent e) {
+                minimizeLabel.setForeground(Color.GRAY);
+            }
+            public void mouseExited(MouseEvent e) {
+                minimizeLabel.setForeground(new Color(216, 200, 187));
+            }
+        });
+        setLabelStyle(minimizeLabel);
+        topPanel.add(minimizeLabel);
+
+        // Etiqueta para cerrar
+        closeLabel = new JLabel("X");
+        closeLabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                dispose();
+            }
+            public void mouseEntered(MouseEvent e) {
+                closeLabel.setForeground(Color.RED);
+            }
+            public void mouseExited(MouseEvent e) {
+                closeLabel.setForeground(new Color(216, 200, 187));
+            }
+        });
+        setLabelStyle(closeLabel);
+        topPanel.add(closeLabel);
+
+        
+        
+     // Espaciador para mover el panel izquierdo hacia la derecha
+        int leftMargin = 30; // Ajusta este valor según sea necesario
+        topPanel.add(Box.createHorizontalStrut(leftMargin));
+
+        // Panel para los elementos a la izquierda (como la barra de búsqueda y lupa)
+        JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 5));
         JTextField searchField = new JTextField(20);
-        topPanel.add(searchField);
+        leftPanel.add(searchField);
+        JLabel searchLabel = new JLabel();
+        searchLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/lupadef.png"))); 
+        leftPanel.add(searchLabel);
+        topPanel.add(leftPanel);
+
+        // Panel para el centro (espaciado)
+        JPanel centerPanel = new JPanel();
+        centerPanel.setOpaque(false);
+        topPanel.add(centerPanel, BorderLayout.CENTER);
+
+        // Panel para los elementos a la derecha (carrito, botón de logout y etiqueta de volver)
+        JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+
+        JLabel editProfileLabel = new JLabel("Editar perfil");
+        editProfileLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/perfil.png"))); 
+        rightPanel.add(editProfileLabel);
 
         JLabel cartLabel = new JLabel("Carrito");
         cartLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/carritodef.png")));
-        topPanel.add(cartLabel);
+        rightPanel.add(cartLabel);
 
         JButton logoutButton = new JButton("Logout");
-        topPanel.add(logoutButton);
+        rightPanel.add(logoutButton);
 
-        JLabel backButton = new JLabel("Volver");
-        backButton.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/back-2_icon-icons.com_62858.png")));
-        topPanel.add(backButton);
+        
+
+        topPanel.add(rightPanel, BorderLayout.EAST);
 
         getContentPane().add(topPanel, BorderLayout.NORTH);
         
 
+        getContentPane().setBackground(new Color(10, 27, 5));
+        
+        
 
         // Panel principal con GridBagLayout
         JPanel mainPanel = new JPanel(new GridBagLayout());
         JScrollPane scrollPane = new JScrollPane(mainPanel);
+        mainPanel.setBackground(new Color(10, 27, 5));
+        scrollPane.setBackground(new Color(10, 27, 5));
         getContentPane().add(scrollPane, BorderLayout.CENTER);
 	      
 	    
@@ -106,7 +180,7 @@ public class TiendaPrincipal extends JFrame {
 	        int row = 0;
 
 	        for (int i = 0; i < productos.length; i++) {
-	        	// Panel para cada producto
+	            // Panel para cada producto
 	            JPanel productPanel = new JPanel(new BorderLayout());
 	            productPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
@@ -114,18 +188,37 @@ public class TiendaPrincipal extends JFrame {
 	            JLabel nameLabel = new JLabel(productos[i], JLabel.CENTER);
 	            productPanel.add(nameLabel, BorderLayout.NORTH);
 
-	            // Etiqueta para la imagen (usamos un icono genérico aquí)
-	           // ImageIcon icon = new ImageIcon(new ImageIcon("/imagenes/logo (1).png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-	            
-	            //JLabel lblNewLabel_1 = new JLabel("New label");
-	    		//lblNewLabel_1.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/imagenes/logo (1).png")));
+	            // Panel interno para la imagen y el botón
+	            JPanel innerPanel = new JPanel();
+	            innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.Y_AXIS));
+
+	            // Etiqueta para la imagen
 	            JLabel imageLabel = new JLabel();
-	            imageLabel.setIcon(new ImageIcon (TiendaPrincipal.class.getResource("/imagenes/logo (1).png")));
-	            productPanel.add(imageLabel, BorderLayout.CENTER);
+	            imageLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/logo (1).png")));
+	            innerPanel.add(imageLabel);
+	            
+	            
+	            JPanel buttonPanel = new JPanel(); // Usa FlowLayout por defecto, que centra los componentes
+	            JButton addToCartButton = new JButton("Añadir al Carrito");
+	            buttonPanel.add(addToCartButton);
+	            innerPanel.add(buttonPanel);
+
+	            // Botón para añadir al carrito
+	           
+	            addToCartButton.addActionListener(new ActionListener() {
+	                public void actionPerformed(ActionEvent e) {
+	                    // LOGICA PARA AÑADIR AL CARRITO 
+	                    JOptionPane.showMessageDialog(TiendaPrincipal.this, "¡Producto añadido al carrito!");
+	                }
+	            });
+
+	            // Añadir el panel interno al panel del producto
+	            productPanel.add(innerPanel, BorderLayout.CENTER);
 
 	            // Etiqueta para el precio
 	            JLabel priceLabel = new JLabel("Precio: $" + precios[i], JLabel.CENTER);
 	            productPanel.add(priceLabel, BorderLayout.SOUTH);
+
 
 	            gbc.gridx = column;
 	            gbc.gridy = row;
@@ -142,6 +235,13 @@ public class TiendaPrincipal extends JFrame {
 	        }
 
 	     
+	    }
+	
+	 private void setLabelStyle(JLabel label) {
+	        label.setFont(new Font("Roboto Black", Font.PLAIN, 20));
+	        label.setForeground(new Color(216, 200, 187));
+	        label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	        label.setHorizontalAlignment(SwingConstants.CENTER);
 	    }
 	}
 
