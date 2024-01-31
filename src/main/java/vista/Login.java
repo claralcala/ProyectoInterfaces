@@ -25,7 +25,6 @@ import controlador.ConsultasBD;
 import controlador.Eventos;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
-import java.*;
 import utiles.Texto;
 
 public class Login extends JFrame {
@@ -40,8 +39,6 @@ public class Login extends JFrame {
 	public JLabel lblContrasea;
 	public Component lblNoTeSabes;
 	private KeyStroke atajo;
-
-	private JLabel lblBack;
 
 	/**
 	 * Launch the application.
