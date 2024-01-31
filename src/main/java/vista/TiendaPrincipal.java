@@ -201,10 +201,21 @@ public class TiendaPrincipal extends JFrame {
 	            JPanel innerPanel = new JPanel();
 	            innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.Y_AXIS));
 	            innerPanel.setBackground(new Color(249, 248, 113));
+	            
+	            
+	         // Carga la imagen como un ImageIcon
+	            ImageIcon originalIcon = new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/nikedef.png"));
+
+	            // Escala la imagen al tamaño deseado
+	            Image scaledImage = originalIcon.getImage().getScaledInstance(210, 210, Image.SCALE_SMOOTH);
+
+	            // Crea un nuevo ImageIcon con la imagen escalada
+	            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
 
 	            // Etiqueta para la imagen
 	            JLabel imageLabel = new JLabel();
-	            imageLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/logo (1).png")));
+	            imageLabel.setIcon(scaledIcon);
 	            innerPanel.add(imageLabel);
 	            
 	            
