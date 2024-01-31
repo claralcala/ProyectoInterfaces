@@ -287,7 +287,7 @@ public class Login extends JFrame {
 		lblNoTienesCuenta.setBounds(297, 468, 113, 33);
 		panel.add(lblNoTienesCuenta);
 		
-		//ToolTipText
+		//ToolTipText Login
 		
 				lblLogo.setToolTipText(Texto.toolLogo);
 				txtIngreseUsuario.setToolTipText(Texto.toolUser);
