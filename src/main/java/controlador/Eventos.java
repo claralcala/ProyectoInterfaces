@@ -101,10 +101,6 @@ public class Eventos {
 			}
 		});
     }
-<<<<<<< Updated upstream
-    
-    public static void btnBack(final JLabel lblBack, final Login login) {
-=======
     /**
      * Eventos del boton back que lleva a la vista principal.
      * 
@@ -112,7 +108,6 @@ public class Eventos {
      * @param login
      */
     public static void btnBack(JLabel lblBack, Login login) {
->>>>>>> Stashed changes
     	lblBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
