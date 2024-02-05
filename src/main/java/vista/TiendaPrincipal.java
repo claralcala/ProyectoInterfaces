@@ -28,6 +28,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 import controlador.ConsultasBD2;
 import modelo.Producto;
@@ -39,6 +40,7 @@ public class TiendaPrincipal extends JFrame {
 	private JPanel panelX;
 	
 	private JButton addToCartButton;
+	private int id_usuario;
 	
 	JTextField searchField;
 	
@@ -47,27 +49,14 @@ public class TiendaPrincipal extends JFrame {
 	JLabel minimizeLabel;
 	JLabel closeLabel;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TiendaPrincipal frame = new TiendaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public TiendaPrincipal() {
+	public TiendaPrincipal(int id_usuario) {
 		
+		this.id_usuario=id_usuario;
 		
 		setTitle("URBAN STRIDE");
         setResizable(false);
