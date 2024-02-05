@@ -21,6 +21,8 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
 public class Details extends JFrame {
+	
+	private int id_producto;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -28,23 +30,15 @@ public class Details extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Details frame = new Details();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public Details() {
+	public Details(int id_producto) {
+		
+		this.id_producto= id_producto;
+		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 947, 757);

@@ -43,6 +43,10 @@ public class TiendaPrincipal extends JFrame {
 	
 	private JButton addToCartButton;
 	
+	ArrayList<Producto> productos; 
+	
+	Producto prod;
+	
 	JTextField searchField;
 	
 	JPanel mainPanel;
@@ -205,12 +209,12 @@ public class TiendaPrincipal extends JFrame {
 	        int column = 0;
 	        int row = 0;
 	        
-	        ArrayList<Producto> productos = new ArrayList();
+	         productos = new ArrayList();
 	        
 	        
 	        productos= ConsultasBD2.recuperarProductos();
 
-	        for (Producto prod : productos) {
+	        for (final Producto prod : productos) {
 	            // Panel para cada producto
 	            JPanel productPanel = new JPanel(new BorderLayout());
 	            productPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -218,6 +222,12 @@ public class TiendaPrincipal extends JFrame {
 	            // Etiqueta para el nombre del producto
 	            JLabel nameLabel = new JLabel(prod.getNombre(), JLabel.CENTER);
 	            productPanel.add(nameLabel, BorderLayout.NORTH);
+	            nameLabel.addMouseListener(new MouseAdapter() {
+	                @Override
+	                public void mouseClicked(MouseEvent e) {
+	                    abrirDetallesProducto(prod.getProduct_id());
+	                }
+	            });
 
 	            // Panel interno para la imagen y el botón
 	            JPanel innerPanel = new JPanel();
@@ -396,6 +406,12 @@ public class TiendaPrincipal extends JFrame {
 		    Editar editarPerfil = new Editar(id_usuario); // Usa el ID del usuario almacenado
 		    editarPerfil.setVisible(true);
 		    
+		}
+	 
+	 
+	 private void abrirDetallesProducto(int idProducto) {
+		    Details detalles = new Details(idProducto);
+		    detalles.setVisible(true);
 		}
 	}
 
