@@ -102,7 +102,7 @@ public class ConsultasBD2 {
 	    boolean actualizado = false;
 
 	    try {
-	        String sql = "UPDATE usuario SET nombre = ?, apellidos = ?, correo_elec = ?, telefono = ?, direccion = ? WHERE id = ?";
+	        String sql = "UPDATE usuario SET nombre = ?, apellidos = ?, correo_elec = ?, telefono = ?, direccion = ? WHERE user_id = ?";
 	        conexion = con.conectar();
 	        PreparedStatement pst = conexion.prepareStatement(sql);
 
