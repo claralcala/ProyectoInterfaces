@@ -266,7 +266,7 @@ public class Editar extends JFrame {
         txtPassword.setFont(new Font("Roboto Light", Font.PLAIN, 15));
         txtPassword.setBounds(878, 257, 390, 22);
         panel.add(txtPassword);
-        txtUsername.setColumns(10);
+      
 
         JSeparator separatorPassword = new JSeparator();
         separatorPassword.setBackground(new Color(155, 253, 202));
@@ -285,7 +285,7 @@ public class Editar extends JFrame {
             	
             	Usuario u = new Usuario();
             	
-            	u.setUsername(txtUsername.getText());
+            	
             	u.setContrasena(txtPassword.getText());
             	u.setCorreo_electronico(txtCorreo.getText());
             	u.setDireccion(txtDireccion.getText());
@@ -327,7 +327,7 @@ public class Editar extends JFrame {
         txtCorreo.setToolTipText(Texto.toolEmail);
         txtTelefono.setToolTipText(Texto.toolPhone);
         txtDireccion.setToolTipText(Texto.toolAdress);
-        txtUsername.setToolTipText(Texto.toolNameUser);
+       
         txtPassword.setToolTipText(Texto.toolPass);
         lblNewLabel.setToolTipText(Texto.toolLogo);
         lblX.setToolTipText(Texto.toolCerrar);
@@ -355,7 +355,7 @@ public class Editar extends JFrame {
     }
 	
 	public void borrarCampos(){
-		txtUsername.setText("");
+		
 		txtNombre.setText("");
 		txtApellidos.setText("");
 		txtPassword.setText("");

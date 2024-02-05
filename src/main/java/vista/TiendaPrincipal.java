@@ -125,9 +125,11 @@ public class TiendaPrincipal extends JFrame {
      // Espaciador para mover el panel izquierdo hacia la derecha
         int leftMargin = 30; // Ajusta este valor según sea necesario
         topPanel.add(Box.createHorizontalStrut(leftMargin));
+        topPanel.setBackground(new Color(186, 201, 92));
 
         // Panel para los elementos a la izquierda (como la barra de búsqueda y lupa)
         JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 5));
+        leftPanel.setBackground(new Color(186, 201, 92));
          searchField = new JTextField(20);
         leftPanel.add(searchField);
         JLabel searchLabel = new JLabel();
@@ -150,6 +152,7 @@ public class TiendaPrincipal extends JFrame {
 
         // Panel para los elementos a la derecha (carrito, botón de logout y etiqueta de volver)
         JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+        rightPanel.setBackground(new Color(186, 201, 92));
 
         JLabel editProfileLabel = new JLabel("Editar perfil");
         editProfileLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/perfil.png"))); 
