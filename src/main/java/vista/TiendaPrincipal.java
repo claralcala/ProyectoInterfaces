@@ -14,6 +14,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -39,6 +42,8 @@ public class TiendaPrincipal extends JFrame {
 	
 	JLabel minimizeLabel;
 	JLabel closeLabel;
+	
+	private HashMap<String, Double> carrito;
 
 	/**
 	 * Launch the application.
@@ -139,9 +144,7 @@ public class TiendaPrincipal extends JFrame {
         editProfileLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/perfil.png"))); 
         rightPanel.add(editProfileLabel);
 
-        JLabel cartLabel = new JLabel("Carrito");
-        cartLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/carritodef.png")));
-        rightPanel.add(cartLabel);
+        
 
         JButton logoutButton = new JButton("Logout");
         rightPanel.add(logoutButton);
@@ -171,6 +174,7 @@ public class TiendaPrincipal extends JFrame {
 	        // Simulación de productos obtenidos de la base de datos
 	        String[] productos = {"Zapatilla 1", "Zapatilla 2", "Zapatilla 3", "Zapatilla 4", "Zapatilla 5", "Zapatilla 6", "Zapatilla 7", "Zapatilla 8", "Zapatilla 9", "Zapatilla 10", "Zapatilla 11", "Zapatilla 12", "Zapatilla 13", "Zapatilla 14", "Zapatilla 15", "Zapatilla 16"};
 	        double[] precios = {100.0, 120.0, 90.0, 110.0, 130.0, 85.0, 5.6, 7.7, 8.8, 9.9, 100.9, 322.0, 22.0, 23.0, 22.0, 90.0};
+	        carrito = new HashMap<String, Double>();
 	        
 	        GridBagConstraints gbc = new GridBagConstraints();
 	        gbc.gridwidth = 1;
@@ -182,6 +186,8 @@ public class TiendaPrincipal extends JFrame {
 	        int row = 0;
 
 	        for (int i = 0; i < productos.length; i++) {
+	        	final int index = i;
+	        	
 	            // Panel para cada producto
 	            JPanel productPanel = new JPanel(new BorderLayout());
 	            productPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -212,11 +218,14 @@ public class TiendaPrincipal extends JFrame {
 	           
 	            addToCartButton.addActionListener(new ActionListener() {
 	                public void actionPerformed(ActionEvent e) {
-	                    // LOGICA PARA AÑADIR AL CARRITO 
+	                    // LOGICA PARA AÑADIR AL CARRITO
+	                	carrito.put(productos[index], precios[index]);
+	                	
+	                	Carrito carro = new Carrito(carrito);
+	                	
 	                    JOptionPane.showMessageDialog(TiendaPrincipal.this, "¡Producto añadido al carrito!");
 	                }
 	            });
-
 	            // Añadir el panel interno al panel del producto
 	            productPanel.add(innerPanel, BorderLayout.CENTER);
 
@@ -238,7 +247,17 @@ public class TiendaPrincipal extends JFrame {
 	                row++;
 	            }
 	        }
-
+	        JLabel cartLabel = new JLabel("Carrito");
+            cartLabel.addMouseListener(new MouseAdapter() {
+            	@Override
+            	public void mouseClicked(MouseEvent e) {
+            		dispose();
+            		Carrito carritos = new Carrito(carrito);
+            		carritos.setVisible(true);
+            	}
+            });
+            cartLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/carritodef.png")));
+            rightPanel.add(cartLabel);
 	     
 	    }
 	
