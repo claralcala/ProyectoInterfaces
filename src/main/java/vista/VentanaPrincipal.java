@@ -34,7 +34,7 @@ public class VentanaPrincipal extends JFrame {
 	private Login login = new Login ();
 	private Registro registro = new Registro();	
 	private static VentanaPrincipal frame;
-	
+	 
 	 private JMenuItem menuIniciarSesion, menuRegistro;
 	 
 	 KeyStroke keyStroke, keyStroke2;
@@ -49,7 +49,7 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
-		setUndecorated(true); //Quitar la barra de titulo y la decoracion
+		setUndecorated(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1261, 558);
@@ -73,7 +73,6 @@ public class VentanaPrincipal extends JFrame {
             }
         }, keyStroke, JComponent.WHEN_IN_FOCUSED_WINDOW);
         
-        
         keyStroke2 = KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK);
         getRootPane().registerKeyboardAction(new ActionListener() {
             
@@ -82,7 +81,6 @@ public class VentanaPrincipal extends JFrame {
                 dispose();
             }
         }, keyStroke2, JComponent.WHEN_IN_FOCUSED_WINDOW);
-        
         
         KeyStroke keyStroke3 = KeyStroke.getKeyStroke(KeyEvent.VK_E, KeyEvent.CTRL_DOWN_MASK);
         getRootPane().registerKeyboardAction(new ActionListener() {

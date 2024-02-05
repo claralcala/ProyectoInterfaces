@@ -142,18 +142,7 @@ public class Details extends JFrame {
 		btnBack.setIcon(new ImageIcon(Details.class.getResource("/imagenes/back-2_icon-icons.com_62858 (1).png")));
 		btnBack.setBounds(34, 603, 60, 56);
 		contentPane.add(btnBack);
-		
-		btnBack.addMouseListener(new MouseAdapter(){
-			public void mouseClicked(MouseEvent e) {
-                SwingUtilities.invokeLater(() -> {
-                    TiendaPrincipal tp = new TiendaPrincipal();
-                    tp.setVisible(true);
-                    dispose();
-                });
-            }
-        });
-		
-	   
+	
 
 	}
 }
