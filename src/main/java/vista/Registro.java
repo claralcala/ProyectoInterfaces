@@ -338,7 +338,7 @@ public class Registro extends JFrame {
 
         
         
-      //TooltipText Registro
+      //TooltipText
         txtNombre.setToolTipText(Texto.toolName);
         txtApellidos.setToolTipText(Texto.toolSurnames);
         txtCorreo.setToolTipText(Texto.toolEmail);

@@ -91,7 +91,9 @@ public class ConsultasBD {
                 // Verificar la contraseña encriptada
                 if (verificarPassword(password, passCorrecto)) {
                     JOptionPane.showMessageDialog(null, "Login correcto. Bienvenido " + usernameCorrecto);
-                    TiendaPrincipal tp = new TiendaPrincipal();
+                    Usuario user = obtenerUsuarioPorUsername(usernameCorrecto);
+                    int id_usuario = user.getUser_id();
+                    TiendaPrincipal tp = new TiendaPrincipal(id_usuario);
                     tp.setVisible(true);
                     
                     return true;
@@ -155,6 +157,48 @@ public class ConsultasBD {
         return false;
     }
 	
+	
+	public static Usuario obtenerUsuarioPorUsername(String username) {
+	    Conexion con = new Conexion();
+	    Connection cn = null;
+
+	    try {
+	        String sql = "SELECT user_id, username, contrasena, nombre, apellidos, correo_elec, telefono, direccion FROM usuario WHERE username = ?";
+	        cn = con.conectar();
+	        PreparedStatement pst = cn.prepareStatement(sql);
+
+	        pst.setString(1, username);
+
+	        ResultSet rs = pst.executeQuery();
+
+	        if (rs.next()) {
+	            Usuario usuario = new Usuario();
+	            usuario.setUser_id(rs.getInt("user_id"));
+	            usuario.setUsername(rs.getString("username"));
+	            usuario.setContrasena(rs.getString("contrasena")); 
+	            usuario.setNombre(rs.getString("nombre"));
+	            usuario.setApellidos(rs.getString("apellidos"));
+	            usuario.setCorreo_electronico(rs.getString("correo_elec"));
+	            usuario.setTelefono(rs.getString("telefono"));
+	            usuario.setDireccion(rs.getString("direccion"));
+	            
+	            return usuario;
+	        }
+	    } catch (SQLException e) {
+	        JOptionPane.showMessageDialog(null, "Error al obtener el usuario: " + e.getMessage());
+	    } finally {
+	        if (cn != null) {
+	            try {
+	                cn.close();
+	            } catch (SQLException e) {
+	                System.out.println("Error al cerrar la conexión: " + e);
+	            }
+	        }
+	    }
+	    
+	    return null; // Retorna null si no encuentra el usuario o si hay un error
+	}
+	
 	private static String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -177,6 +221,49 @@ public class ConsultasBD {
     private static boolean verificarPassword(String inputPassword, String storedPassword) {
         String hashedInputPassword = hashPassword(inputPassword);
         return hashedInputPassword.equals(storedPassword);
+    }
+    
+    
+    public static Usuario obtenerUsuarioPorId(int id) {
+        Conexion con = new Conexion();
+        Connection cn = null;
+
+        try {
+            String sql = "SELECT user_id, username, contrasena, nombre, apellidos, correo_elec, telefono, direccion FROM usuario WHERE id = ?";
+            cn = con.conectar();
+            PreparedStatement pst = cn.prepareStatement(sql);
+
+            pst.setInt(1, id);
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setUser_id(rs.getInt("user_id"));
+                usuario.setUsername(rs.getString("username"));
+  
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellidos(rs.getString("apellidos"));
+                usuario.setCorreo_electronico(rs.getString("correo_elec"));
+                usuario.setTelefono(rs.getString("telefono"));
+                usuario.setDireccion(rs.getString("direccion"));
+                
+                return usuario;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al obtener el usuario: " + e.getMessage());
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (SQLException e) {
+                    System.out.println("Error al cerrar la conexión: " + e);
+                }
+            }
+        }
+        
+        return null; // Retorna null si no encuentra el usuario o si hay un error
     }
 
 }
