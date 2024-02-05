@@ -28,14 +28,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 
 import controlador.ConsultasBD2;
 import modelo.Producto;
 
 public class TiendaPrincipal extends JFrame {
-	
-	private int id_usuario;
 
 	private JPanel contentPane;
 	
@@ -53,13 +50,23 @@ public class TiendaPrincipal extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TiendaPrincipal frame = new TiendaPrincipal();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
 	/**
 	 * Create the frame.
 	 */
-	public TiendaPrincipal(int id_usuario) {
-		
-		this.id_usuario=id_usuario;
+	public TiendaPrincipal() {
 		
 		
 		setTitle("URBAN STRIDE");
@@ -73,7 +80,7 @@ public class TiendaPrincipal extends JFrame {
         
         JPanel topPanel = new JPanel();
         topPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        topPanel.setBackground(new Color(10, 27, 5));
+        topPanel.setBackground(new Color(186, 201, 92));
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
 
         // Etiqueta para cerrar
@@ -126,6 +133,7 @@ public class TiendaPrincipal extends JFrame {
         JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 5));
          searchField = new JTextField(20);
         leftPanel.add(searchField);
+        leftPanel.setBackground(new Color(186, 201, 92));
         JLabel searchLabel = new JLabel();
         searchLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/lupadef.png"))); 
         
@@ -147,15 +155,10 @@ public class TiendaPrincipal extends JFrame {
         // Panel para los elementos a la derecha (carrito, botón de logout y etiqueta de volver)
         JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 
+        rightPanel.setBackground(new Color(186, 201, 92));
         JLabel editProfileLabel = new JLabel("Editar perfil");
         editProfileLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/perfil.png"))); 
         rightPanel.add(editProfileLabel);
-        editProfileLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                abrirEditarPerfil();
-            }
-        });
 
         JLabel cartLabel = new JLabel("Carrito");
         cartLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/carritodef.png")));
@@ -163,11 +166,6 @@ public class TiendaPrincipal extends JFrame {
 
         JButton logoutButton = new JButton("Logout");
         rightPanel.add(logoutButton);
-        logoutButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                logout();
-            }
-        });
 
         
 
@@ -214,6 +212,7 @@ public class TiendaPrincipal extends JFrame {
 	            // Panel para cada producto
 	            JPanel productPanel = new JPanel(new BorderLayout());
 	            productPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+	            productPanel.setBackground(new Color(249, 248, 113));
 
 	            // Etiqueta para el nombre del producto
 	            JLabel nameLabel = new JLabel(prod.getNombre(), JLabel.CENTER);
@@ -246,6 +245,7 @@ public class TiendaPrincipal extends JFrame {
 	            JButton addToCartButton = new JButton("Añadir al Carrito");
 	            buttonPanel.add(addToCartButton);
 	            innerPanel.add(buttonPanel);
+	            buttonPanel.setBackground(new Color(249, 248, 113));
 
 	            // Botón para añadir al carrito
 	           
@@ -283,7 +283,7 @@ public class TiendaPrincipal extends JFrame {
 	
 	 private void setLabelStyle(JLabel label) {
 	        label.setFont(new Font("Roboto Black", Font.PLAIN, 20));
-	        label.setForeground(new Color(216, 200, 187));
+	        label.setForeground(Color.BLACK);
 	        label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	        label.setHorizontalAlignment(SwingConstants.CENTER);
 	    }
@@ -380,22 +380,6 @@ public class TiendaPrincipal extends JFrame {
 		    // Actualiza el UI después de añadir todos los productos
 		    mainPanel.revalidate();
 		    mainPanel.repaint();
-		}
-	 
-	 private void logout() {
-		    // Cierra la ventana actual
-		    this.dispose();
-		    
-		    // Abre la ventana de login
-		    Login loginWindow = new Login();
-		    loginWindow.setVisible(true);
-		}
-	 
-	 
-	 private void abrirEditarPerfil() {
-		    Editar editarPerfil = new Editar(id_usuario); // Usa el ID del usuario almacenado
-		    editarPerfil.setVisible(true);
-		    
 		}
 	}
 
