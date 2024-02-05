@@ -133,5 +133,55 @@ public class ConsultasBD2 {
 
 	    return actualizado;
 	}
+	
+	
+	public static boolean anadirProductoAlCarrito(int userId, int productId, int cantidad) {
+	    Conexion con = new Conexion();
+	    Connection conexion = null;
+	    boolean agregado = false;
+
+	    try {
+	        // Primero verifica si el producto ya existe en el carrito del usuario
+	        String sqlConsulta = "SELECT cantidad FROM carrito WHERE user_id = ? AND product_id = ?";
+	        conexion = con.conectar();
+	        PreparedStatement pstConsulta = conexion.prepareStatement(sqlConsulta);
+	        pstConsulta.setInt(1, userId);
+	        pstConsulta.setInt(2, productId);
+	        ResultSet rs = pstConsulta.executeQuery();
+	        
+	        if (rs.next()) {
+	            // Si el producto ya está en el carrito, actualiza la cantidad
+	            int nuevaCantidad = rs.getInt("cantidad") + cantidad;
+	            String sqlUpdate = "UPDATE carrito SET cantidad = ? WHERE user_id = ? AND product_id = ?";
+	            PreparedStatement pstUpdate = conexion.prepareStatement(sqlUpdate);
+	            pstUpdate.setInt(1, nuevaCantidad);
+	            pstUpdate.setInt(2, userId);
+	            pstUpdate.setInt(3, productId);
+	            pstUpdate.executeUpdate();
+	            agregado = true;
+	        } else {
+	            // Si el producto no está en el carrito, inserta un nuevo registro
+	            String sqlInsert = "INSERT INTO carrito (user_id, product_id, cantidad) VALUES (?, ?, ?)";
+	            PreparedStatement pstInsert = conexion.prepareStatement(sqlInsert);
+	            pstInsert.setInt(1, userId);
+	            pstInsert.setInt(2, productId);
+	            pstInsert.setInt(3, cantidad);
+	            pstInsert.executeUpdate();
+	            agregado = true;
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Error al añadir el producto al carrito: " + e.getMessage());
+	    } finally {
+	        if (conexion != null) {
+	            try {
+	                conexion.close();
+	            } catch (SQLException e) {
+	                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+	            }
+	        }
+	    }
+
+	    return agregado;
+	}
 
 }

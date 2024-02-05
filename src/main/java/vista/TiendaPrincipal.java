@@ -357,12 +357,13 @@ public class TiendaPrincipal extends JFrame {
 		            buttonPanel.add(addToCartButton);
 		            innerPanel.add(buttonPanel);
 		            buttonPanel.setBackground(new Color(249, 248, 113));
+		            
 
 		            // Botón para añadir al carrito
 		           
 		            addToCartButton.addActionListener(new ActionListener() {
 		                public void actionPerformed(ActionEvent e) {
-		                    // LOGICA PARA AÑADIR AL CARRITO 
+		                   //LOGICA PARA AÑADIR AL CARRITO
 		                    JOptionPane.showMessageDialog(TiendaPrincipal.this, "¡Producto añadido al carrito!");
 		                }
 		            });
