@@ -94,5 +94,44 @@ public class ConsultasBD2 {
 
         return productos;
     }
+	
+	
+	public static boolean actualizarUsuarioPorId(int idUsuario, String nombre, String apellidos, String correoElectronico, String telefono, String direccion) {
+	    Conexion con = new Conexion();
+	    Connection conexion = null;
+	    boolean actualizado = false;
+
+	    try {
+	        String sql = "UPDATE usuario SET nombre = ?, apellidos = ?, correo_elec = ?, telefono = ?, direccion = ? WHERE id = ?";
+	        conexion = con.conectar();
+	        PreparedStatement pst = conexion.prepareStatement(sql);
+
+	      
+	        pst.setString(1, nombre);
+	        pst.setString(2, apellidos);
+	        pst.setString(3, correoElectronico);
+	        pst.setString(4, telefono);
+	        pst.setString(5, direccion);
+	        pst.setInt(6, idUsuario);
+
+	        int rowsUpdated = pst.executeUpdate();
+	        if (rowsUpdated > 0) {
+	            actualizado = true;
+	            System.out.println("El usuario ha sido actualizado correctamente.");
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Error al actualizar el usuario: " + e.getMessage());
+	    } finally {
+	        if (conexion != null) {
+	            try {
+	                conexion.close();
+	            } catch (SQLException e) {
+	                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+	            }
+	        }
+	    }
+
+	    return actualizado;
+	}
 
 }
