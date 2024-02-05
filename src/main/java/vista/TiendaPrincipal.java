@@ -155,6 +155,12 @@ public class TiendaPrincipal extends JFrame {
         JLabel editProfileLabel = new JLabel("Editar perfil");
         editProfileLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/perfil.png"))); 
         rightPanel.add(editProfileLabel);
+        editProfileLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                abrirEditarPerfil();
+            }
+        });
 
         JLabel cartLabel = new JLabel("Carrito");
         cartLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/carritodef.png")));
@@ -162,6 +168,11 @@ public class TiendaPrincipal extends JFrame {
 
         JButton logoutButton = new JButton("Logout");
         rightPanel.add(logoutButton);
+        logoutButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                logout();
+            }
+        });
 
         
 
