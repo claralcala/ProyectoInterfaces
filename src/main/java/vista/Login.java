@@ -189,6 +189,8 @@ public class Login extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if (ConsultasBD.consultarUsuario(txtIngreseUsuario.getText(), pwdcontra.getText()) == true) {
 					((Login) SwingUtilities.getWindowAncestor(panelEntrar)).dispose();
+					
+			
 				}
 			}
 		});

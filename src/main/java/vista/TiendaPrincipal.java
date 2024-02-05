@@ -34,6 +34,8 @@ import controlador.ConsultasBD2;
 import modelo.Producto;
 
 public class TiendaPrincipal extends JFrame {
+	
+	private int id_usuario;
 
 	private JPanel contentPane;
 	
@@ -51,23 +53,13 @@ public class TiendaPrincipal extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TiendaPrincipal frame = new TiendaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
-	public TiendaPrincipal() {
+	public TiendaPrincipal(int id_usuario) {
+		
+		this.id_usuario=id_usuario;
 		
 		
 		setTitle("URBAN STRIDE");
@@ -160,6 +152,12 @@ public class TiendaPrincipal extends JFrame {
         JLabel editProfileLabel = new JLabel("Editar perfil");
         editProfileLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/perfil.png"))); 
         rightPanel.add(editProfileLabel);
+        editProfileLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                abrirEditarPerfil();
+            }
+        });
 
         JLabel cartLabel = new JLabel("Carrito");
         cartLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/carritodef.png")));
@@ -167,6 +165,11 @@ public class TiendaPrincipal extends JFrame {
 
         JButton logoutButton = new JButton("Logout");
         rightPanel.add(logoutButton);
+        logoutButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                logout();
+            }
+        });
 
         
 
@@ -381,6 +384,22 @@ public class TiendaPrincipal extends JFrame {
 		    // Actualiza el UI después de añadir todos los productos
 		    mainPanel.revalidate();
 		    mainPanel.repaint();
+		}
+	 
+	 private void logout() {
+		    // Cierra la ventana actual
+		    this.dispose();
+		    
+		    // Abre la ventana de login
+		    Login loginWindow = new Login();
+		    loginWindow.setVisible(true);
+		}
+	 
+	 
+	 private void abrirEditarPerfil() {
+		    Editar editarPerfil = new Editar(id_usuario); // Usa el ID del usuario almacenado
+		    editarPerfil.setVisible(true);
+		    
 		}
 	}
 

@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Editar extends JFrame {
 
+	int id_usuario;
 	
 	private JPanel contentPane, panelX;
 	
@@ -29,24 +30,15 @@ public class Editar extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Editar frame = new Editar();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
 	 */
-	public Editar() {
+	public Editar(int id_usuario) {
+		
+		this.id_usuario=id_usuario;
+		
 		 setResizable(false);
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        setBounds(100, 100, 1400, 700);
