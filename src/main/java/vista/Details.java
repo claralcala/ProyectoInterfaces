@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 
 import org.w3c.dom.events.MouseEvent;
 
+import controlador.Eventos;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -23,6 +25,7 @@ import javax.swing.ImageIcon;
 public class Details extends JFrame {
 	
 	private int id_producto;
+	private int	id_user;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -35,9 +38,10 @@ public class Details extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Details(int id_producto) {
+	public Details(int id_producto, int id_user) {
 		
 		this.id_producto= id_producto;
+		this.id_user = id_user; 
 		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -133,10 +137,24 @@ public class Details extends JFrame {
 		lblNewLabel_1.setIcon(new ImageIcon(nuevaImagen));
 		
 		JLabel btnBack = new JLabel("New label");
+		
+		btnBack.addMouseListener(new MouseAdapter() {
+		    public void mouseClicked(MouseEvent e) {
+		        // Cerrar la ventana actual
+		        dispose(); // Si estás en un JFrame, de lo contrario, ajusta según tu tipo de ventana
+
+		        // Abrir la ventana anterior (reemplaza "VentanaAnterior" con el nombre de tu clase anterior)
+		        TiendaPrincipal tp = new TiendaPrincipal(id_user);
+		        tp.setVisible(true);
+		    }
+		});
+		
 		btnBack.setIcon(new ImageIcon(Details.class.getResource("/imagenes/back-2_icon-icons.com_62858 (1).png")));
 		btnBack.setBounds(34, 603, 60, 56);
 		contentPane.add(btnBack);
 	
 
 	}
+
+	
 }

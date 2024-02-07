@@ -9,8 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import vista.Details;
 import vista.Login;
 import vista.Registro;
+import vista.TiendaPrincipal;
 import vista.VentanaPrincipal;
 
 
@@ -19,7 +21,7 @@ public class Eventos {
 
 	JLabel lblNoTeSabes;
 	static Login login = new Login();
-	
+
 	
 	/**
 	 * Funcion del JLabel "No te sabes la contraseña".
@@ -121,7 +123,12 @@ public class Eventos {
 			}
 		});
     }
- }
+    
+ 
+   
+
+  }
+
     
     
     

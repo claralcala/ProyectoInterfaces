@@ -453,13 +453,10 @@ public class TiendaPrincipal extends JFrame {
 	 
 	 
 	 private void abrirDetallesProducto(int idProducto) {
-		    Details detalles = new Details(idProducto);
+		    Details detalles = new Details(idProducto, idProducto);
 		    detalles.setVisible(true);
 		    
 		}
 	 
-	 
 
 	}
-
-
