@@ -206,5 +206,52 @@ public class ConsultasBD2 {
 
 	    return agregado;
 	}
+	
+	
+	public static ArrayList<Producto> obtenerProductosDelCarrito(int userId) {
+	    ArrayList<Producto> productos = new ArrayList<Producto>();
+	    Conexion con = new Conexion();
+	    Connection conexion = null;
+
+	    try {
+	        conexion = con.conectar();
+	        
+	        String sql = "SELECT p.product_id, p.nombre, p.descripcion, p.stock, p.precio, p.imagen, cd.cantidad " +
+	                     "FROM producto p " +
+	                     "JOIN carrito_detalle cd ON p.product_id = cd.product_id " +
+	                     "JOIN carrito c ON cd.carrito_id = c.carrito_id " +
+	                     "WHERE c.user_id = ?";
+	        PreparedStatement pst = conexion.prepareStatement(sql);
+	        pst.setInt(1, userId);
+
+	        ResultSet rs = pst.executeQuery();
+
+	        while (rs.next()) {
+	            Producto producto = new Producto();
+	            
+	            producto.setProduct_id(rs.getInt("product_id"));
+	            producto.setNombre(rs.getString("nombre"));
+	            producto.setDescripcion(rs.getString("descripcion"));
+	            producto.setStock(rs.getInt("stock"));
+	            producto.setPrecio(rs.getFloat("precio"));
+	            producto.setImagen(rs.getString("imagen"));
+	            producto.setCantidad(rs.getInt("cantidad")); 
+
+	            productos.add(producto);
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Error al obtener los productos del carrito: " + e.getMessage());
+	    } finally {
+	        if (conexion != null) {
+	            try {
+	                conexion.close();
+	            } catch (SQLException e) {
+	                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+	            }
+	        }
+	    }
+
+	    return productos;
+	}
 
 }

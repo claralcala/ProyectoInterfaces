@@ -145,6 +145,7 @@ public class TiendaPrincipal extends JFrame {
                 buscarYMostrarProductos();
             }
         });
+        
         leftPanel.add(searchLabel);
         topPanel.add(leftPanel);
 
@@ -171,6 +172,12 @@ public class TiendaPrincipal extends JFrame {
         JLabel cartLabel = new JLabel("Carrito");
         cartLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/carritodef.png")));
         rightPanel.add(cartLabel);
+        cartLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                abrirCarrito(id_usuario);
+            }
+        });
 
         JButton logoutButton = new JButton("Logout");
         rightPanel.add(logoutButton);
@@ -280,8 +287,8 @@ public class TiendaPrincipal extends JFrame {
 	                	String textoCantidad = txtCantidad.getText().trim(); // Trim para eliminar espacios en blanco al inicio y al final
 
 	                    if (textoCantidad.isEmpty()) {
-	                        JOptionPane.showMessageDialog(null, "Por favor, ingrese una cantidad.");
-	                        return; // Sale del método sin realizar más acciones
+	                        JOptionPane.showMessageDialog(null, "Por favor, ingrese una cantidad");
+	                        return; 
 	                    }
 
 	                    try {
@@ -455,6 +462,11 @@ public class TiendaPrincipal extends JFrame {
 	 private void abrirDetallesProducto(Producto p) {
 		    Details detalles = new Details(id_usuario, p);
 		    detalles.setVisible(true);
+		    
+		}
+	 
+	 private void abrirCarrito(int id_usuario) {
+		   //logica de abrir la ventana del carrito
 		    
 		}
 	 
