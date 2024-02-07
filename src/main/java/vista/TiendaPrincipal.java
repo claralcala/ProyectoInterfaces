@@ -56,14 +56,15 @@ public class TiendaPrincipal extends JFrame {
 	JLabel minimizeLabel;
 	JLabel closeLabel;
 	
-	JTextField txtCantidad;
+	
 
+	int cantidad;
 	
 
 	/**
 	 * Create the frame.
 	 */
-	public TiendaPrincipal(int id_usuario) {
+	public TiendaPrincipal(final int id_usuario) {
 		
 		this.id_usuario=id_usuario;
 		
@@ -262,7 +263,7 @@ public class TiendaPrincipal extends JFrame {
 	            JPanel quantityAndButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
 	            // Configuración del JTextField para la cantidad
-	             txtCantidad = new JTextField();
+	            final JTextField txtCantidad = new JTextField();
 	            txtCantidad.setPreferredSize(new Dimension(50, 20)); // Ajusta el tamaño según necesites
 
 	            quantityAndButtonPanel.add(new JLabel("Cantidad:"));
@@ -275,15 +276,24 @@ public class TiendaPrincipal extends JFrame {
 	            // ActionListener para el botón
 	            addToCartButton.addActionListener(new ActionListener() {
 	                public void actionPerformed(ActionEvent e) {
-	                    // Intenta convertir el texto del JTextField a entero
+	                	
+	                	String textoCantidad = txtCantidad.getText().trim(); // Trim para eliminar espacios en blanco al inicio y al final
+
+	                    if (textoCantidad.isEmpty()) {
+	                        JOptionPane.showMessageDialog(null, "Por favor, ingrese una cantidad.");
+	                        return; // Sale del método sin realizar más acciones
+	                    }
+
 	                    try {
-	                        int cantidad = Integer.parseInt(txtCantidad.getText());
-	                        // Aquí va la lógica para añadir al carrito usando la cantidad
-	                        // Por ejemplo: anadirProductoAlCarrito(id_usuario, prod.getId(), cantidad);
+	                        cantidad = Integer.parseInt(textoCantidad);
+	                        System.out.println(prod.getProduct_id());
+	                        boolean resultado = ConsultasBD2.anadirProductoAlCarrito(id_usuario, prod.getProduct_id(), cantidad);
 	                        JOptionPane.showMessageDialog(null, "¡Producto añadido al carrito!");
 	                    } catch (NumberFormatException ex) {
 	                        JOptionPane.showMessageDialog(null, "Por favor, ingrese una cantidad válida.");
 	                    }
+	                	
+	                    
 	                }
 	            });
 
@@ -445,6 +455,7 @@ public class TiendaPrincipal extends JFrame {
 	 private void abrirDetallesProducto(int idProducto) {
 		    Details detalles = new Details(idProducto);
 		    detalles.setVisible(true);
+		    
 		}
 	 
 	 
