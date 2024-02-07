@@ -3,6 +3,7 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -14,9 +15,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -28,9 +30,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ConsultasBD2;
+import modelo.Producto;
 
 public class TiendaPrincipal extends JFrame {
 
@@ -39,33 +46,31 @@ public class TiendaPrincipal extends JFrame {
 	private JPanel panelX;
 	
 	private JButton addToCartButton;
+	private int id_usuario;
+	
+	ArrayList<Producto> productos; 
+	
+	Producto prod;
+	
+	JTextField searchField;
+	
+	JPanel mainPanel;
 	
 	JLabel minimizeLabel;
 	JLabel closeLabel;
 	
 	private HashMap<String, Double> carrito;
+	
+	JTextField txtCantidad;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TiendaPrincipal frame = new TiendaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public TiendaPrincipal() {
+	public TiendaPrincipal(int id_usuario) {
 		
+		this.id_usuario=id_usuario;
 		
 		setTitle("URBAN STRIDE");
         setResizable(false);
@@ -81,6 +86,24 @@ public class TiendaPrincipal extends JFrame {
         topPanel.setBackground(new Color(186, 201, 92));
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
 
+        // Etiqueta para cerrar
+        closeLabel = new JLabel("X");
+        closeLabel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                dispose();
+            }
+            public void mouseEntered(MouseEvent e) {
+                closeLabel.setForeground(Color.RED);
+            }
+            public void mouseExited(MouseEvent e) {
+                closeLabel.setForeground(Color.BLACK);
+            }
+        });
+        setLabelStyle(closeLabel);
+        topPanel.add(closeLabel);
+        
+        int spacerWidth = 10; // Ajusta este valor según sea necesario
+        topPanel.add(Box.createHorizontalStrut(spacerWidth));
         
         
      // Etiqueta para minimizar
@@ -93,41 +116,39 @@ public class TiendaPrincipal extends JFrame {
                 minimizeLabel.setForeground(Color.GRAY);
             }
             public void mouseExited(MouseEvent e) {
-                minimizeLabel.setForeground(new Color(216, 200, 187));
+                minimizeLabel.setForeground(Color.BLACK);
             }
         });
         setLabelStyle(minimizeLabel);
         topPanel.add(minimizeLabel);
+        
+        
 
-        // Etiqueta para cerrar
-        closeLabel = new JLabel("X");
-        closeLabel.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                dispose();
-            }
-            public void mouseEntered(MouseEvent e) {
-                closeLabel.setForeground(Color.RED);
-            }
-            public void mouseExited(MouseEvent e) {
-                closeLabel.setForeground(new Color(216, 200, 187));
-            }
-        });
-        setLabelStyle(closeLabel);
-        topPanel.add(closeLabel);
+       
 
         
         
      // Espaciador para mover el panel izquierdo hacia la derecha
         int leftMargin = 30; // Ajusta este valor según sea necesario
         topPanel.add(Box.createHorizontalStrut(leftMargin));
+        topPanel.setBackground(new Color(186, 201, 92));
 
         // Panel para los elementos a la izquierda (como la barra de búsqueda y lupa)
         JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 5));
-        JTextField searchField = new JTextField(20);
+        leftPanel.setBackground(new Color(186, 201, 92));
+         searchField = new JTextField(20);
         leftPanel.add(searchField);
         leftPanel.setBackground(new Color(186, 201, 92));
         JLabel searchLabel = new JLabel();
         searchLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/lupadef.png"))); 
+        
+        
+        searchLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                buscarYMostrarProductos();
+            }
+        });
         leftPanel.add(searchLabel);
         topPanel.add(leftPanel);
 
@@ -138,16 +159,28 @@ public class TiendaPrincipal extends JFrame {
 
         // Panel para los elementos a la derecha (carrito, botón de logout y etiqueta de volver)
         JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+        rightPanel.setBackground(new Color(186, 201, 92));
 
         rightPanel.setBackground(new Color(186, 201, 92));
         JLabel editProfileLabel = new JLabel("Editar perfil");
         editProfileLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/perfil.png"))); 
         rightPanel.add(editProfileLabel);
+        editProfileLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                abrirEditarPerfil();
+            }
+        });
 
         
 
         JButton logoutButton = new JButton("Logout");
         rightPanel.add(logoutButton);
+        logoutButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                logout();
+            }
+        });
 
         
 
@@ -161,10 +194,11 @@ public class TiendaPrincipal extends JFrame {
         
 
         // Panel principal con GridBagLayout
-        JPanel mainPanel = new JPanel(new GridBagLayout());
+      mainPanel = new JPanel(new GridBagLayout());
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         mainPanel.setBackground(new Color(10, 27, 5));
         scrollPane.setBackground(new Color(10, 27, 5));
+        scrollPane.getVerticalScrollBar().setUnitIncrement(10);
         getContentPane().add(scrollPane, BorderLayout.CENTER);
 	      
 	    
@@ -172,8 +206,8 @@ public class TiendaPrincipal extends JFrame {
 	        
 
 	        // Simulación de productos obtenidos de la base de datos
-	        String[] productos = {"Zapatilla 1", "Zapatilla 2", "Zapatilla 3", "Zapatilla 4", "Zapatilla 5", "Zapatilla 6", "Zapatilla 7", "Zapatilla 8", "Zapatilla 9", "Zapatilla 10", "Zapatilla 11", "Zapatilla 12", "Zapatilla 13", "Zapatilla 14", "Zapatilla 15", "Zapatilla 16"};
-	        double[] precios = {100.0, 120.0, 90.0, 110.0, 130.0, 85.0, 5.6, 7.7, 8.8, 9.9, 100.9, 322.0, 22.0, 23.0, 22.0, 90.0};
+	       //String[] productos = {"Zapatilla 1", "Zapatilla 2", "Zapatilla 3", "Zapatilla 4", "Zapatilla 5", "Zapatilla 6", "Zapatilla 7", "Zapatilla 8", "Zapatilla 9", "Zapatilla 10", "Zapatilla 11", "Zapatilla 12", "Zapatilla 13", "Zapatilla 14", "Zapatilla 15", "Zapatilla 16"};
+	       // double[] precios = {100.0, 120.0, 90.0, 110.0, 130.0, 85.0, 5.6, 7.7, 8.8, 9.9, 100.9, 322.0, 22.0, 23.0, 22.0, 90.0};
 	        carrito = new HashMap<String, Double>();
 	        
 	        GridBagConstraints gbc = new GridBagConstraints();
@@ -184,8 +218,13 @@ public class TiendaPrincipal extends JFrame {
 
 	        int column = 0;
 	        int row = 0;
+	        
+	         productos = new ArrayList();
+	        
+	        
+	        productos= ConsultasBD2.recuperarProductos();
 
-	        for (int i = 0; i < productos.length; i++) {
+	        for (final Producto prod : productos) {
 	        	final int index = i;
 	        	
 	            // Panel para cada producto
@@ -194,30 +233,70 @@ public class TiendaPrincipal extends JFrame {
 	            productPanel.setBackground(new Color(249, 248, 113));
 
 	            // Etiqueta para el nombre del producto
-	            JLabel nameLabel = new JLabel(productos[i], JLabel.CENTER);
+	            JLabel nameLabel = new JLabel(prod.getNombre(), JLabel.CENTER);
 	            productPanel.add(nameLabel, BorderLayout.NORTH);
+	            nameLabel.addMouseListener(new MouseAdapter() {
+	                @Override
+	                public void mouseClicked(MouseEvent e) {
+	                    abrirDetallesProducto(prod.getProduct_id());
+	                }
+	            });
 
 	            // Panel interno para la imagen y el botón
 	            JPanel innerPanel = new JPanel();
 	            innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.Y_AXIS));
 	            innerPanel.setBackground(new Color(249, 248, 113));
+	            
+	            
+	         // Carga la imagen como un ImageIcon
+	            ImageIcon originalIcon = new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/" + prod.getImagen()+".png"));
+
+	            // Escala la imagen al tamaño deseado
+	            Image scaledImage = originalIcon.getImage().getScaledInstance(210, 210, Image.SCALE_SMOOTH);
+
+	            // Crea un nuevo ImageIcon con la imagen escalada
+	            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
 
 	            // Etiqueta para la imagen
 	            JLabel imageLabel = new JLabel();
-	            imageLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/logo (1).png")));
+	            imageLabel.setIcon(scaledIcon);
+	            
 	            innerPanel.add(imageLabel);
 	            
-	            
-	            JPanel buttonPanel = new JPanel(); // Usa FlowLayout por defecto, que centra los componentes
-	            JButton addToCartButton = new JButton("Añadir al Carrito");
-	            buttonPanel.add(addToCartButton);
-	            innerPanel.add(buttonPanel);
-	            buttonPanel.setBackground(new Color(249, 248, 113));
+	         // Panel para contener el JTextField y el botón
+	            JPanel quantityAndButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-	            // Botón para añadir al carrito
-	           
+	            // Configuración del JTextField para la cantidad
+	             txtCantidad = new JTextField();
+	            txtCantidad.setPreferredSize(new Dimension(50, 20)); // Ajusta el tamaño según necesites
+
+	            quantityAndButtonPanel.add(new JLabel("Cantidad:"));
+	            quantityAndButtonPanel.add(txtCantidad);
+
+	            // Configuración del JButton para añadir al carrito
+	            JButton addToCartButton = new JButton("Añadir al Carrito");
+	            quantityAndButtonPanel.add(addToCartButton);
+
+	            // ActionListener para el botón
 	            addToCartButton.addActionListener(new ActionListener() {
 	                public void actionPerformed(ActionEvent e) {
+	                    // Intenta convertir el texto del JTextField a entero
+	                    try {
+	                        int cantidad = Integer.parseInt(txtCantidad.getText());
+	                        // Aquí va la lógica para añadir al carrito usando la cantidad
+	                        // Por ejemplo: anadirProductoAlCarrito(id_usuario, prod.getId(), cantidad);
+	                        JOptionPane.showMessageDialog(null, "¡Producto añadido al carrito!");
+	                    } catch (NumberFormatException ex) {
+	                        JOptionPane.showMessageDialog(null, "Por favor, ingrese una cantidad válida.");
+	                    }
+	                }
+	            });
+
+	            
+	         // Añadir el panel que contiene el JTextField y el botón al innerPanel
+	            innerPanel.add(quantityAndButtonPanel);
+
 	                    // LOGICA PARA AÑADIR AL CARRITO
 	                	carrito.put(productos[index], precios[index]);
 	                	
@@ -230,7 +309,7 @@ public class TiendaPrincipal extends JFrame {
 	            productPanel.add(innerPanel, BorderLayout.CENTER);
 
 	            // Etiqueta para el precio
-	            JLabel priceLabel = new JLabel("Precio: $" + precios[i], JLabel.CENTER);
+	            JLabel priceLabel = new JLabel("Precio: " + prod.getPrecio() + " €", JLabel.CENTER);
 	            productPanel.add(priceLabel, BorderLayout.SOUTH);
 
 
@@ -267,6 +346,133 @@ public class TiendaPrincipal extends JFrame {
 	        label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	        label.setHorizontalAlignment(SwingConstants.CENTER);
 	    }
+	 
+	 private void buscarYMostrarProductos() {
+		    String nombre = searchField.getText();
+		    ArrayList<Producto> productosEncontrados = ConsultasBD2.buscarProductosPorNombre(nombre);
+
+		    //Limpia el panel principal antes de añadir los nuevos productos
+		    mainPanel.removeAll();
+		    mainPanel.revalidate();
+		    mainPanel.repaint();
+		    
+		    GridBagConstraints gbc = new GridBagConstraints();
+	        gbc.gridwidth = 1;
+	        gbc.gridheight = 1;
+	        gbc.insets = new Insets(10, 10, 10, 10); // Espaciado entre celdas
+	        gbc.fill = GridBagConstraints.BOTH;
+
+	        int column = 0;
+	        int row = 0;
+
+		    // Añade los productos al panel
+		    for (final Producto prod : productosEncontrados) {
+		    	 JPanel productPanel = new JPanel(new BorderLayout());
+		            productPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		            productPanel.setBackground(new Color(249, 248, 113));
+
+		            // Etiqueta para el nombre del producto
+		            JLabel nameLabel = new JLabel(prod.getNombre(), JLabel.CENTER);
+		            productPanel.add(nameLabel, BorderLayout.NORTH);
+		            nameLabel.addMouseListener(new MouseAdapter() {
+		                @Override
+		                public void mouseClicked(MouseEvent e) {
+		                    abrirDetallesProducto(prod.getProduct_id());
+		                }
+		            });
+
+		            // Panel interno para la imagen y el botón
+		            JPanel innerPanel = new JPanel();
+		            innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.Y_AXIS));
+		            innerPanel.setBackground(new Color(249, 248, 113));
+		            
+		            
+		         // Carga la imagen como un ImageIcon
+		            ImageIcon originalIcon = new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/" + prod.getImagen()+".png"));
+
+		            // Escala la imagen al tamaño deseado
+		            Image scaledImage = originalIcon.getImage().getScaledInstance(210, 210, Image.SCALE_SMOOTH);
+
+		            // Crea un nuevo ImageIcon con la imagen escalada
+		            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+
+		            // Etiqueta para la imagen
+		            JLabel imageLabel = new JLabel();
+		            imageLabel.setIcon(scaledIcon);
+		            
+		            innerPanel.add(imageLabel);
+		            
+		         //panel para el spinner y el botón, con FlowLayout para asegurar disposición horizontal
+		            JPanel panelCantidadYBoton = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+		            SpinnerNumberModel spinnerModel = new SpinnerNumberModel(1, 1, 100, 1);
+		            JSpinner spinnerCantidad = new JSpinner(spinnerModel);
+		            spinnerCantidad.setPreferredSize(new Dimension(50, 20)); // Ajusta el tamaño según necesites
+
+		            panelCantidadYBoton.add(new JLabel("Cantidad:"));
+		            panelCantidadYBoton.add(spinnerCantidad);
+
+		            JButton addToCartButton = new JButton("Añadir al Carrito");
+		            panelCantidadYBoton.add(addToCartButton);
+		            panelCantidadYBoton.setBackground(new Color(249, 248, 113));
+
+		           
+		            innerPanel.add(panelCantidadYBoton);
+
+		            // Añadir el panel interno al panel del producto
+		            productPanel.add(innerPanel, BorderLayout.CENTER);
+
+		            // Etiqueta para el precio
+		            JLabel priceLabel = new JLabel("Precio: " + prod.getPrecio() + " €", JLabel.CENTER);
+		            productPanel.add(priceLabel, BorderLayout.SOUTH);
+
+
+		            gbc.gridx = column;
+		            gbc.gridy = row;
+
+		            // Añadir el panel del producto al panel principal
+		            mainPanel.add(productPanel, gbc);
+
+		            // Actualizar la posición para el próximo panel
+		            column++;
+		            if (column == 3) { // Cambiar de fila después de 3 columnas
+		                column = 0;
+		                row++;
+		            }
+		        
+		    }
+
+		    // Actualiza el UI después de añadir todos los productos
+		    mainPanel.revalidate();
+		    mainPanel.repaint();
+		}
+
+	 
+	 private void logout() {
+		    // Cierra la ventana actual
+		    this.dispose();
+		    
+		    // Abre la ventana de login
+		    Login loginWindow = new Login();
+		    loginWindow.setVisible(true);
+		}
+	 
+	 
+	 private void abrirEditarPerfil() {
+		    Editar editarPerfil = new Editar(id_usuario); // Usa el ID del usuario almacenado
+		    editarPerfil.setVisible(true);
+		    
+		}
+	 
+	 
+	 private void abrirDetallesProducto(int idProducto) {
+		    Details detalles = new Details(idProducto);
+		    detalles.setVisible(true);
+		}
+	 
+	 
+
 	}
 
 

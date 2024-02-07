@@ -26,8 +26,10 @@ import controlador.ConsultasBD;
 import modelo.Usuario;
 import utiles.Texto;
 
-public class Registro extends JFrame {
+public class Editar extends JFrame {
 
+	int id_usuario;
+	
 	private JPanel contentPane, panelX;
 	
 	private JTextField txtNombre, txtApellidos, txtCorreo, txtTelefono, txtDireccion, txtUsername, txtPassword;
@@ -35,48 +37,51 @@ public class Registro extends JFrame {
 	
 	
 	private JLabel lblBack;
+
 	/**
 	 * Launch the application.
-	 */
-	
+
 
 	/**
 	 * Create the frame.
 	 */
-	public Registro() {
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 1400, 700);
+	public Editar(int id_usuario) {
+		
+		this.id_usuario=id_usuario;
+		
+		 setResizable(false);
+	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        setBounds(100, 100, 1400, 700);
 
-        setUndecorated(true);
+	        setUndecorated(true);
 
-        contentPane = new JPanel();
-        contentPane.setBackground(new Color(10, 27, 5));
-        
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
+	        contentPane = new JPanel();
+	        contentPane.setBackground(new Color(10, 27, 5));
+	        
+	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+	        setContentPane(contentPane);
+	        contentPane.setLayout(null);
 
-        JPanel panel = new JPanel();
-        //panel.setBackground(new Color(30, 33, 57));
-        panel.setBackground(new Color(10, 27, 5));
-        panel.setBounds(0, 0, 1400, 700);
-        contentPane.add(panel);
-        panel.setLayout(null);
+	        JPanel panel = new JPanel();
+	        //panel.setBackground(new Color(30, 33, 57));
+	        panel.setBackground(new Color(10, 27, 5));
+	        panel.setBounds(0, 0, 1400, 700);
+	        contentPane.add(panel);
+	        panel.setLayout(null);
 
-        // 
-        
-        JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/imagenes/logo (1).png")));
-		lblNewLabel.setBounds(1104, 399, 240, 196);
-		panel.add(lblNewLabel);
-        
-        JLabel lblInicioSesion = new JLabel("REGISTRARSE");
-		lblInicioSesion.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInicioSesion.setForeground(new Color(243, 235, 219));
-		lblInicioSesion.setFont(new Font("Roboto", Font.PLAIN, 23));
-		lblInicioSesion.setBounds(550, 30, 226, 33);
-		panel.add(lblInicioSesion);
+	        // 
+	        
+	        JLabel lblNewLabel = new JLabel("");
+			lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/imagenes/logo (1).png")));
+			lblNewLabel.setBounds(1104, 399, 240, 196);
+			panel.add(lblNewLabel);
+	        
+	        JLabel lblInicioSesion = new JLabel("EDITAR PERFIL");
+			lblInicioSesion.setHorizontalAlignment(SwingConstants.CENTER);
+			lblInicioSesion.setForeground(new Color(243, 235, 219));
+			lblInicioSesion.setFont(new Font("Roboto", Font.PLAIN, 23));
+			lblInicioSesion.setBounds(550, 30, 226, 33);
+			panel.add(lblInicioSesion);
 		
 		panelX = new JPanel();
 		panelX.setBackground(new Color(10, 27, 5));
@@ -145,8 +150,8 @@ public class Registro extends JFrame {
 		lbl_.setFont(new Font("Roboto Black", Font.PLAIN, 20));
 		lbl_.setBounds(0, 0, 33, 45);
 		panel_.add(lbl_);
-
-        //Componentes de registro 
+		
+		//Componentes de registro 
 		
         JLabel lblNombre = new JLabel("Nombre");
         lblNombre.setForeground(new Color(243, 235, 219));
@@ -248,28 +253,6 @@ public class Registro extends JFrame {
         separatorDireccion.setBounds(936, 224, 390, 8);
         panel.add(separatorDireccion);
         
-        
-        JLabel lblUsername = new JLabel("Nombre de usuario");
-        lblUsername.setForeground(new Color(243, 235, 219));
-        lblUsername.setFont(new Font("Roboto Medium", Font.PLAIN, 20));
-        lblUsername.setBounds(751, 195, 177, 24);
-        panel.add(lblUsername);
-
-        txtUsername = new JTextField();
-        txtUsername.setForeground(new Color(243, 235, 219));
-        txtUsername.setBackground(new Color(10, 27, 5));
-        txtUsername.setBorder(null);
-        txtUsername.setFont(new Font("Roboto Light", Font.PLAIN, 15));
-        txtUsername.setBounds(954, 198, 390, 22);
-        panel.add(txtUsername);
-        txtUsername.setColumns(10);
-
-        JSeparator separatorUsername = new JSeparator();
-        separatorUsername.setBackground(new Color(155, 253, 202));
-        separatorUsername.setBounds(878, 289, 390, 8);
-        panel.add(separatorUsername);
-        
-        
         JLabel lblPassword = new JLabel("Contraseña");
         lblPassword.setForeground(new Color(243, 235, 219));
         lblPassword.setFont(new Font("Roboto Medium", Font.PLAIN, 20));
@@ -283,7 +266,7 @@ public class Registro extends JFrame {
         txtPassword.setFont(new Font("Roboto Light", Font.PLAIN, 15));
         txtPassword.setBounds(878, 257, 390, 22);
         panel.add(txtPassword);
-        txtUsername.setColumns(10);
+      
 
         JSeparator separatorPassword = new JSeparator();
         separatorPassword.setBackground(new Color(155, 253, 202));
@@ -302,7 +285,7 @@ public class Registro extends JFrame {
             	
             	Usuario u = new Usuario();
             	
-            	u.setUsername(txtUsername.getText());
+            	
             	u.setContrasena(txtPassword.getText());
             	u.setCorreo_electronico(txtCorreo.getText());
             	u.setDireccion(txtDireccion.getText());
@@ -338,13 +321,13 @@ public class Registro extends JFrame {
 
         
         
-      //TooltipText
+      //TooltipText Registro
         txtNombre.setToolTipText(Texto.toolName);
         txtApellidos.setToolTipText(Texto.toolSurnames);
         txtCorreo.setToolTipText(Texto.toolEmail);
         txtTelefono.setToolTipText(Texto.toolPhone);
         txtDireccion.setToolTipText(Texto.toolAdress);
-        txtUsername.setToolTipText(Texto.toolNameUser);
+       
         txtPassword.setToolTipText(Texto.toolPass);
         lblNewLabel.setToolTipText(Texto.toolLogo);
         lblX.setToolTipText(Texto.toolCerrar);
@@ -372,7 +355,7 @@ public class Registro extends JFrame {
     }
 	
 	public void borrarCampos(){
-		txtUsername.setText("");
+		
 		txtNombre.setText("");
 		txtApellidos.setText("");
 		txtPassword.setText("");
@@ -382,9 +365,5 @@ public class Registro extends JFrame {
 		
 	}
 	
-	
-	
-	
-
 
 }
