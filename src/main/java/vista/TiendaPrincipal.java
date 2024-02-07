@@ -3,6 +3,7 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -26,7 +27,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
@@ -34,14 +37,13 @@ import controlador.ConsultasBD2;
 import modelo.Producto;
 
 public class TiendaPrincipal extends JFrame {
-	
-	private int id_usuario;
 
 	private JPanel contentPane;
 	
 	private JPanel panelX;
 	
 	private JButton addToCartButton;
+	private int id_usuario;
 	
 	ArrayList<Producto> productos; 
 	
@@ -53,18 +55,17 @@ public class TiendaPrincipal extends JFrame {
 	
 	JLabel minimizeLabel;
 	JLabel closeLabel;
-
-	/**
-	 * Launch the application.
-	 */
 	
+	JTextField txtCantidad;
+
+	
+
 	/**
 	 * Create the frame.
 	 */
 	public TiendaPrincipal(int id_usuario) {
 		
 		this.id_usuario=id_usuario;
-		
 		
 		setTitle("URBAN STRIDE");
         setResizable(false);
@@ -77,7 +78,7 @@ public class TiendaPrincipal extends JFrame {
         
         JPanel topPanel = new JPanel();
         topPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        topPanel.setBackground(new Color(10, 27, 5));
+        topPanel.setBackground(new Color(186, 201, 92));
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.X_AXIS));
 
         // Etiqueta para cerrar
@@ -125,11 +126,14 @@ public class TiendaPrincipal extends JFrame {
      // Espaciador para mover el panel izquierdo hacia la derecha
         int leftMargin = 30; // Ajusta este valor según sea necesario
         topPanel.add(Box.createHorizontalStrut(leftMargin));
+        topPanel.setBackground(new Color(186, 201, 92));
 
         // Panel para los elementos a la izquierda (como la barra de búsqueda y lupa)
         JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 5));
+        leftPanel.setBackground(new Color(186, 201, 92));
          searchField = new JTextField(20);
         leftPanel.add(searchField);
+        leftPanel.setBackground(new Color(186, 201, 92));
         JLabel searchLabel = new JLabel();
         searchLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/lupadef.png"))); 
         
@@ -150,7 +154,9 @@ public class TiendaPrincipal extends JFrame {
 
         // Panel para los elementos a la derecha (carrito, botón de logout y etiqueta de volver)
         JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+        rightPanel.setBackground(new Color(186, 201, 92));
 
+        rightPanel.setBackground(new Color(186, 201, 92));
         JLabel editProfileLabel = new JLabel("Editar perfil");
         editProfileLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/perfil.png"))); 
         rightPanel.add(editProfileLabel);
@@ -218,6 +224,7 @@ public class TiendaPrincipal extends JFrame {
 	            // Panel para cada producto
 	            JPanel productPanel = new JPanel(new BorderLayout());
 	            productPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+	            productPanel.setBackground(new Color(249, 248, 113));
 
 	            // Etiqueta para el nombre del producto
 	            JLabel nameLabel = new JLabel(prod.getNombre(), JLabel.CENTER);
@@ -251,20 +258,38 @@ public class TiendaPrincipal extends JFrame {
 	            
 	            innerPanel.add(imageLabel);
 	            
-	            
-	            JPanel buttonPanel = new JPanel(); // Usa FlowLayout por defecto, que centra los componentes
-	            JButton addToCartButton = new JButton("Añadir al Carrito");
-	            buttonPanel.add(addToCartButton);
-	            innerPanel.add(buttonPanel);
+	         // Panel para contener el JTextField y el botón
+	            JPanel quantityAndButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-	            // Botón para añadir al carrito
-	           
+	            // Configuración del JTextField para la cantidad
+	             txtCantidad = new JTextField();
+	            txtCantidad.setPreferredSize(new Dimension(50, 20)); // Ajusta el tamaño según necesites
+
+	            quantityAndButtonPanel.add(new JLabel("Cantidad:"));
+	            quantityAndButtonPanel.add(txtCantidad);
+
+	            // Configuración del JButton para añadir al carrito
+	            JButton addToCartButton = new JButton("Añadir al Carrito");
+	            quantityAndButtonPanel.add(addToCartButton);
+
+	            // ActionListener para el botón
 	            addToCartButton.addActionListener(new ActionListener() {
 	                public void actionPerformed(ActionEvent e) {
-	                    // LOGICA PARA AÑADIR AL CARRITO 
-	                    JOptionPane.showMessageDialog(TiendaPrincipal.this, "¡Producto añadido al carrito!");
+	                    // Intenta convertir el texto del JTextField a entero
+	                    try {
+	                        int cantidad = Integer.parseInt(txtCantidad.getText());
+	                        // Aquí va la lógica para añadir al carrito usando la cantidad
+	                        // Por ejemplo: anadirProductoAlCarrito(id_usuario, prod.getId(), cantidad);
+	                        JOptionPane.showMessageDialog(null, "¡Producto añadido al carrito!");
+	                    } catch (NumberFormatException ex) {
+	                        JOptionPane.showMessageDialog(null, "Por favor, ingrese una cantidad válida.");
+	                    }
 	                }
 	            });
+
+	            
+	         // Añadir el panel que contiene el JTextField y el botón al innerPanel
+	            innerPanel.add(quantityAndButtonPanel);
 
 	            // Añadir el panel interno al panel del producto
 	            productPanel.add(innerPanel, BorderLayout.CENTER);
@@ -293,7 +318,7 @@ public class TiendaPrincipal extends JFrame {
 	
 	 private void setLabelStyle(JLabel label) {
 	        label.setFont(new Font("Roboto Black", Font.PLAIN, 20));
-	        label.setForeground(new Color(216, 200, 187));
+	        label.setForeground(Color.BLACK);
 	        label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	        label.setHorizontalAlignment(SwingConstants.CENTER);
 	    }
@@ -317,7 +342,7 @@ public class TiendaPrincipal extends JFrame {
 	        int row = 0;
 
 		    // Añade los productos al panel
-		    for (Producto prod : productosEncontrados) {
+		    for (final Producto prod : productosEncontrados) {
 		    	 JPanel productPanel = new JPanel(new BorderLayout());
 		            productPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		            productPanel.setBackground(new Color(249, 248, 113));
@@ -325,6 +350,12 @@ public class TiendaPrincipal extends JFrame {
 		            // Etiqueta para el nombre del producto
 		            JLabel nameLabel = new JLabel(prod.getNombre(), JLabel.CENTER);
 		            productPanel.add(nameLabel, BorderLayout.NORTH);
+		            nameLabel.addMouseListener(new MouseAdapter() {
+		                @Override
+		                public void mouseClicked(MouseEvent e) {
+		                    abrirDetallesProducto(prod.getProduct_id());
+		                }
+		            });
 
 		            // Panel interno para la imagen y el botón
 		            JPanel innerPanel = new JPanel();
@@ -348,21 +379,22 @@ public class TiendaPrincipal extends JFrame {
 		            
 		            innerPanel.add(imageLabel);
 		            
-		            
-		            JPanel buttonPanel = new JPanel(); // Usa FlowLayout por defecto, que centra los componentes
-		            JButton addToCartButton = new JButton("Añadir al Carrito");
-		            buttonPanel.add(addToCartButton);
-		            innerPanel.add(buttonPanel);
-		            buttonPanel.setBackground(new Color(249, 248, 113));
+		         //panel para el spinner y el botón, con FlowLayout para asegurar disposición horizontal
+		            JPanel panelCantidadYBoton = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-		            // Botón para añadir al carrito
+		            SpinnerNumberModel spinnerModel = new SpinnerNumberModel(1, 1, 100, 1);
+		            JSpinner spinnerCantidad = new JSpinner(spinnerModel);
+		            spinnerCantidad.setPreferredSize(new Dimension(50, 20)); // Ajusta el tamaño según necesites
+
+		            panelCantidadYBoton.add(new JLabel("Cantidad:"));
+		            panelCantidadYBoton.add(spinnerCantidad);
+
+		            JButton addToCartButton = new JButton("Añadir al Carrito");
+		            panelCantidadYBoton.add(addToCartButton);
+		            panelCantidadYBoton.setBackground(new Color(249, 248, 113));
+
 		           
-		            addToCartButton.addActionListener(new ActionListener() {
-		                public void actionPerformed(ActionEvent e) {
-		                    // LOGICA PARA AÑADIR AL CARRITO 
-		                    JOptionPane.showMessageDialog(TiendaPrincipal.this, "¡Producto añadido al carrito!");
-		                }
-		            });
+		            innerPanel.add(panelCantidadYBoton);
 
 		            // Añadir el panel interno al panel del producto
 		            productPanel.add(innerPanel, BorderLayout.CENTER);
@@ -391,6 +423,7 @@ public class TiendaPrincipal extends JFrame {
 		    mainPanel.revalidate();
 		    mainPanel.repaint();
 		}
+
 	 
 	 private void logout() {
 		    // Cierra la ventana actual
@@ -410,9 +443,10 @@ public class TiendaPrincipal extends JFrame {
 	 
 	 
 	 private void abrirDetallesProducto(int idProducto) {
-		    Details detalles = new Details(idProducto);
+		    Details detalles = new Details(idProducto, idProducto);
 		    detalles.setVisible(true);
 		}
+	 
+	 
+
 	}
-
-
