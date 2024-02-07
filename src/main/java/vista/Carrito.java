@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.EventQueue;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -8,6 +9,9 @@ import java.util.Map.Entry;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.Producto;
+
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.SwingConstants;
@@ -17,7 +21,8 @@ public class Carrito extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private HashMap<String, Double> carrito;
+	private ArrayList<Producto> carrito;
+	private ArrayList<Integer> cantidad;
 
 //	public static void main(String[] args) {
 //		EventQueue.invokeLater(new Runnable() {
@@ -36,8 +41,9 @@ public class Carrito extends JFrame {
 	 * 
 	 * @param carrito carrito que viene con el producto y precio.
 	 */
-	public Carrito(HashMap<String, Double> carrito) {
+	public Carrito(ArrayList<Producto> carrito, ArrayList<Integer> cantidad) {
 		this.carrito = carrito;
+		this.cantidad = cantidad;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 852, 567);

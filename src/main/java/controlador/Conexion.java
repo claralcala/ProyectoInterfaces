@@ -14,7 +14,7 @@ public class Conexion {
     private static final String driver="com.mysql.jdbc.Driver";
     private static final String user="root";
     private static final String pass="ad1234";
-    private static final String url="jdbc:mysql://localhost:3306/urbanstride";
+    private static final String url="jdbc:mysql://localhost:3309/urbanstride";
     // Funcion que va conectarse a mi bd de mysql
     public Connection conectar(){
       con = null;
