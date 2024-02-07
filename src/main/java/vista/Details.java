@@ -38,7 +38,7 @@ public class Details extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Details(int id_producto, int id_user) {
+	public Details(int id_producto, final int id_user) {
 		
 		this.id_producto= id_producto;
 		this.id_user = id_user; 
