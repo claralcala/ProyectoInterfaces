@@ -233,7 +233,7 @@ public class TiendaPrincipal extends JFrame {
 	            nameLabel.addMouseListener(new MouseAdapter() {
 	                @Override
 	                public void mouseClicked(MouseEvent e) {
-	                    abrirDetallesProducto(prod.getProduct_id());
+	                    abrirDetallesProducto(prod);
 	                }
 	            });
 
@@ -363,7 +363,7 @@ public class TiendaPrincipal extends JFrame {
 		            nameLabel.addMouseListener(new MouseAdapter() {
 		                @Override
 		                public void mouseClicked(MouseEvent e) {
-		                    abrirDetallesProducto(prod.getProduct_id());
+		                    abrirDetallesProducto(prod);
 		                }
 		            });
 
@@ -452,8 +452,8 @@ public class TiendaPrincipal extends JFrame {
 		}
 	 
 	 
-	 private void abrirDetallesProducto(int idProducto) {
-		    Details detalles = new Details(id_usuario, idProducto);
+	 private void abrirDetallesProducto(Producto p) {
+		    Details detalles = new Details(id_usuario, p);
 		    detalles.setVisible(true);
 		    
 		}

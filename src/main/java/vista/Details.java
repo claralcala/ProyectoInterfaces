@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import org.w3c.dom.events.MouseEvent;
 
 import controlador.Eventos;
+import modelo.Producto;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -27,6 +28,7 @@ public class Details extends JFrame {
 	private int id_producto;
 	private int	id_user;
 
+	private Producto p;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
@@ -38,9 +40,9 @@ public class Details extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Details(int id_producto, final int id_user) {
+	public Details(final int id_user, Producto p) {
 		
-		this.id_producto= id_producto;
+		this.p=p;
 		this.id_user = id_user; 
 		
 		setResizable(false);
