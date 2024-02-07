@@ -447,6 +447,5 @@ public class TiendaPrincipal extends JFrame {
 		    detalles.setVisible(true);
 		}
 	 
-	 
 
 	}
