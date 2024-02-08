@@ -37,9 +37,9 @@ public class Carrito extends JFrame {
 //		});
 //	}
 	/**
-	 * Constructor de la ventana donde se va a visualizar el contenido del carrito.
 	 * 
-	 * @param carrito carrito que viene con el producto y precio.
+	 * @param carrito
+	 * @param cantidad
 	 */
 	public Carrito(ArrayList<Producto> carrito, ArrayList<Integer> cantidad) {
 		this.carrito = carrito;
