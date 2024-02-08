@@ -36,6 +36,20 @@ public class Texto {
 	public static final String toolBotonRegister = "Haz clic para registrarte en Urban Stride";
 	
 	
+	//Tooltip para la ventana principal de la tienda
+	
+	public static final String barraBusqueda = "Búsqueda por nombre del producto (contiene palabra introducida)";
+	public static final String lupa = "Pulsa para buscar";
+	public static final String editarPerfil =" Pulsa para editar el perfil de usuario";
+	public static final String carrito =" Pulsa para ver el carrito";
+	public static final String logout = "Pulsa para desloguearte";
+	
+	public static final String nombreProducto =" Nombre del producto";
+	public static final String imgProducto ="Imagen del producto";
+	public static final String cantidad = "Cantidad del producto que se desea";
+	public static final String precio = "Precio unitario del producto";
+	public static final String anadir_carro = "Botón para añadir al carrito";
+	
 	
 	
 }

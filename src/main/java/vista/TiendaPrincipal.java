@@ -35,6 +35,7 @@ import javax.swing.border.EmptyBorder;
 
 import controlador.ConsultasBD2;
 import modelo.Producto;
+import utiles.Texto;
 
 public class TiendaPrincipal extends JFrame {
 
@@ -98,7 +99,7 @@ public class TiendaPrincipal extends JFrame {
         setLabelStyle(closeLabel);
         topPanel.add(closeLabel);
         
-        int spacerWidth = 10; // Ajusta este valor según sea necesario
+        int spacerWidth = 10; 
         topPanel.add(Box.createHorizontalStrut(spacerWidth));
         
         
@@ -124,8 +125,8 @@ public class TiendaPrincipal extends JFrame {
 
         
         
-     // Espaciador para mover el panel izquierdo hacia la derecha
-        int leftMargin = 30; // Ajusta este valor según sea necesario
+        // Espaciador para mover el panel izquierdo hacia la derecha
+        int leftMargin = 30;
         topPanel.add(Box.createHorizontalStrut(leftMargin));
         topPanel.setBackground(new Color(186, 201, 92));
 
@@ -236,6 +237,7 @@ public class TiendaPrincipal extends JFrame {
 
 	            // Etiqueta para el nombre del producto
 	            JLabel nameLabel = new JLabel(prod.getNombre(), JLabel.CENTER);
+	            nameLabel.setToolTipText(Texto.nombreProducto);
 	            productPanel.add(nameLabel, BorderLayout.NORTH);
 	            nameLabel.addMouseListener(new MouseAdapter() {
 	                @Override
@@ -263,6 +265,7 @@ public class TiendaPrincipal extends JFrame {
 	            // Etiqueta para la imagen
 	            JLabel imageLabel = new JLabel();
 	            imageLabel.setIcon(scaledIcon);
+	            imageLabel.setToolTipText(Texto.imgProducto);
 	            
 	            innerPanel.add(imageLabel);
 	            
@@ -273,12 +276,14 @@ public class TiendaPrincipal extends JFrame {
 	            final JTextField txtCantidad = new JTextField();
 	            txtCantidad.setPreferredSize(new Dimension(50, 20)); // Ajusta el tamaño según necesites
 
+	            txtCantidad.setToolTipText(Texto.cantidad);
 	            quantityAndButtonPanel.add(new JLabel("Cantidad:"));
 	            quantityAndButtonPanel.add(txtCantidad);
 
 	            // Configuración del JButton para añadir al carrito
 	            JButton addToCartButton = new JButton("Añadir al Carrito");
 	            quantityAndButtonPanel.add(addToCartButton);
+	            addToCartButton.setToolTipText(Texto.anadir_carro);
 
 	            // ActionListener para el botón
 	            addToCartButton.addActionListener(new ActionListener() {
@@ -314,6 +319,7 @@ public class TiendaPrincipal extends JFrame {
 	            // Etiqueta para el precio
 	            JLabel priceLabel = new JLabel("Precio: " + prod.getPrecio() + " €", JLabel.CENTER);
 	            productPanel.add(priceLabel, BorderLayout.SOUTH);
+	            priceLabel.setToolTipText(Texto.precio);
 
 
 	            gbc.gridx = column;
@@ -329,6 +335,16 @@ public class TiendaPrincipal extends JFrame {
 	                row++;
 	            }
 	        }
+	        
+	        // Tooltips
+	        closeLabel.setToolTipText(Texto.toolCerrar);
+	        minimizeLabel.setToolTipText(Texto.toolMinimizar);
+	        searchField.setToolTipText(Texto.barraBusqueda);
+	        searchLabel.setToolTipText(Texto.lupa);
+	        editProfileLabel.setToolTipText(Texto.editarPerfil);
+	        cartLabel.setToolTipText(Texto.carrito);
+	        logoutButton.setToolTipText(Texto.logout);
+	        
 
 	     
 	    }
