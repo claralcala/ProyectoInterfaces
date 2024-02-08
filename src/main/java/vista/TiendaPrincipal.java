@@ -469,7 +469,9 @@ public class TiendaPrincipal extends JFrame {
 	 
 	 private void abrirCarrito(int id_usuario) {
 		   //logica de abrir la ventana del carrito
-		    
+		    Carrito carritoView = new Carrito(id_usuario);
+		    setVisible(false);
+		    carritoView.setVisible(true);
 		}
 	 
 

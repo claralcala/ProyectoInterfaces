@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import vista.Carrito;
 import vista.Details;
 import vista.Login;
 import vista.Registro;
@@ -124,9 +125,20 @@ public class Eventos {
 		});
     }
     
- 
-   
-
+    public static void btnBack(final JLabel lblBack, final Carrito carrito, int id_usuario) {
+    	lblBack.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TiendaPrincipal tiendaPrincipal = new TiendaPrincipal(id_usuario);
+				tiendaPrincipal.setVisible(true);
+				carrito.setVisible(false);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblBack.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+		});
+    }
   }
 
     
