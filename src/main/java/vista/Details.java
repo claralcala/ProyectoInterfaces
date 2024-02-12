@@ -74,7 +74,7 @@ public class Details extends JFrame {
 		
 
 
-	public Details(final int id_user, Producto p) {
+	public Details(final int id_user, final Producto p) {
 		
 
 		this.p=p;
