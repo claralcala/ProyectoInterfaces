@@ -16,6 +16,9 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Carrito extends JFrame {
 
@@ -71,6 +74,7 @@ public class Carrito extends JFrame {
         for (Producto carrito : carrito) {
         	
             // obtengo datos.
+        	int id_producto = carrito.getProduct_id();
             String productoNombre = carrito.getNombre();
             int cantidad = carrito.getCantidad();
             double precio = carrito.getPrecio();
@@ -101,6 +105,20 @@ public class Carrito extends JFrame {
             labelCantidad.setForeground(new Color(255, 255, 255));
             labelCantidad.setFont(new Font("Tahoma", Font.BOLD, 20));
             contentPane.add(labelCantidad);
+            
+            JButton btnDelete = new JButton("Delete");
+    		btnDelete.addMouseListener(new MouseAdapter() {
+    			@Override
+    			public void mouseClicked(MouseEvent e) {
+    				if(cantidad > 1) {
+    					int cantidadBorrada = cantidad - 1;
+    					ConsultasBD2.anadirProductoAlCarrito(id_usuario, id_producto, cantidadBorrada);
+    				}
+    			}
+    		});
+    		btnDelete.setBounds(360, y, 85, 21);
+    		contentPane.add(btnDelete);
+            
             // Actualizar la posición en el eje Y para la siguiente entrada
             y += 30;
             
@@ -117,5 +135,6 @@ public class Carrito extends JFrame {
 		lblBack.setIcon(new ImageIcon(Login.class.getResource("/imagenes/back-2_icon-icons.com_62858.png")));
 		lblBack.setBounds(39, 448, 54, 53);
 		contentPane.add(lblBack);
+		
 	}
 }
