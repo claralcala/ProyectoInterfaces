@@ -125,7 +125,7 @@ public class Login extends JFrame {
 		lblContrasea.setForeground(new Color(243, 235, 219));
 		lblContrasea.setFont(new Font("Roboto Medium", Font.PLAIN, 20));
 		lblContrasea.setBounds(233, 384, 177, 24);
-		panel.add(lblContrasea);
+		panel.add(lblContrasea); 
 
 		JSeparator separator1_1 = new JSeparator();
 		separator1_1.setBackground(new Color(243, 235, 219));
