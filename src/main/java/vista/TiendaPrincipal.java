@@ -489,12 +489,13 @@ public class TiendaPrincipal extends JFrame {
 		}
 	 
 	 
-	 private void abrirDetallesProducto(Producto p) {
-		    Details detalles = new Details(id_usuario, p);
+	  private void abrirDetallesProducto(Producto p) {
+		    Details detalles = new Details(id_usuario,p, this);
 		    detalles.setVisible(true);
+		    this.setVisible(false);
+		    
 		    
 		}
-	 
 	 private void abrirCarrito(int id_usuario) {
 		   //logica de abrir la ventana del carrito
 		    
