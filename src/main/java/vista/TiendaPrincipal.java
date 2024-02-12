@@ -13,6 +13,7 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,6 +31,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -56,6 +59,8 @@ public class TiendaPrincipal extends JFrame {
 	
 	JLabel minimizeLabel;
 	JLabel closeLabel;
+	
+	private KeyStroke atajo;
 	
 	
 
@@ -344,6 +349,15 @@ public class TiendaPrincipal extends JFrame {
 	        editProfileLabel.setToolTipText(Texto.editarPerfil);
 	        cartLabel.setToolTipText(Texto.carrito);
 	        logoutButton.setToolTipText(Texto.logout);
+	        
+	        // ATAJO DE TECLADO CTRL + T PARA DESLOGUEARSE
+	        atajo = KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_DOWN_MASK);
+			getRootPane().registerKeyboardAction(new ActionListener() {
+
+				public void actionPerformed(ActionEvent e) {
+				  logout();
+				}
+			}, atajo, JComponent.WHEN_IN_FOCUSED_WINDOW);
 	        
 
 	     
