@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -141,34 +142,56 @@ public class ConsultasBD2 {
 	    boolean agregado = false;
 
 	    try {
-	        // Primero verifica si el producto ya existe en el carrito del usuario
-	        String sqlConsulta = "SELECT cantidad FROM carrito WHERE user_id = ? AND product_id = ?";
 	        conexion = con.conectar();
-	        PreparedStatement pstConsulta = conexion.prepareStatement(sqlConsulta);
-	        pstConsulta.setInt(1, userId);
-	        pstConsulta.setInt(2, productId);
-	        ResultSet rs = pstConsulta.executeQuery();
-	        
-	        if (rs.next()) {
-	            // Si el producto ya está en el carrito, actualiza la cantidad
-	            int nuevaCantidad = rs.getInt("cantidad") + cantidad;
-	            String sqlUpdate = "UPDATE carrito SET cantidad = ? WHERE user_id = ? AND product_id = ?";
-	            PreparedStatement pstUpdate = conexion.prepareStatement(sqlUpdate);
-	            pstUpdate.setInt(1, nuevaCantidad);
-	            pstUpdate.setInt(2, userId);
-	            pstUpdate.setInt(3, productId);
-	            pstUpdate.executeUpdate();
-	            agregado = true;
+	        // Verificar si el usuario ya tiene un carrito
+	        String sqlCarrito = "SELECT carrito_id FROM carrito WHERE user_id = ?";
+	        PreparedStatement pstCarrito = conexion.prepareStatement(sqlCarrito);
+	        pstCarrito.setInt(1, userId);
+	        ResultSet rsCarrito = pstCarrito.executeQuery();
+	        int carritoId;
+
+	        if (!rsCarrito.next()) {
+	            // Si no tiene carrito, se crea uno nuevo
+	            String sqlInsertCarrito = "INSERT INTO carrito (user_id) VALUES (?)";
+	            PreparedStatement pstInsertCarrito = conexion.prepareStatement(sqlInsertCarrito, Statement.RETURN_GENERATED_KEYS);
+	            pstInsertCarrito.setInt(1, userId);
+	            pstInsertCarrito.executeUpdate();
+	            ResultSet generatedKeys = pstInsertCarrito.getGeneratedKeys();
+	            if (generatedKeys.next()) {
+	                carritoId = generatedKeys.getInt(1);
+	            } else {
+	                throw new SQLException("Fallo al crear el carrito");
+	            }
 	        } else {
-	            // Si el producto no está en el carrito, inserta un nuevo registro
-	            String sqlInsert = "INSERT INTO carrito (user_id, product_id, cantidad) VALUES (?, ?, ?)";
-	            PreparedStatement pstInsert = conexion.prepareStatement(sqlInsert);
-	            pstInsert.setInt(1, userId);
-	            pstInsert.setInt(2, productId);
-	            pstInsert.setInt(3, cantidad);
-	            pstInsert.executeUpdate();
-	            agregado = true;
+	            carritoId = rsCarrito.getInt("carrito_id");
 	        }
+
+	        // Añadir o actualizar el producto en el detalle del carrito
+	        String sqlDetalle = "SELECT cantidad FROM carrito_detalle WHERE carrito_id = ? AND product_id = ?";
+	        PreparedStatement pstDetalle = conexion.prepareStatement(sqlDetalle);
+	        pstDetalle.setInt(1, carritoId);
+	        pstDetalle.setInt(2, productId);
+	        ResultSet rsDetalle = pstDetalle.executeQuery();
+
+	        if (rsDetalle.next()) {
+	            // Si el producto ya está en el detalle del carrito, actualiza la cantidad
+	            int nuevaCantidad = rsDetalle.getInt("cantidad") + cantidad;
+	            String sqlUpdateDetalle = "UPDATE carrito_detalle SET cantidad = ? WHERE carrito_id = ? AND product_id = ?";
+	            PreparedStatement pstUpdateDetalle = conexion.prepareStatement(sqlUpdateDetalle);
+	            pstUpdateDetalle.setInt(1, nuevaCantidad);
+	            pstUpdateDetalle.setInt(2, carritoId);
+	            pstUpdateDetalle.setInt(3, productId);
+	            pstUpdateDetalle.executeUpdate();
+	        } else {
+	            // Si el producto no está en el detalle, inserta un nuevo registro
+	            String sqlInsertDetalle = "INSERT INTO carrito_detalle (carrito_id, product_id, cantidad) VALUES (?, ?, ?)";
+	            PreparedStatement pstInsertDetalle = conexion.prepareStatement(sqlInsertDetalle);
+	            pstInsertDetalle.setInt(1, carritoId);
+	            pstInsertDetalle.setInt(2, productId);
+	            pstInsertDetalle.setInt(3, cantidad);
+	            pstInsertDetalle.executeUpdate();
+	        }
+	        agregado = true;
 	    } catch (SQLException e) {
 	        System.out.println("Error al añadir el producto al carrito: " + e.getMessage());
 	    } finally {
@@ -182,6 +205,53 @@ public class ConsultasBD2 {
 	    }
 
 	    return agregado;
+	}
+	
+	
+	public static ArrayList<Producto> obtenerProductosDelCarrito(int userId) {
+	    ArrayList<Producto> productos = new ArrayList<Producto>();
+	    Conexion con = new Conexion();
+	    Connection conexion = null;
+
+	    try {
+	        conexion = con.conectar();
+	        
+	        String sql = "SELECT p.product_id, p.nombre, p.descripcion, p.stock, p.precio, p.imagen, cd.cantidad " +
+	                     "FROM producto p " +
+	                     "JOIN carrito_detalle cd ON p.product_id = cd.product_id " +
+	                     "JOIN carrito c ON cd.carrito_id = c.carrito_id " +
+	                     "WHERE c.user_id = ?";
+	        PreparedStatement pst = conexion.prepareStatement(sql);
+	        pst.setInt(1, userId);
+
+	        ResultSet rs = pst.executeQuery();
+
+	        while (rs.next()) {
+	            Producto producto = new Producto();
+	            
+	            producto.setProduct_id(rs.getInt("product_id"));
+	            producto.setNombre(rs.getString("nombre"));
+	            producto.setDescripcion(rs.getString("descripcion"));
+	            producto.setStock(rs.getInt("stock"));
+	            producto.setPrecio(rs.getFloat("precio"));
+	            producto.setImagen(rs.getString("imagen"));
+	            producto.setCantidad(rs.getInt("cantidad")); 
+
+	            productos.add(producto);
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Error al obtener los productos del carrito: " + e.getMessage());
+	    } finally {
+	        if (conexion != null) {
+	            try {
+	                conexion.close();
+	            } catch (SQLException e) {
+	                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+	            }
+	        }
+	    }
+
+	    return productos;
 	}
 
 }

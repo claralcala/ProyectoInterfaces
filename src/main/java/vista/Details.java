@@ -11,6 +11,7 @@ import controlador.Eventos;
 import modelo.Producto;
 import utiles.Texto;
 
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -33,10 +34,10 @@ public class Details extends JFrame {
 	private int	id_user;
 	private TiendaPrincipal vistaTienda;
 
+	private Producto p;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	
-	private Producto p;
 	private JTextField textFieldCantidad;
 	
 	int cantidad;
@@ -63,8 +64,17 @@ public class Details extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+
 	
 	public Details(final int id_user, Producto p , TiendaPrincipal vistaTienda) {
+	
+	}
+	
+	
+		
+
+
+	public Details(final int id_user, Producto p) {
 		
 
 		this.p=p;
