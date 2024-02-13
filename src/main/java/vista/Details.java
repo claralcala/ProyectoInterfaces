@@ -3,16 +3,23 @@ package vista;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 
 import controlador.ConsultasBD2;
@@ -30,6 +37,10 @@ public class Details extends JFrame {
     private JPanel contentPane;
 
     private JTextField textFieldCantidad;
+	private KeyStroke atajo;
+	private KeyStroke atajo2;
+	
+	private String textoCant;
 
     int cantidad;
 
@@ -127,7 +138,7 @@ public class Details extends JFrame {
         lblCarrito.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                String textoCant = textFieldCantidad.getText().trim();
+               textoCant = textFieldCantidad.getText().trim();
                 if (textoCant.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Por favor, ingrese una cantidad.");
                     return;
@@ -137,6 +148,12 @@ public class Details extends JFrame {
                     System.out.println(p.getProduct_id());
                     boolean result = ConsultasBD2.anadirProductoAlCarrito(id_user, p.getProduct_id(), cantidad);
                     JOptionPane.showMessageDialog(null, "¡Producto añadido al carrito!");
+
+                    // Cierra la ventana actual
+                    dispose();
+
+                    // Muestra la ventana anterior (vistaTienda)
+                    vistaTienda.setVisible(true);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Por favor, ingrese una cantidad válida.");
                 }
@@ -182,5 +199,46 @@ public class Details extends JFrame {
         JSeparator separator = new JSeparator();
         separator.setBounds(111, 99, 708, 2);
         contentPane.add(separator);
+        
+        
+        //Atajos de teclado
+        
+        
+        //Atajo volver
+    	atajo = KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_DOWN_MASK);
+		getRootPane().registerKeyboardAction(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				VentanaPrincipal ventana = new VentanaPrincipal();
+				vistaTienda.setVisible(true);
+				dispose();
+			}
+		}, atajo, JComponent.WHEN_IN_FOCUSED_WINDOW);
+		
+		// Atajo para añadir al carrito (cambiado a F3)
+		atajo2 = KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0); // 0 representa ningún modificador
+		getRootPane().registerKeyboardAction(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        textoCant = textFieldCantidad.getText().trim();
+		        if (textoCant.isEmpty()) {
+		            JOptionPane.showMessageDialog(null, "Por favor, ingrese una cantidad.");
+		            return;
+		        }
+		        try {
+		            cantidad = Integer.parseInt(textoCant);
+		            System.out.println(p.getProduct_id());
+		            boolean result = ConsultasBD2.anadirProductoAlCarrito(id_user, p.getProduct_id(), cantidad);
+		            JOptionPane.showMessageDialog(null, "¡Producto añadido al carrito!");
+
+		            // Cierra la ventana actual
+		            dispose();
+
+		            // Muestra la ventana anterior (vistaTienda)
+		            vistaTienda.setVisible(true);
+		        } catch (NumberFormatException ex) {
+		            JOptionPane.showMessageDialog(null, "Por favor, ingrese una cantidad válida.");
+		        }
+		    }
+		}, atajo2, JComponent.WHEN_IN_FOCUSED_WINDOW);
     }
 }
