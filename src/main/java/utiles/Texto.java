@@ -55,7 +55,6 @@ public class Texto {
 	public static final String editarPerfil =" Pulsa para editar el perfil de usuario";
 	public static final String carrito =" Pulsa para ver el carrito";
 	public static final String logout = "Pulsa para desloguearte";
-	
 	public static final String nombreProducto =" Nombre del producto";
 	public static final String imgProducto ="Imagen del producto";
 	public static final String cantidad = "Cantidad del producto que se desea";
