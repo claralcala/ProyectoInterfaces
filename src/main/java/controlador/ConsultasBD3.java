@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
+
+import modelo.Producto;
 
 public class ConsultasBD3 {
 	
@@ -151,7 +154,51 @@ public class ConsultasBD3 {
 	    return eliminado;
 	}
 	
-	
+	public static ArrayList<Producto> buscarProductosEnCarritoPorNombre(int userId, String nombre) {
+	    ArrayList<Producto> productos = new ArrayList<>();
+	    Conexion con = new Conexion();
+	    Connection conexion = null;
+
+	    try {
+	        conexion = con.conectar();
+	        
+	        // Consulta para buscar productos por nombre en el carrito de un usuario específico
+	        String sql = "SELECT p.* FROM producto p " +
+	                     "JOIN carrito_detalle cd ON p.product_id = cd.product_id " +
+	                     "JOIN carrito c ON cd.carrito_id = c.carrito_id " +
+	                     "WHERE c.user_id = ? AND p.nombre LIKE ?";
+	        
+	        PreparedStatement pst = conexion.prepareStatement(sql);
+	        pst.setInt(1, userId); // Configurar el user_id
+	        pst.setString(2, "%" + nombre + "%"); // Configurar el parámetro de búsqueda por nombre
+	        
+	        ResultSet rs = pst.executeQuery();
+
+	        while (rs.next()) {
+	            Producto producto = new Producto();
+	            producto.setProduct_id(rs.getInt("product_id"));
+	            producto.setNombre(rs.getString("nombre"));
+	            producto.setDescripcion(rs.getString("descripcion"));
+	            producto.setPrecio(rs.getDouble("precio"));
+	            producto.setStock(rs.getInt("stock"));
+	            producto.setImagen(rs.getString("imagen"));
+	            
+	            productos.add(producto);
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Error al buscar los productos en el carrito: " + e.getMessage());
+	    } finally {
+	        if (conexion != null) {
+	            try {
+	                conexion.close();
+	            } catch (SQLException e) {
+	                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+	            }
+	        }
+	    }
+
+	    return productos;
+	}
 	
 }
 
