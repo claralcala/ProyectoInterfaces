@@ -483,7 +483,7 @@ public class TiendaPrincipal extends JFrame {
 		        
 		    }
 
-		    // Actualiza el UI después de añadir todos los productos
+		    // Actualiza interfaz después de añadir todos los productos
 		    mainPanel.revalidate();
 		    mainPanel.repaint();
 		}
@@ -535,6 +535,7 @@ public class TiendaPrincipal extends JFrame {
 		        contentStream.newLineAtOffset(25, 725);
 		        contentStream.showText("Resultados de la búsqueda. Productos encontrados al buscar por: " +textoBusqueda);
 		        contentStream.newLine();
+		        // Añadimos una linea por cada producto con nombre, salto de linea y el precio
 		        for (Producto producto : productosEncontrados) {
 		            contentStream.showText("Nombre: ");
 		            contentStream.newLine();
