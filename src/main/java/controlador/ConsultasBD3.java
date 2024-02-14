@@ -25,18 +25,18 @@ public class ConsultasBD3 {
         try {
         	conexion = con.conectar();
 
-            // Paso 1: Insertar un nuevo registro en la tabla `pedido`
+            //Insertar un nuevo registro en la tabla pedido
             String sqlInsertPedido = "INSERT INTO pedido (user_id, fecha) VALUES (?, ?)";
             pstInsertPedido = conexion.prepareStatement(sqlInsertPedido, Statement.RETURN_GENERATED_KEYS);
             pstInsertPedido.setInt(1, userId);
-            pstInsertPedido.setDate(2, java.sql.Date.valueOf(LocalDate.now())); // Usa la fecha actual
+            pstInsertPedido.setDate(2, java.sql.Date.valueOf(LocalDate.now())); // Usamos la fecha actual
             int affectedRows = pstInsertPedido.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException("La creación del pedido falló, no se afectaron filas.");
+                throw new SQLException("La creación del pedido falló, no se afectaron filas");
             }
 
-            // Paso 2: Recuperar el ID del pedido recién creado
+            //conseguimos el id del pedido que se acaba de generar
             generatedKeys = pstInsertPedido.getGeneratedKeys();
             if (generatedKeys.next()) {
                 nuevoPedidoId = generatedKeys.getInt(1);
@@ -44,7 +44,7 @@ public class ConsultasBD3 {
                 throw new SQLException("La creación del pedido falló, no se obtuvo el ID.");
             }
 
-            // Paso 3 y 4: Obtener productos del carrito y trasladarlos a `pedido_tiene_productos`
+            //obtenemos productos del carrito y los metemos en pedido_tiene_productos
             String sqlCarritoDetalle = "SELECT product_id, cantidad FROM carrito_detalle WHERE carrito_id = (SELECT carrito_id FROM carrito WHERE user_id = ?)";
             PreparedStatement pstCarritoDetalle = conexion.prepareStatement(sqlCarritoDetalle);
             pstCarritoDetalle.setInt(1, userId);

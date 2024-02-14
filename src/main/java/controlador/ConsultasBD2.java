@@ -63,7 +63,7 @@ public class ConsultasBD2 {
             conexion = con.conectar();
             PreparedStatement pst = conexion.prepareStatement(sql);
             
-            // Configurar el parámetro de la consulta SQL
+            // Configurar el parámetro de la consulta
             pst.setString(1, "%" + nombre + "%");
             
             ResultSet rs = pst.executeQuery();
@@ -174,7 +174,7 @@ public class ConsultasBD2 {
 	        ResultSet rsDetalle = pstDetalle.executeQuery();
 
 	        if (rsDetalle.next()) {
-	            // Si el producto ya está en el detalle del carrito, actualiza la cantidad
+	            // Si el producto ya está en el detalle del carrito, actualizamos la cantidad
 	            int nuevaCantidad = rsDetalle.getInt("cantidad") + cantidad;
 	            String sqlUpdateDetalle = "UPDATE carrito_detalle SET cantidad = ? WHERE carrito_id = ? AND product_id = ?";
 	            PreparedStatement pstUpdateDetalle = conexion.prepareStatement(sqlUpdateDetalle);
