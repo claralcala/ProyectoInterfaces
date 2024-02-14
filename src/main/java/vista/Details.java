@@ -33,7 +33,7 @@ public class Details extends JFrame {
 
     int cantidad;
 
-    public Details(final int id_user, Producto p, TiendaPrincipal vistaTienda) {
+    public Details(final int id_user, final Producto p, final TiendaPrincipal vistaTienda) {
         super(); // Llama al constructor de la clase base JFrame
         this.p = p;
         this.id_user = id_user;
