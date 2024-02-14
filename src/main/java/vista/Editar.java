@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
@@ -23,12 +24,16 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ConsultasBD;
+import controlador.ConsultasBD2;
 import modelo.Usuario;
 import utiles.Texto;
 
 public class Editar extends JFrame {
 
 	int id_usuario;
+	Usuario u = new Usuario();
+	
+	ConsultasBD consultasBD = new ConsultasBD();
 	
 	private JPanel contentPane, panelX;
 	
@@ -45,9 +50,11 @@ public class Editar extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Editar(int id_usuario) {
+	public Editar(final int id_usuario) {
 		
 		this.id_usuario=id_usuario;
+		
+		u = consultasBD.obtenerUsuarioPorId(id_usuario);
 		
 		 setResizable(false);
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -165,6 +172,7 @@ public class Editar extends JFrame {
         txtNombre.setBorder(null);
         txtNombre.setFont(new Font("Roboto Light", Font.PLAIN, 15));
         txtNombre.setBounds(279, 106, 390, 22);
+        txtNombre.setText(u.getNombre());
         panel.add(txtNombre);
         txtNombre.setColumns(10);
 
@@ -185,6 +193,7 @@ public class Editar extends JFrame {
         txtApellidos.setBorder(null);
         txtApellidos.setFont(new Font("Roboto Light", Font.PLAIN, 15));
         txtApellidos.setBounds(279, 179, 390, 22);
+        txtApellidos.setText(u.getApellidos());
         panel.add(txtApellidos);
         txtApellidos.setColumns(10);
 
@@ -205,6 +214,7 @@ public class Editar extends JFrame {
         txtCorreo.setBorder(null);
         txtCorreo.setFont(new Font("Roboto Light", Font.PLAIN, 15));
         txtCorreo.setBounds(279, 269, 390, 22);
+        txtCorreo.setText(u.getCorreo_electronico());
         panel.add(txtCorreo);
         txtCorreo.setColumns(10);
 
@@ -225,6 +235,7 @@ public class Editar extends JFrame {
         txtTelefono.setBorder(null);
         txtTelefono.setFont(new Font("Roboto Light", Font.PLAIN, 15));
         txtTelefono.setBounds(279, 354, 390, 22);
+        txtTelefono.setText(u.getTelefono());
         panel.add(txtTelefono);
         txtTelefono.setColumns(10);
 
@@ -244,19 +255,20 @@ public class Editar extends JFrame {
         txtDireccion.setBackground(new Color(10, 27, 5));
         txtDireccion.setBorder(null);
         txtDireccion.setFont(new Font("Roboto Light", Font.PLAIN, 15));
-        txtDireccion.setBounds(871, 106, 390, 22);
+        txtDireccion.setBounds(858, 106, 390, 22);
+        txtDireccion.setText(u.getDireccion());
         panel.add(txtDireccion);
         txtDireccion.setColumns(10);
 
         JSeparator separatorDireccion = new JSeparator();
         separatorDireccion.setBackground(new Color(155, 253, 202));
-        separatorDireccion.setBounds(936, 224, 390, 8);
+        separatorDireccion.setBounds(888, 224, 390, 8);
         panel.add(separatorDireccion);
         
         JLabel lblPassword = new JLabel("Contraseña");
         lblPassword.setForeground(new Color(243, 235, 219));
         lblPassword.setFont(new Font("Roboto Medium", Font.PLAIN, 20));
-        lblPassword.setBounds(751, 266, 127, 24);
+        lblPassword.setBounds(751, 208, 127, 24);
         panel.add(lblPassword);
 
         txtPassword = new JTextField();
@@ -264,7 +276,7 @@ public class Editar extends JFrame {
         txtPassword.setBackground(new Color(10, 27, 5));
         txtPassword.setBorder(null);
         txtPassword.setFont(new Font("Roboto Light", Font.PLAIN, 15));
-        txtPassword.setBounds(878, 257, 390, 22);
+        txtPassword.setBounds(888, 198, 390, 22);
         panel.add(txtPassword);
       
 
@@ -276,25 +288,31 @@ public class Editar extends JFrame {
         
         
         //botones para registrarse y volver
-        JButton btnRegistrarse = new JButton("Registrarse");
-        btnRegistrarse.setBackground(new Color(254, 250, 192));
-        btnRegistrarse.setBounds(606, 552, 220, 33);
-        panel.add(btnRegistrarse);
-        btnRegistrarse.addActionListener(new ActionListener() {
+        JButton btnAceptar = new JButton("Aceptar");
+        btnAceptar.setBackground(new Color(254, 250, 192));
+        btnAceptar.setBounds(606, 552, 220, 33);
+        panel.add(btnAceptar);
+        btnAceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
-            	Usuario u = new Usuario();
+            	
+            	String nombre = txtNombre.getText();
+            	String contrasena = txtPassword.getText();
+            	String email = txtCorreo.getText();
+            	String direccion = txtDireccion.getText();
+            	String apellidos = txtApellidos.getText();
+            	String tlf = txtTelefono.getText();
+            	if(!contrasena.isEmpty()) {
+            		
+            		ConsultasBD2.actualizarUsuarioPorId(id_usuario, nombre, apellidos, email, tlf, direccion);
+            		JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+            		logout();
+            		
+            	}else {
+            		JOptionPane.showMessageDialog(null, "Por favor, Introduzca una contraseña.");
+            	}
             	
             	
-            	u.setContrasena(txtPassword.getText());
-            	u.setCorreo_electronico(txtCorreo.getText());
-            	u.setDireccion(txtDireccion.getText());
-            	u.setNombre(txtNombre.getText());
-            	u.setApellidos(txtApellidos.getText());
-            	u.setTelefono(txtTelefono.getText());
-            	
-            	ConsultasBD.guardarUsuario(u);
-            	borrarCampos();
             	
                 
             }
@@ -306,8 +324,6 @@ public class Editar extends JFrame {
 		lblBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
-				ventanaPrincipal.setVisible(true);
 				dispose();
 			}
 			@Override
@@ -332,7 +348,7 @@ public class Editar extends JFrame {
         lblNewLabel.setToolTipText(Texto.toolLogo);
         lblX.setToolTipText(Texto.toolCerrar);
         lbl_.setToolTipText(Texto.toolMinimizar);
-        btnRegistrarse.setToolTipText(Texto.toolBotonRegister);
+        
         lblBack.setToolTipText(Texto.toolVolver);
         
         
@@ -363,6 +379,15 @@ public class Editar extends JFrame {
 		txtTelefono.setText("");
 		txtDireccion.setText("");
 		
+	}
+	
+	private void logout() {
+	    // Cierra la ventana actual
+	    this.dispose();
+	    
+	    // Abre la ventana de login
+	    Login loginWindow = new Login();
+	    loginWindow.setVisible(true);
 	}
 	
 
