@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -35,6 +36,11 @@ import javax.swing.KeyStroke;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import controlador.ConsultasBD2;
 import modelo.Producto;
@@ -143,7 +149,7 @@ public class TiendaPrincipal extends JFrame {
         leftPanel.setBackground(new Color(186, 201, 92));
         JLabel searchLabel = new JLabel();
         searchLabel.setIcon(new ImageIcon(TiendaPrincipal.class.getResource("/imagenes/lupadef.png"))); 
-        
+        leftPanel.add(searchLabel);
         
         searchLabel.addMouseListener(new MouseAdapter() {
             @Override
@@ -152,7 +158,18 @@ public class TiendaPrincipal extends JFrame {
             }
         });
         
-        leftPanel.add(searchLabel);
+        JButton btnGenerarPDF = new JButton("Generar PDF");
+        leftPanel.add(btnGenerarPDF);
+        btnGenerarPDF.addActionListener(new ActionListener() {
+        	
+            public void actionPerformed(ActionEvent e) {
+                generarPDFDeBusqueda(searchField.getText());
+            }
+        });
+        
+        
+        
+        
         topPanel.add(leftPanel);
 
         // Panel para el centro (espaciado)
@@ -501,5 +518,65 @@ public class TiendaPrincipal extends JFrame {
 		    
 		}
 	 
+	 
+	 private void generarPDFDeBusqueda(String textoBusqueda) {
+		 ArrayList<Producto> productosEncontrados = ConsultasBD2.buscarProductosPorNombre(textoBusqueda);
+		    
+		    PDDocument document = new PDDocument();
+		    PDPage page = new PDPage();
+		    document.addPage(page);
+		    PDPageContentStream contentStream = null;
+
+		    try {
+		        contentStream = new PDPageContentStream(document, page);
+		        contentStream.beginText();
+		        contentStream.setFont(PDType1Font.HELVETICA, 12);
+		        contentStream.setLeading(14.5f);
+		        contentStream.newLineAtOffset(25, 725);
+		        contentStream.showText("Resultados de la búsqueda. Productos encontrados al buscar por: " +textoBusqueda);
+		        contentStream.newLine();
+		        for (Producto producto : productosEncontrados) {
+		            contentStream.showText("Nombre: ");
+		            contentStream.newLine();
+		        	contentStream.showText(producto.getNombre());
+		            contentStream.newLine();
+		            contentStream.showText("Precio unitario: ");
+		            contentStream.showText(String.valueOf(producto.getPrecio()));
+		            contentStream.newLine();
+		            
+		            
+		            
+		        }
+		        
+		        contentStream.endText();
+		        contentStream.close(); 
+		    } catch (IOException e) {
+		        System.err.println("Error al generar el PDF: " + e.getMessage());
+		        if(contentStream != null) {
+		            try {
+		                contentStream.close();
+		            } catch (IOException ex) {
+		                System.err.println("Error al cerrar el PDPageContentStream: " + ex.getMessage());
+		            }
+		        }
+		    }
+
+		    try {
+		        document.save("ResultadosBusqueda.pdf");
+		        JOptionPane.showMessageDialog(null, "PDF generado correctamente");
+		    } catch (IOException e) {
+		        System.err.println("Error al guardar el PDF: " + e.getMessage());
+		    } finally {
+		        try {
+		            if (document != null) {
+		                document.close();
+		            }
+		        } catch (IOException e) {
+		            System.err.println("Error al cerrar el PDDocument: " + e.getMessage());
+		        }
+		    }
+	 
 
 	}
+	 
+}
