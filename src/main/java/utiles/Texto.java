@@ -35,6 +35,18 @@ public class Texto {
 	public static final String toolPassUser = "Introduzca su contraseña";
 	public static final String toolBotonRegister = "Haz clic para registrarte en Urban Stride";
 	
+
+	//ToolTipText Details
+	public static final String toolDetails = "Pantalla de detalles de un producto";
+	public static final String toolNameProduct = "Nombre del producto";
+	public static final String toolDescriptionDetils = "Descripcion de las zapatillas";
+	public static final String toolStock = "Cantidad de unidades que disponemos de ese producto";
+	public static final String toolPrice = "Precio del producto";
+	public static final String toolImage = "Imagen del producto";
+	public static final String toolCant = "Introduce la cantidad a comprar";
+	public static final String toolCarrito = "Añade el producto al carrito";
+	public static final String toolBackDetails = "Este boton vuelve a la lista de productos";
+
 	
 	//Tooltip para la ventana principal de la tienda
 	
@@ -43,13 +55,11 @@ public class Texto {
 	public static final String editarPerfil =" Pulsa para editar el perfil de usuario";
 	public static final String carrito =" Pulsa para ver el carrito";
 	public static final String logout = "Pulsa para desloguearte";
-	
 	public static final String nombreProducto =" Nombre del producto";
 	public static final String imgProducto ="Imagen del producto";
 	public static final String cantidad = "Cantidad del producto que se desea";
 	public static final String precio = "Precio unitario del producto";
 	public static final String anadir_carro = "Botón para añadir al carrito";
-	
-	
+
 	
 }
