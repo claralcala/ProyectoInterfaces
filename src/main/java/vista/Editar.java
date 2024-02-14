@@ -386,8 +386,7 @@ public class Editar extends JFrame {
 	    this.dispose();
 	    
 	    // Abre la ventana de login
-	    Login loginWindow = new Login();
-	    loginWindow.setVisible(true);
+	   
 	}
 	
 

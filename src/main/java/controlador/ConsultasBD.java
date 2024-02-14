@@ -229,7 +229,7 @@ public class ConsultasBD {
         Connection cn = null;
 
         try {
-            String sql = "SELECT user_id, username, contrasena, nombre, apellidos, correo_elec, telefono, direccion FROM usuario WHERE id = ?";
+            String sql = "SELECT user_id, username, contrasena, nombre, apellidos, correo_elec, telefono, direccion FROM usuario WHERE user_id = ?";
             cn = con.conectar();
             PreparedStatement pst = cn.prepareStatement(sql);
 
