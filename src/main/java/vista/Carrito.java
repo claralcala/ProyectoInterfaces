@@ -279,23 +279,23 @@ public class Carrito extends JFrame {
 		String nombreABuscar = searchLabel.getText();
 
 		// Elimina los campos de texto anteriores (si es necesario)
-		if (resultadoBuscar != null) {
-			contentPane.remove(resultadoBuscar);
-		}
-		if (resultadoBuscar2 != null) {
-			contentPane.remove(resultadoBuscar2);
-		}
-		if (resultadoBuscar3 != null) {
-			contentPane.remove(resultadoBuscar3);
-		}
+//		if (resultadoBuscar != null) {
+//			contentPane.remove(resultadoBuscar);
+//		}
+//		if (resultadoBuscar2 != null) {
+//			contentPane.remove(resultadoBuscar2);
+//		}
+//		if (resultadoBuscar3 != null) {
+//			contentPane.remove(resultadoBuscar3);
+//		}
 
 		productosCarrito = ConsultasBD3.buscarProductosEnCarritoPorNombre(id_usuario, nombreABuscar);
 		
 		int y = 70;
 		
 		for (Producto pro : productosCarrito) {
-
-			System.out.println(pro.getNombre() +"  "+ pro.getCantidad() +"  "+ pro.getPrecio());
+			
+			System.out.println(pro.getNombre() + "  " + pro.getPrecio());
 			
 			resultadoBuscar = new JLabel(pro.getNombre());
 			resultadoBuscar.setBounds(590, y, 502, 30); 
@@ -303,7 +303,7 @@ public class Carrito extends JFrame {
 			resultadoBuscar.setForeground(new Color(243, 235, 219));
 			resultadoBuscar.setFont(new Font("Roboto Medium", Font.PLAIN, 15));
 
-			String cantidad = String.valueOf(pro.getCantidad());
+			String cantidad = String.valueOf(pro.getPrecio());
 			resultadoBuscar2 = new JLabel(cantidad);
 			resultadoBuscar2.setBounds(770, y, 502, 30);
 			resultadoBuscar2.setBackground(new Color(10, 27, 5));
