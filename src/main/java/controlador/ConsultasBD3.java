@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import modelo.Producto;
 
 public class ConsultasBD3 {
@@ -64,6 +66,7 @@ public class ConsultasBD3 {
 
             exito = true;
             if (exito) {
+            	JOptionPane.showMessageDialog(null, "El pedido se ha creado correctamente");
             String sqlVaciarCarritoPorUsuario = "DELETE cd FROM carrito_detalle cd " +
                     "JOIN carrito c ON cd.carrito_id = c.carrito_id " +
                     "WHERE c.user_id = ?";
