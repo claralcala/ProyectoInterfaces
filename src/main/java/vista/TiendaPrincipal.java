@@ -298,7 +298,7 @@ public class TiendaPrincipal extends JFrame {
 
 	            // Configuración del JTextField para la cantidad
 	            final JTextField txtCantidad = new JTextField();
-	            txtCantidad.setPreferredSize(new Dimension(50, 20)); // Ajusta el tamaño según necesites
+	            txtCantidad.setPreferredSize(new Dimension(50, 20)); 
 
 	            txtCantidad.setToolTipText(Texto.cantidad);
 	            quantityAndButtonPanel.add(new JLabel("Cantidad:"));
@@ -313,7 +313,7 @@ public class TiendaPrincipal extends JFrame {
 	            addToCartButton.addActionListener(new ActionListener() {
 	                public void actionPerformed(ActionEvent e) {
 	                	
-	                	String textoCantidad = txtCantidad.getText().trim(); // Trim para eliminar espacios en blanco al inicio y al final
+	                	String textoCantidad = txtCantidad.getText().trim(); //usamos trim para eliminar espacios en blanco al inicio y al final
 
 	                    if (textoCantidad.isEmpty()) {
 	                        JOptionPane.showMessageDialog(null, "Por favor, ingrese una cantidad");
@@ -334,7 +334,7 @@ public class TiendaPrincipal extends JFrame {
 	            });
 
 	            
-	         // Añadir el panel que contiene el JTextField y el botón al innerPanel
+	         // Añadir el panel que contiene el JTextField y el botón al innerpanel
 	            innerPanel.add(quantityAndButtonPanel);
 
 	            // Añadir el panel interno al panel del producto
@@ -445,12 +445,12 @@ public class TiendaPrincipal extends JFrame {
 		            
 		            innerPanel.add(imageLabel);
 		            
-		         //panel para el spinner y el botón, con FlowLayout para asegurar disposición horizontal
+		         //panel para el spinner y el botón con flowLayout para asegurar disposición horizontal
 		            JPanel panelCantidadYBoton = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
 		            SpinnerNumberModel spinnerModel = new SpinnerNumberModel(1, 1, 100, 1);
 		            JSpinner spinnerCantidad = new JSpinner(spinnerModel);
-		            spinnerCantidad.setPreferredSize(new Dimension(50, 20)); // Ajusta el tamaño según necesites
+		            spinnerCantidad.setPreferredSize(new Dimension(50, 20));
 
 		            panelCantidadYBoton.add(new JLabel("Cantidad:"));
 		            panelCantidadYBoton.add(spinnerCantidad);
@@ -502,7 +502,7 @@ public class TiendaPrincipal extends JFrame {
 	 
 	 
 	 private void abrirEditarPerfil() {
-		    Editar editarPerfil = new Editar(id_usuario); // Usa el ID del usuario almacenado
+		    Editar editarPerfil = new Editar(id_usuario); // Usamos el ID del usuario almacenado y nos lo llevamos a la ventana de editar
 		    editarPerfil.setVisible(true);
 		    
 		}

@@ -196,6 +196,7 @@ public class ConsultasBD3 {
 	                conexion.close();
 	            } catch (SQLException e) {
 	                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+	                System.out.println("hola");
 	            }
 	        }
 	    }
