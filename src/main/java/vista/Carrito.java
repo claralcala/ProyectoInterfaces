@@ -276,18 +276,18 @@ public class Carrito extends JFrame {
 	}
 
 	public void buscarYMostrarProductos() {
-		String nombreABuscar = searchLabel.getText();
+		String nombreABuscar = textField.getText();
 
 		// Elimina los campos de texto anteriores (si es necesario)
-//		if (resultadoBuscar != null) {
-//			contentPane.remove(resultadoBuscar);
-//		}
-//		if (resultadoBuscar2 != null) {
-//			contentPane.remove(resultadoBuscar2);
-//		}
-//		if (resultadoBuscar3 != null) {
-//			contentPane.remove(resultadoBuscar3);
-//		}
+		if (resultadoBuscar != null) {
+		contentPane.remove(resultadoBuscar);
+	}
+		if (resultadoBuscar2 != null) {
+			contentPane.remove(resultadoBuscar2);
+		}
+		if (resultadoBuscar3 != null) {
+			contentPane.remove(resultadoBuscar3);
+		}
 
 		productosCarrito = ConsultasBD3.buscarProductosEnCarritoPorNombre(id_usuario, nombreABuscar);
 		
