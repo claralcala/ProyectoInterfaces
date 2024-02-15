@@ -76,7 +76,7 @@ public class Carrito extends JFrame {
 		for (Producto carrito : carrito) {
 
 			// obtengo datos.
-			int id_producto = carrito.getProduct_id();
+			final int id_producto = carrito.getProduct_id();
 			String productoNombre = carrito.getNombre();
 			int cantidad = carrito.getCantidad();
 			double precio = carrito.getPrecio();
@@ -142,13 +142,13 @@ public class Carrito extends JFrame {
 		lblBack.setBounds(39, 448, 54, 53);
 		contentPane.add(lblBack);
 
-		JPanel panelCompra = new JPanel();
+		final JPanel panelCompra = new JPanel();
 		panelCompra.setBackground(new Color(254, 250, 192));
 		panelCompra.setBounds(340, 400, 148, 40);
 		contentPane.add(panelCompra);
 		panelCompra.setLayout(null);
 
-		JLabel lblComprar = new JLabel("Comprar");
+		final JLabel lblComprar = new JLabel("Comprar");
 		lblComprar.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -185,7 +185,7 @@ public class Carrito extends JFrame {
 		img.setBounds(650, 230, 225, 210);
 		contentPane.add(img);
 
-		JPanel panelX = new JPanel();
+		final JPanel panelX = new JPanel();
 		panelX.setBounds(0, 0, 33, 45);
 		contentPane.add(panelX);
 		panelX.setBackground(new Color(10, 27, 5));
@@ -221,7 +221,7 @@ public class Carrito extends JFrame {
 			}
 		});
 
-		JPanel panel_ = new JPanel();
+		final JPanel panel_ = new JPanel();
 		panel_.setLayout(null);
 		panel_.setBounds(32, 0, 33, 45);
 		panel_.setBackground(new Color(10, 27, 5));

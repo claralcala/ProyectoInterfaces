@@ -125,7 +125,7 @@ public class Eventos {
 		});
     }
     
-    public static void btnBack(final JLabel lblBack, final Carrito carrito, int id_usuario) {
+    public static void btnBack(final JLabel lblBack, final Carrito carrito, final int id_usuario) {
     	lblBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

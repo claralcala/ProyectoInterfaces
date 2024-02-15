@@ -155,7 +155,7 @@ public class ConsultasBD3 {
 	}
 	
 	public static ArrayList<Producto> buscarProductosEnCarritoPorNombre(int userId, String nombre) {
-	    ArrayList<Producto> productos = new ArrayList<>();
+	    ArrayList<Producto> productos = new ArrayList<Producto>();
 	    Conexion con = new Conexion();
 	    Connection conexion = null;
 
