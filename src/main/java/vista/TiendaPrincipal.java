@@ -66,7 +66,13 @@ public class TiendaPrincipal extends JFrame {
 	JLabel minimizeLabel;
 	JLabel closeLabel;
 	
+	ConsultasBD2 consultasBD;
+	
+	
+
 	private KeyStroke atajo;
+	
+	JButton logoutButton;
 	
 	
 	ArrayList<Producto> carrito;
@@ -204,7 +210,7 @@ public class TiendaPrincipal extends JFrame {
             }
         });
 
-        JButton logoutButton = new JButton("Logout");
+        logoutButton = new JButton("Logout");
         rightPanel.add(logoutButton);
         logoutButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -389,7 +395,7 @@ public class TiendaPrincipal extends JFrame {
 	        label.setHorizontalAlignment(SwingConstants.CENTER);
 	    }
 	 
-	 private void buscarYMostrarProductos() {
+	 public void buscarYMostrarProductos() {
 		    String nombre = searchField.getText();
 		    ArrayList<Producto> productosEncontrados = ConsultasBD2.buscarProductosPorNombre(nombre);
 
@@ -583,5 +589,27 @@ public class TiendaPrincipal extends JFrame {
 	 
 
 	}
+
+	public JButton getLogoutButton() {
+		return logoutButton;
+	}
+	
+	
+	
+	
+	
+
+	public void setConsultasBD(ConsultasBD2 consultasBD) {
+	    this.consultasBD = consultasBD;
+	}
+	
+	
+	
+
+	
+	 
+	 
+
+	
 	 
 }
