@@ -151,7 +151,7 @@ public class ConsultasBD2 {
 	        int carritoId;
 
 	        if (!rsCarrito.next()) {
-	            // Si no tiene carrito, se crea uno nuevo
+	            //Si no tiene carrito se crea uno nuevo
 	            String sqlInsertCarrito = "INSERT INTO carrito (user_id) VALUES (?)";
 	            PreparedStatement pstInsertCarrito = conexion.prepareStatement(sqlInsertCarrito, Statement.RETURN_GENERATED_KEYS);
 	            pstInsertCarrito.setInt(1, userId);
@@ -183,7 +183,7 @@ public class ConsultasBD2 {
 	            pstUpdateDetalle.setInt(3, productId);
 	            pstUpdateDetalle.executeUpdate();
 	        } else {
-	            // Si el producto no está en el detalle, inserta un nuevo registro
+	            // Si el producto no está en el detalle, inserta uno nuevo
 	            String sqlInsertDetalle = "INSERT INTO carrito_detalle (carrito_id, product_id, cantidad) VALUES (?, ?, ?)";
 	            PreparedStatement pstInsertDetalle = conexion.prepareStatement(sqlInsertDetalle);
 	            pstInsertDetalle.setInt(1, carritoId);
