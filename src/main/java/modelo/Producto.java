@@ -17,6 +17,15 @@ public class Producto {
 	private int cantidad;
 	
 	
+	
+	public Producto(int product_id, String nombre, double precio) {
+		super();
+		this.product_id = product_id;
+		this.nombre = nombre;
+		this.precio = precio;
+	}
+
+
 	public int getCantidad() {
 		return cantidad;
 	}

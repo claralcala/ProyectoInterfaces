@@ -37,7 +37,9 @@ public class Carrito extends JFrame {
 	private JLabel searchLabel, labelProducto, labelPrecio, labelCantidad, resultadoBuscar, resultadoBuscar2,
 			resultadoBuscar3;
 	private JLabel lbTotal;
-
+	
+	private ConsultasBD3 consultasBD3;
+	
 	private JTextField textField1; // Nuevo campo de texto
 	private JTextField textField2; // Nuevo campo de texto
 
@@ -322,4 +324,11 @@ public class Carrito extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
+	public Carrito(final int id_usuario, ConsultasBD3 consultasBD3) {
+        this.id_usuario = id_usuario;
+        this.consultasBD3 = consultasBD3;
+    }
+	 public void setConsultasBD3(ConsultasBD3 consultasBD3) {
+	        this.consultasBD3 = consultasBD3;
+	    }
 }
