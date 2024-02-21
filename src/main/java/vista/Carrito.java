@@ -39,6 +39,7 @@ public class Carrito extends JFrame {
 	private JLabel lbTotal;
 	
 	private ConsultasBD3 consultasBD3;
+	private ConsultasBD2 consultasBD2;
 	
 	private JTextField textField1; // Nuevo campo de texto
 	private JTextField textField2; // Nuevo campo de texto
@@ -85,8 +86,8 @@ public class Carrito extends JFrame {
 
 			// Ajustes de precios
 			precioProducto = cantidad * precio;
-			totalCuenta += precioProducto;
-
+			totalCuenta += calcularPrecioProducto(cantidad, precio);
+			
 			String precioTexto = String.valueOf(precioProducto);
 
 			// Crear JLabels para mostrar el nombre del producto
@@ -277,7 +278,7 @@ public class Carrito extends JFrame {
 		});
 	}
 
-	public void buscarYMostrarProductos() {
+	public void buscarYMostrarProductos() {//test realizado
 		String nombreABuscar = textField.getText();
 
 		// Elimina los campos de texto anteriores (si es necesario)
@@ -324,6 +325,27 @@ public class Carrito extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
+	// Método para calcular el precio total de un producto
+    public double calcularPrecioProducto(int cantidad, double precioUnitario) {
+        return cantidad * precioUnitario;
+    }
+ // Método para agregar un producto al carrito
+    public void agregarProducto(Producto producto) {
+        carrito.add(producto);
+        // Aquí podrías agregar lógica adicional, como actualizar la interfaz de usuario
+    }
+
+    // Método para eliminar un producto del carrito
+    public void eliminarProducto(Producto producto) {
+        carrito.remove(producto);
+        // Aquí podrías agregar lógica adicional, como actualizar la interfaz de usuario
+    }
+
+    // Método para obtener la lista de productos del carrito
+    public ArrayList<Producto> getCarrito() {
+        return carrito;
+    }
+    
 	public Carrito(final int id_usuario, ConsultasBD3 consultasBD3) {
         this.id_usuario = id_usuario;
         this.consultasBD3 = consultasBD3;
@@ -331,4 +353,71 @@ public class Carrito extends JFrame {
 	 public void setConsultasBD3(ConsultasBD3 consultasBD3) {
 	        this.consultasBD3 = consultasBD3;
 	    }
+	 public void setConsultasBD2(ConsultasBD2 consultasBD2) {
+	        this.consultasBD2 = consultasBD2;
+	    }
+	 public void obtenerProductoDelCarrito() {
+		 carrito = ConsultasBD2.obtenerProductosDelCarrito(id_usuario);
+
+			double precioProducto = 0.0;
+			double totalCuenta = 0.0;
+
+			int y = 70; // Posición inicial en el eje Y
+			for (Producto carrito : carrito) {
+
+				// obtengo datos.
+				final int id_producto = carrito.getProduct_id();
+				String productoNombre = carrito.getNombre();
+				int cantidad = carrito.getCantidad();
+				double precio = carrito.getPrecio();
+
+				// Ajustes de precios
+				precioProducto = cantidad * precio;
+				totalCuenta += calcularPrecioProducto(cantidad, precio);
+				
+				String precioTexto = String.valueOf(precioProducto);
+
+				// Crear JLabels para mostrar el nombre del producto
+				labelProducto = new JLabel(productoNombre);
+				labelProducto.setBounds(20, y, 502, 30);
+				labelProducto.setBackground(new Color(10, 27, 5));
+				labelProducto.setForeground(new Color(243, 235, 219));
+				labelProducto.setFont(new Font("Roboto Medium", Font.PLAIN, 15));
+				contentPane.add(labelProducto);
+
+				labelPrecio = new JLabel(precioTexto + "€");
+				labelPrecio.setBounds(300, y, 502, 30);
+				labelPrecio.setBackground(new Color(10, 27, 5));
+				labelPrecio.setForeground(new Color(243, 235, 219));
+				labelPrecio.setFont(new Font("Roboto Medium", Font.PLAIN, 15));
+				contentPane.add(labelPrecio);
+
+				labelCantidad = new JLabel("+ " + String.valueOf(cantidad));
+				labelCantidad.setBounds(390, y, 502, 30);
+				labelCantidad.setBackground(new Color(10, 27, 5));
+				labelCantidad.setForeground(new Color(243, 235, 219));
+				labelCantidad.setFont(new Font("Roboto Medium", Font.PLAIN, 15));
+				contentPane.add(labelCantidad);
+
+				JButton btnDelete = new JButton("Delete");
+				btnDelete.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						ConsultasBD3.eliminarProductoDelCarrito(id_usuario, id_producto);
+						dispose(); // Cierra la ventana actual
+						Carrito nuevaVentanaCarrito = new Carrito(id_usuario); // Crea una nueva instancia de la ventana del
+																				// carrito
+						nuevaVentanaCarrito.setVisible(true);
+					}
+				});
+				btnDelete.setBounds(470, y, 75, 30);
+				btnDelete.setFont(new Font("Roboto Medium", Font.BOLD, 12));
+				btnDelete.setBackground(Color.red);
+				contentPane.add(btnDelete);
+
+				// Actualizar la posición en el eje Y para la siguiente entrada
+				y += 30;
+
+			}
+	 }
 }
