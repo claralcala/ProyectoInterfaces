@@ -529,7 +529,7 @@ public class TiendaPrincipal extends JFrame {
 		}
 	 
 	 
-	 private void generarPDFDeBusqueda(String textoBusqueda) {
+	 public void generarPDFDeBusqueda(String textoBusqueda) {
 		 ArrayList<Producto> productosEncontrados = ConsultasBD2.buscarProductosPorNombre(textoBusqueda);
 		    
 		    PDDocument document = new PDDocument();
