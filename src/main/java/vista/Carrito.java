@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Cursor;
 
 import javax.swing.SwingConstants;
@@ -32,12 +33,12 @@ public class Carrito extends JFrame {
 	private JPanel contentPane;
 	private ArrayList<Producto> carrito;
 	private ArrayList<Producto> productosCarrito;
-	int id_usuario;
+	static int id_usuario;
 	private JTextField textField;
 	private JLabel searchLabel, labelProducto, labelPrecio, labelCantidad, resultadoBuscar, resultadoBuscar2,
 			resultadoBuscar3;
 	private JLabel lbTotal;
-	
+	public static JLabel lblComprar = new JLabel("Comprar");
 	private ConsultasBD3 consultasBD3;
 	private ConsultasBD2 consultasBD2;
 	
@@ -51,7 +52,7 @@ public class Carrito extends JFrame {
 	 */
 	public Carrito(final int id_usuario) {
 		this.id_usuario = id_usuario;
-
+		lblComprar = new JLabel("Comprar");
 		setUndecorated(true); // Quitar la barra de título y la decoración (barra superior del programa).
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,7 +73,6 @@ public class Carrito extends JFrame {
 
 		carrito = ConsultasBD2.obtenerProductosDelCarrito(id_usuario);
 
-		double precioProducto = 0.0;
 		double totalCuenta = 0.0;
 
 		int y = 70; // Posición inicial en el eje Y
@@ -85,10 +85,9 @@ public class Carrito extends JFrame {
 			double precio = carrito.getPrecio();
 
 			// Ajustes de precios
-			precioProducto = cantidad * precio;
 			totalCuenta += calcularPrecioProducto(cantidad, precio);
 			
-			String precioTexto = String.valueOf(precioProducto);
+			String precioTexto = String.valueOf(precio);
 
 			// Crear JLabels para mostrar el nombre del producto
 			labelProducto = new JLabel(productoNombre);
@@ -145,43 +144,7 @@ public class Carrito extends JFrame {
 		lblBack.setBounds(39, 448, 54, 53);
 		contentPane.add(lblBack);
 
-		final JPanel panelCompra = new JPanel();
-		panelCompra.setBackground(new Color(254, 250, 192));
-		panelCompra.setBounds(340, 400, 148, 40);
-		contentPane.add(panelCompra);
-		panelCompra.setLayout(null);
-
-		final JLabel lblComprar = new JLabel("Comprar");
-		lblComprar.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				Color colorFondo = Color.green;
-				panelCompra.setBackground(colorFondo);
-				lblComprar.setForeground(Color.BLACK);
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Color colorFondo = new Color(243, 235, 219);
-				panelCompra.setBackground(colorFondo);
-				Color colorFondo2 = new Color(0, 64, 128);
-				lblComprar.setForeground(colorFondo2);
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO realizar la compra.
-				ConsultasBD3.crearPedido(id_usuario);
-
-			}
-		});
-		lblComprar.setFont(new Font("Roboto", Font.PLAIN, 20));
-		lblComprar.setForeground(new Color(0, 64, 128));
-		lblComprar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblComprar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblComprar.setBounds(0, 0, 148, 40);
-		panelCompra.add(lblComprar);
+		agregarBotonComprar(contentPane);
 
 		JLabel img = new JLabel("");
 		img.setIcon(new ImageIcon(Carrito.class.getResource("/imagenes/logo (1).png")));
@@ -349,19 +312,13 @@ public class Carrito extends JFrame {
 	public Carrito(final int id_usuario, ConsultasBD3 consultasBD3) {
         this.id_usuario = id_usuario;
         this.consultasBD3 = consultasBD3;
+        lblComprar = new JLabel("Comprar");
     }
-	 public void setConsultasBD3(ConsultasBD3 consultasBD3) {
-	        this.consultasBD3 = consultasBD3;
-	    }
-	 public void setConsultasBD2(ConsultasBD2 consultasBD2) {
-	        this.consultasBD2 = consultasBD2;
-	    }
+
 	 public void obtenerProductoDelCarrito() {
 		 carrito = ConsultasBD2.obtenerProductosDelCarrito(id_usuario);
 
 			double precioProducto = 0.0;
-			double totalCuenta = 0.0;
-
 			int y = 70; // Posición inicial en el eje Y
 			for (Producto carrito : carrito) {
 
@@ -372,9 +329,7 @@ public class Carrito extends JFrame {
 				double precio = carrito.getPrecio();
 
 				// Ajustes de precios
-				precioProducto = cantidad * precio;
-				totalCuenta += calcularPrecioProducto(cantidad, precio);
-				
+				precioProducto = calcularPrecioProducto(cantidad, precio);
 				String precioTexto = String.valueOf(precioProducto);
 
 				// Crear JLabels para mostrar el nombre del producto
@@ -420,4 +375,44 @@ public class Carrito extends JFrame {
 
 			}
 	 }
+	 public void agregarBotonComprar(Container contentPane) {
+	        final JPanel panelCompra = new JPanel();
+	        panelCompra.setBackground(new Color(254, 250, 192));
+	        panelCompra.setBounds(340, 400, 148, 40);
+	        contentPane.add(panelCompra);
+	        panelCompra.setLayout(null);
+
+	        
+	        lblComprar.addMouseListener(new MouseAdapter() {
+	            @Override
+	            public void mouseEntered(MouseEvent e) {
+	                Color colorFondo = Color.green;
+	                panelCompra.setBackground(colorFondo);
+	                lblComprar.setForeground(Color.BLACK);
+	            }
+
+	            @Override
+	            public void mouseExited(MouseEvent e) {
+	                Color colorFondo = new Color(243, 235, 219);
+	                panelCompra.setBackground(colorFondo);
+	                Color colorFondo2 = new Color(0, 64, 128);
+	                lblComprar.setForeground(colorFondo2);
+	            }
+
+	            @Override
+	            public void mouseClicked(MouseEvent e) {
+	            	realizarCompra(id_usuario);
+	            }
+	        });
+	        lblComprar.setFont(new Font("Roboto", Font.PLAIN, 20));
+	        lblComprar.setForeground(new Color(0, 64, 128));
+	        lblComprar.setHorizontalAlignment(SwingConstants.CENTER);
+	        lblComprar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	        lblComprar.setBounds(0, 0, 148, 40);
+	        panelCompra.add(lblComprar);
+	    }
+	 public void realizarCompra(int id_usuario) {
+	        ConsultasBD3.crearPedido(id_usuario);
+	        System.out.println("Compra realizada");
+	    }
 }
