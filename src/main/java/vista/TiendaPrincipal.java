@@ -64,6 +64,11 @@ public class TiendaPrincipal extends JFrame {
 	JPanel mainPanel;
 	
 	JLabel minimizeLabel;
+	
+	private Login loginWindow;
+	
+	JButton btnGenerarPDF;
+	
 	JLabel closeLabel;
 	
 	ConsultasBD2 consultasBD;
@@ -166,7 +171,7 @@ public class TiendaPrincipal extends JFrame {
             }
         });
         
-        JButton btnGenerarPDF = new JButton("Generar PDF");
+        btnGenerarPDF = new JButton("Generar PDF");
         leftPanel.add(btnGenerarPDF);
         btnGenerarPDF.addActionListener(new ActionListener() {
         	
@@ -502,8 +507,9 @@ public class TiendaPrincipal extends JFrame {
 		    this.dispose();
 		    
 		    // Abre la ventana de login
-		    Login loginWindow = new Login();
-		    loginWindow.setVisible(true);
+		    if (this.loginWindow != null) {
+		        this.loginWindow.setVisible(true); // Muestra la ventana de login
+		    }
 		}
 	 
 	 
@@ -602,6 +608,24 @@ public class TiendaPrincipal extends JFrame {
 	public void setConsultasBD(ConsultasBD2 consultasBD) {
 	    this.consultasBD = consultasBD;
 	}
+
+	public Login getLoginWindow() {
+		return loginWindow;
+	}
+
+	public void setLoginWindow(Login loginWindow) {
+		this.loginWindow = loginWindow;
+	}
+
+	public JButton getBtnGenerarPDF() {
+		return btnGenerarPDF;
+	}
+
+	public void setBtnGenerarPDF(JButton btnGenerarPDF) {
+		this.btnGenerarPDF = btnGenerarPDF;
+	}
+	
+	
 	
 	
 	
