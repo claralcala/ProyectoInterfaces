@@ -29,21 +29,22 @@ public class TestCarrito {
 	private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
 	/**
-	 * Configuración inicial antes de cada prueba.
+	 * Configuración inicial ANTES de cada prueba.
 	 */
 	@BeforeEach
 	public void setUp() {
 		//
 		carrito = new Carrito(1);
-		//
+		//se redirige la salida de la consola a outputStreamCaptor y Sirve para la prueba de testRealizarCompra() pueda comprobar la salida y ver si salta el mensaje de "Compra realizada".
 		System.setOut(new PrintStream(outputStreamCaptor));
 	}
 
 	/**
-	 * 
+	 * Configuración POSTERIOR a cada prueba.
 	 */
 	@AfterEach
 	public void tearDown() {
+		// Se restaura la salida estándar de la consola
 		System.setOut(System.out);
 	}
 
@@ -129,7 +130,7 @@ public class TestCarrito {
 	}
 
 	/**
-	 * 
+	 * Prueba para verificar que se realiza la compra correctamente.
 	 */
 	@Test
 	public void testRealizarCompra() {
