@@ -13,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -44,30 +45,42 @@ public class Details extends JFrame {
 
     private int id_producto;
     private int id_user;
-    private TiendaPrincipal vistaTienda;
+    public TiendaPrincipal vistaTienda;
 
     private Producto p;
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
 
-    private JTextField textFieldCantidad;
+    public JTextField textFieldCantidad;
 	private KeyStroke atajo;
 	private KeyStroke atajo2;
+	
+	public JLabel lblNombre;
+	public JLabel lblDescripcion;
+	public JLabel lblStock;	
+	public JLabel lblPrecio;
+	public JLabel lblImagen;
+	public JLabel lblCarrito;
+	private String mensajeDeDialogo;
+	
+	private JPanel panel;
 	
 	private String textoCant;
 	
 	JLabel minimizeLabel;
 	JLabel closeLabel;
 	
-	private JPanel panelX;
+	public JPanel panelX;
 
     int cantidad;
+	public Object btnBack;
 
     public Details(final int id_user, final Producto p, final TiendaPrincipal vistaTienda) {
         super(); // Llama al constructor de la clase base JFrame
         this.p = p;
         this.id_user = id_user;
         this.vistaTienda = vistaTienda;
+       
 
         setResizable(false);
         setUndecorated(true);
@@ -84,7 +97,7 @@ public class Details extends JFrame {
         contentPane.setLayout(null);
 
 
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         //panel.setBackground(new Color(30, 33, 57));
         panel.setBackground(new Color(10, 27, 5));
         panel.setBounds(0, 0, 1400, 700);
@@ -100,7 +113,7 @@ public class Details extends JFrame {
         lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
         panel.add(lblNewLabel);
 
-        JLabel lblNombre = new JLabel();
+        lblNombre = new JLabel();
         lblNombre.setBounds(526, 132, 331, 31);
         lblNombre.setForeground(new Color(255, 255, 255));
         lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -114,7 +127,7 @@ public class Details extends JFrame {
         lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
         panel.add(lblNewLabel_2);
 
-        JLabel lblDescripcion = new JLabel();
+        lblDescripcion = new JLabel();
         lblDescripcion.setBounds(526, 193, 331, 121);
         lblDescripcion.setForeground(new Color(255, 255, 255));
         lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -149,6 +162,11 @@ public class Details extends JFrame {
         lblPrecio.setText(String.valueOf(p.getPrecio()) + " " + "€");
         lblPrecio.setToolTipText(Texto.toolPrice);
         panel.add(lblPrecio);
+        
+        if (!esNumero(lblPrecio.getText().trim())) {
+        	
+        	System.out.println("El precio debe ser un numero");
+        }
 
         // Aqui introducimos la imagen que no la traemos de la lista y la  introducimos en el JLabel
         ImageIcon originalIcon = new ImageIcon(Details.class.getResource("/imagenes/" + p.getImagen() + ".png"));
@@ -353,5 +371,54 @@ public class Details extends JFrame {
 		    }
 		}, atajo2, JComponent.WHEN_IN_FOCUSED_WINDOW);
     }
+    
+    
+    public Details() {
+		// TODO Auto-generated constructor stub
+	}
+    
+    public boolean esNumero(String texto) {
+        try {
+            Double.parseDouble(texto);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    
+    public Details(JTextField textFieldCantidad) {
+        this.textFieldCantidad = textFieldCantidad;
+    }
+
+    public void comprobarCantidad() {
+        if (textFieldCantidad == null) {
+            mensajeDeDialogo = "Error: textFieldCantidad no inicializado.";
+            return;
+        }
+
+        String textoCant = textFieldCantidad.getText().trim();
+        if (textoCant.isEmpty()) {
+            mensajeDeDialogo = "Por favor, ingrese una cantidad.";
+            return;
+        }
+
+        try {
+            int cantidad = Integer.parseInt(textoCant);
+            // Resto del código...
+            mensajeDeDialogo = "¡Producto añadido al carrito!";
+        } catch (NumberFormatException ex) {
+            mensajeDeDialogo = "Por favor, ingrese una cantidad válida.";
+        }
+    }
+
+    public String getMensajeDeDialogo() {
+        return mensajeDeDialogo;
+    }
+    
+    
+
+    
+    
+
     }
 

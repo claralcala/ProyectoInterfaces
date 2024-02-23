@@ -17,6 +17,13 @@ public class Producto {
 	private int cantidad;
 	
 	
+	
+	public Producto(int product_id) {
+		super();
+		this.product_id = product_id;
+	}
+
+
 	public int getCantidad() {
 		return cantidad;
 	}
