@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Cursor;
 
 import javax.swing.SwingConstants;
@@ -32,12 +33,15 @@ public class Carrito extends JFrame {
 	private JPanel contentPane;
 	private ArrayList<Producto> carrito;
 	private ArrayList<Producto> productosCarrito;
-	int id_usuario;
+	static int id_usuario;
 	private JTextField textField;
 	private JLabel searchLabel, labelProducto, labelPrecio, labelCantidad, resultadoBuscar, resultadoBuscar2,
 			resultadoBuscar3;
 	private JLabel lbTotal;
-
+	public static JLabel lblComprar = new JLabel("Comprar");
+	private ConsultasBD3 consultasBD3;
+	private ConsultasBD2 consultasBD2;
+	private int id_producto;
 	private JTextField textField1; // Nuevo campo de texto
 	private JTextField textField2; // Nuevo campo de texto
 
@@ -48,7 +52,7 @@ public class Carrito extends JFrame {
 	 */
 	public Carrito(final int id_usuario) {
 		this.id_usuario = id_usuario;
-
+		lblComprar = new JLabel("Comprar");
 		setUndecorated(true); // Quitar la barra de título y la decoración (barra superior del programa).
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,23 +73,21 @@ public class Carrito extends JFrame {
 
 		carrito = ConsultasBD2.obtenerProductosDelCarrito(id_usuario);
 
-		double precioProducto = 0.0;
 		double totalCuenta = 0.0;
 
 		int y = 70; // Posición inicial en el eje Y
 		for (Producto carrito : carrito) {
 
 			// obtengo datos.
-			final int id_producto = carrito.getProduct_id();
+			id_producto = carrito.getProduct_id();
 			String productoNombre = carrito.getNombre();
 			int cantidad = carrito.getCantidad();
 			double precio = carrito.getPrecio();
 
 			// Ajustes de precios
-			precioProducto = cantidad * precio;
-			totalCuenta += precioProducto;
+			totalCuenta += calcularPrecioProducto(cantidad, precio);
 
-			String precioTexto = String.valueOf(precioProducto);
+			String precioTexto = String.valueOf(precio);
 
 			// Crear JLabels para mostrar el nombre del producto
 			labelProducto = new JLabel(productoNombre);
@@ -113,7 +115,7 @@ public class Carrito extends JFrame {
 			btnDelete.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					ConsultasBD3.eliminarProductoDelCarrito(id_usuario, id_producto);
+					borrarProductoDelCarrito();
 					dispose(); // Cierra la ventana actual
 					Carrito nuevaVentanaCarrito = new Carrito(id_usuario); // Crea una nueva instancia de la ventana del
 																			// carrito
@@ -142,43 +144,7 @@ public class Carrito extends JFrame {
 		lblBack.setBounds(39, 448, 54, 53);
 		contentPane.add(lblBack);
 
-		final JPanel panelCompra = new JPanel();
-		panelCompra.setBackground(new Color(254, 250, 192));
-		panelCompra.setBounds(340, 400, 148, 40);
-		contentPane.add(panelCompra);
-		panelCompra.setLayout(null);
-
-		final JLabel lblComprar = new JLabel("Comprar");
-		lblComprar.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				Color colorFondo = Color.green;
-				panelCompra.setBackground(colorFondo);
-				lblComprar.setForeground(Color.BLACK);
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Color colorFondo = new Color(243, 235, 219);
-				panelCompra.setBackground(colorFondo);
-				Color colorFondo2 = new Color(0, 64, 128);
-				lblComprar.setForeground(colorFondo2);
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO realizar la compra.
-				ConsultasBD3.crearPedido(id_usuario);
-
-			}
-		});
-		lblComprar.setFont(new Font("Roboto", Font.PLAIN, 20));
-		lblComprar.setForeground(new Color(0, 64, 128));
-		lblComprar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblComprar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblComprar.setBounds(0, 0, 148, 40);
-		panelCompra.add(lblComprar);
+		agregarBotonComprar(contentPane);
 
 		JLabel img = new JLabel("");
 		img.setIcon(new ImageIcon(Carrito.class.getResource("/imagenes/logo (1).png")));
@@ -269,19 +235,65 @@ public class Carrito extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				buscarYMostrarProductos();
+				buscarYMostrarProductosDelBuscador();
 
 			}
 		});
 	}
 
-	public void buscarYMostrarProductos() {
+	// 
+	/**
+	 * (TEST)(REALIZADO)
+	 * 
+	 * Método para calcular el precio total de un producto.
+	 * 
+	 * @param cantidad
+	 * @param precioUnitario
+	 * @return El total
+	 */
+	public double calcularPrecioProducto(int cantidad, double precioUnitario) {
+		return cantidad * precioUnitario;
+	}
+
+	// 
+	/**
+	 * (TEST)(REALIZADO)
+	 * 
+	 * Método para agregar un producto al carrito
+	 * @param producto
+	 */
+	public void agregarProducto(Producto producto) {
+		carrito.add(producto);
+	}
+
+	// 
+	/**
+	 * (TEST)(REALIZADO)
+	 * 
+	 * Método para obtener la lista de productos del carrito.
+	 * @return
+	 */
+	public ArrayList<Producto> getCarrito() {
+		return carrito;
+	}
+	/**
+	 * 
+	 */
+	public void borrarProductoDelCarrito() {
+		ConsultasBD3.eliminarProductoDelCarrito(id_usuario, id_producto);
+	}
+	/**
+	 * (TEST)(REALIZADO)
+	 * 
+	 * Metodo extraido del click de buscarProductos para realizar.
+	 */
+	public void buscarYMostrarProductosDelBuscador() {
 		String nombreABuscar = textField.getText();
 
 		// Elimina los campos de texto anteriores (si es necesario)
 		if (resultadoBuscar != null) {
-		contentPane.remove(resultadoBuscar);
-	}
+			contentPane.remove(resultadoBuscar);
+		}
 		if (resultadoBuscar2 != null) {
 			contentPane.remove(resultadoBuscar2);
 		}
@@ -290,15 +302,15 @@ public class Carrito extends JFrame {
 		}
 
 		productosCarrito = ConsultasBD3.buscarProductosEnCarritoPorNombre(id_usuario, nombreABuscar);
-		
+
 		int y = 70;
-		
+
 		for (Producto pro : productosCarrito) {
-			
+
 			System.out.println(pro.getNombre() + "  " + pro.getPrecio());
-			
+
 			resultadoBuscar = new JLabel(pro.getNombre());
-			resultadoBuscar.setBounds(590, y, 502, 30); 
+			resultadoBuscar.setBounds(590, y, 502, 30);
 			resultadoBuscar.setBackground(new Color(10, 27, 5));
 			resultadoBuscar.setForeground(new Color(243, 235, 219));
 			resultadoBuscar.setFont(new Font("Roboto Medium", Font.PLAIN, 15));
@@ -312,14 +324,141 @@ public class Carrito extends JFrame {
 
 			contentPane.add(resultadoBuscar);
 			contentPane.add(resultadoBuscar2);
-			
+
 			// Actualizar la posición en el eje Y para la siguiente entrada
 			y += 30;
-			
+
 		}
 
 		// Vuelve a pintar el panel para que los cambios sean visibles
 		contentPane.revalidate();
 		contentPane.repaint();
+	}
+
+	/**
+	 * (TEST)(REALIZADO)
+	 * 
+	 * Segundo metodo para realizar TEST y comprobar los productos añadidos desde la
+	 * vista de TiendaPrincipal.
+	 */
+	public void obtenerProductoDelCarrito() {
+		carrito = ConsultasBD2.obtenerProductosDelCarrito(id_usuario);
+
+		double precioProducto = 0.0;
+		int y = 70; // Posición inicial en el eje Y
+		for (Producto carrito : carrito) {
+
+			// obtengo datos.
+			final int id_producto = carrito.getProduct_id();
+			String productoNombre = carrito.getNombre();
+			int cantidad = carrito.getCantidad();
+			double precio = carrito.getPrecio();
+
+			// Ajustes de precios
+			precioProducto = calcularPrecioProducto(cantidad, precio);
+			String precioTexto = String.valueOf(precioProducto);
+
+			// Crear JLabels para mostrar el nombre del producto
+			labelProducto = new JLabel(productoNombre);
+			labelProducto.setBounds(20, y, 502, 30);
+			labelProducto.setBackground(new Color(10, 27, 5));
+			labelProducto.setForeground(new Color(243, 235, 219));
+			labelProducto.setFont(new Font("Roboto Medium", Font.PLAIN, 15));
+			contentPane.add(labelProducto);
+
+			labelPrecio = new JLabel(precioTexto + "€");
+			labelPrecio.setBounds(300, y, 502, 30);
+			labelPrecio.setBackground(new Color(10, 27, 5));
+			labelPrecio.setForeground(new Color(243, 235, 219));
+			labelPrecio.setFont(new Font("Roboto Medium", Font.PLAIN, 15));
+			contentPane.add(labelPrecio);
+
+			labelCantidad = new JLabel("+ " + String.valueOf(cantidad));
+			labelCantidad.setBounds(390, y, 502, 30);
+			labelCantidad.setBackground(new Color(10, 27, 5));
+			labelCantidad.setForeground(new Color(243, 235, 219));
+			labelCantidad.setFont(new Font("Roboto Medium", Font.PLAIN, 15));
+			contentPane.add(labelCantidad);
+
+			JButton btnDelete = new JButton("Delete");
+			btnDelete.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					ConsultasBD3.eliminarProductoDelCarrito(id_usuario, id_producto);
+					dispose(); // Cierra la ventana actual
+					Carrito nuevaVentanaCarrito = new Carrito(id_usuario); // Crea una nueva instancia de la ventana del
+																			// carrito
+					nuevaVentanaCarrito.setVisible(true);
+				}
+			});
+			btnDelete.setBounds(470, y, 75, 30);
+			btnDelete.setFont(new Font("Roboto Medium", Font.BOLD, 12));
+			btnDelete.setBackground(Color.red);
+			contentPane.add(btnDelete);
+
+			// Actualizar la posición en el eje Y para la siguiente entrada
+			y += 30;
+
+		}
+	}
+
+	/**
+	 * (TEST)(REALIZADO)
+	 * 
+	 * Agrega un botón para realizar una compra al contenedor especificado.
+	 * 
+	 * @param contentPane El contenedor al que se agregará el botón de compra.
+	 */
+	public void agregarBotonComprar(Container contentPane) {
+		final JPanel panelCompra = new JPanel();
+		panelCompra.setBackground(new Color(254, 250, 192));
+		panelCompra.setBounds(340, 400, 148, 40);
+		contentPane.add(panelCompra);
+		panelCompra.setLayout(null);
+
+		lblComprar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				Color colorFondo = Color.green;
+				panelCompra.setBackground(colorFondo);
+				lblComprar.setForeground(Color.BLACK);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Color colorFondo = new Color(243, 235, 219);
+				panelCompra.setBackground(colorFondo);
+				Color colorFondo2 = new Color(0, 64, 128);
+				lblComprar.setForeground(colorFondo2);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				realizarCompra(id_usuario);
+			}
+		});
+		lblComprar.setFont(new Font("Roboto", Font.PLAIN, 20));
+		lblComprar.setForeground(new Color(0, 64, 128));
+		lblComprar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblComprar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblComprar.setBounds(0, 0, 148, 40);
+		panelCompra.add(lblComprar);
+	}
+
+	/**
+	 * (TEST)(REALIZADO)
+	 * 
+	 * Realiza una compra para el usuario especificado.
+	 * 
+	 * @param id_usuario El identificador del usuario que realiza la compra.
+	 */
+	public void realizarCompra(int id_usuario) {
+		ConsultasBD3.crearPedido(id_usuario);
+		System.out.println("Compra realizada");
+	}
+
+	public void borrarProductoDelCarrito(int id_usuario2, int id_producto2) {
+		ConsultasBD3.eliminarProductoDelCarrito(id_usuario2, id_producto2);
+		
 	}
 }
