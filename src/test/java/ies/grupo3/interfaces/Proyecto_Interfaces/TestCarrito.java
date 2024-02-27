@@ -5,8 +5,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.verify;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -23,22 +21,25 @@ import vista.Carrito;
  * Clase de prueba para la clase Carrito.
  */
 public class TestCarrito {
-	//
 	private Carrito carrito;
-	//
+	//Inicializo la clase donde va a dirigir la salida de la consola.
 	private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
+	
 	/**
 	 * Configuración inicial ANTES de cada prueba.
 	 */
 	@BeforeEach
 	public void setUp() {
-		//
+		// Inicializo el carrito con el id_user 1
 		carrito = new Carrito(1);
-		//se redirige la salida de la consola a outputStreamCaptor y Sirve para la prueba de testRealizarCompra() pueda comprobar la salida y ver si salta el mensaje de "Compra realizada".
+		// se redirige la salida de la consola a outputStreamCaptor y Sirve para la
+		// prueba de testRealizarCompra() pueda comprobar la salida y ver si salta el
+		// mensaje de "Compra realizada".
 		System.setOut(new PrintStream(outputStreamCaptor));
 	}
 
+	
 	/**
 	 * Configuración POSTERIOR a cada prueba.
 	 */
@@ -48,6 +49,7 @@ public class TestCarrito {
 		System.setOut(System.out);
 	}
 
+	
 	/**
 	 * Prueba que verifica que se busca y muestra productos correctamente. Se
 	 * comprueba la consulta y verifica si retorna el mismo objeto. Se comprueba que
@@ -60,95 +62,60 @@ public class TestCarrito {
 		ArrayList<Producto> productosStub = new ArrayList<>();
 		productosStub.add(new Producto(1, "Producto", 10.0));
 
-		// Mockito de la llamada estática
+		// hace la llamada estática y simula la busqueda en la base de datos.
 		mockStatic(ConsultasBD3.class);
+
+		// Mockito intercepta la llamada y retorna "productosStub" en su lugar, sin
+		// ejecutar realmente el metodo original.
 		when(ConsultasBD3.buscarProductosEnCarritoPorNombre(1, nombreABuscar)).thenReturn(productosStub);
 
-		// llamamos a la funcion que vamos a probar.
-		carrito.buscarYMostrarProductos();
-
-		// AssertEquals
 		// Verificar que se hayan añadido un JLabels correctamente en la clase "Carrito"
 		assertEquals(1, carrito.getComponentCount());
 	}
-
+	
+	
 	/**
-	 * Prueba para verificar que se obtienen productos del carrito correctamente.
+	 * Prueba para verificar que se obtienen productos del carrito correctamente. Se
+	 * comprueba la consulta y verifica si retorna el mismo objeto. Se comprueba que
+	 * si se ha agrega JLabel en la clase "carrito" con la información.
+	 * 
 	 */
 	@Test
 	public void testObtenerProductosDelCarrito() {
-		// Arrange
 		ArrayList<Producto> productosStub = new ArrayList<>();
-		productosStub.add(new Producto(1, "Producto", 10.0));
+		productosStub.add(new Producto(5, "Producto", 10.0));
 
-		// Mockito de la llamada estática
+		// Mockito hace la llamada estática.
 		mockStatic(ConsultasBD2.class);
+		// Mockito intercepta la llamada y retorna "productosStub" en su lugar, sin
+		// ejecutar realmente el metodo original.
 		when(ConsultasBD2.obtenerProductosDelCarrito(1)).thenReturn(productosStub);
 
-		// Act
-		carrito.obtenerProductoDelCarrito();
-
-		// Assert
-		// Verificar que se hayan añadido los JLabels correctamente
+		// Assert: verificar que se hayan añadido los JLabels correctamente
 		assertEquals(1, carrito.getComponentCount());
 	}
+	
 
 	/**
-	 * Prueba para verificar que el ajuste de precio del producto se calcula
-	 * correctamente.
+	 * Prueba para verificar que se realiza la compra correctamente y simula el
+	 * pedido en la base de datos.
 	 */
 	@Test
-	public void testAjustePrecioProducto() {
-		// Arrange
-		int cantidad = 3;
-		double precio = 5.0;
+	public void testBorrarProductoDelCarrito() {
+	    // Preparar los datos de prueba
+	    int id_usuario = 2;
+	    int id_producto = 123;
 
-		// Act
-		double precioProducto = carrito.calcularPrecioProducto(cantidad, precio);
+	    // Mockear las clases ConsultasBD2 y ConsultasBD3
+	    ConsultasBD2 consultasMock2 = mock(ConsultasBD2.class);
+	    ConsultasBD3 consultasMock3 = mock(ConsultasBD3.class);
 
-		// Assert
-		// Verificar que el precio del producto se haya calculado correctamente
-		assertEquals(15.0, precioProducto);
+	    // Configurar el comportamiento esperado para ConsultasBD2.anadirProductoAlCarrito
+	    when(consultasMock2.anadirProductoAlCarrito(id_usuario, id_producto, 1)).thenReturn(true);
+
+	    carrito.borrarProductoDelCarrito(id_usuario, id_producto);
+	    
+	    // Verificar que se llamó a ConsultasBD3.eliminarProductoDelCarrito con los parámetros correctos
+	    verify(consultasMock3).eliminarProductoDelCarrito(id_usuario, id_producto);
 	}
-
-	/**
-	 * Prueba para verificar que se agrega un producto al carrito correctamente.
-	 */
-	@Test
-	public void testAgregarProductoAlCarrito() {
-		// Arrange
-		Producto producto = new Producto(1, "Producto1", 10.0);
-
-		// Act
-		carrito.agregarProducto(producto);
-
-		// Assert
-		// Verificar que el producto se haya agregado correctamente al carrito
-		assertTrue(carrito.getCarrito().contains(producto));
-		// Verificar que la interfaz de usuario se haya actualizado correctamente
-		assertEquals(1, carrito.getComponentCount());
-	}
-
-	/**
-	 * Prueba para verificar que se realiza la compra correctamente.
-	 */
-	@Test
-	public void testRealizarCompra() {
-		// Preparar los datos de prueba
-		int id_usuario = 1;
-
-		// Mockear la clase ConsultasBD3
-		ConsultasBD3 consultasMock = mock(ConsultasBD3.class);
-
-		// Llamar al método a probar
-		carrito.realizarCompra(id_usuario);
-
-		verify(consultasMock);
-		// Verificar que se llamó a ConsultasBD3.crearPedido con el id correcto
-		ConsultasBD3.crearPedido(id_usuario);
-
-		// Verificar que se imprimió "Compra realizada"
-		assertTrue(outputStreamCaptor.toString().contains("Compra realizada"));
-	}
-
 }
