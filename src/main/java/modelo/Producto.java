@@ -21,6 +21,7 @@ public class Producto {
 	public Producto(int product_id) {
 		super();
 		this.product_id = product_id;
+	}
 	public Producto(int product_id, String nombre, double precio) {
 		super();
 		this.product_id = product_id;
