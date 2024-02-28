@@ -4,9 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import java.io.File;
 import java.sql.Connection;
@@ -14,6 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 
@@ -27,6 +33,7 @@ import org.mockito.MockitoAnnotations;
 import controlador.Conexion;
 import controlador.ConsultasBD2;
 import modelo.Producto;
+import vista.Login;
 import vista.TiendaPrincipal;
 
 public class TestTiendaPrincipal {
@@ -111,7 +118,9 @@ public class TestTiendaPrincipal {
 	 }
 	 
 	 
-	 
+	 /**
+	  * Test que comprueba que los productos tengan un precio mayor que 0
+	  */
 	 @Test
 	 void testRecuperarProductosConPrecioMayorACero() {
 	     // Llamada al método de recuperar productos
@@ -130,7 +139,9 @@ public class TestTiendaPrincipal {
 	 }
 	 
 	 
-	 
+	 /**
+	  * Test que comprueba que los productos en la BD tengan stock positivo
+	  */
 	 @Test
 	 void testRecuperarProductosConStockPositivo() {
 	     //Llamada al método
@@ -149,7 +160,10 @@ public class TestTiendaPrincipal {
 	 }
 	 
 	 
-	 
+	 /**
+	  * Comprobamos que la búsqueda por nombre funcione ingresando un ejemplo
+	  * de un nombre que sabemos que existe
+	  */
 	 @Test
 	 void testBuscarProductosPorNombreContieneNombre() {
 	     String nombreBuscado = "Nike";
@@ -169,6 +183,9 @@ public class TestTiendaPrincipal {
 	 }
 	 
 	 
+	 /**
+	  * Es lo contrario que el test anterior, comprobamos que el nombre que introducimos no esté
+	  */
 	 @Test
 	 void testBuscarProductosPorNombreContieneNombreYNoEstaVacio() {
 	     String nombreBuscado = "Zapatilla";
@@ -190,49 +207,83 @@ public class TestTiendaPrincipal {
 	 }
 	 
 	 
-	 
+	 /**
+	  * Test que comprueba que se genera el PDF al pulsar el btn de generar PDF
+	  */
 	 
 	 @Test
 	 void testGenerarPDFDeBusqueda() {
 	     TiendaPrincipal tienda = new TiendaPrincipal(1); 
 	     String textoBusqueda = "Adidas"; 
 	     
-	     // Ejecutar el método que genera el PDF
+	     //Ejecutar el método que genera el PDF
 	     tienda.generarPDFDeBusqueda(textoBusqueda);
 	     
-	     // Verificar que el archivo PDF ha sido creado
+	     //Comprobar que el archivo PDF ha sido creado
 	     File file = new File("ResultadosBusqueda.pdf");
 	     assertTrue(file.exists(), "El archivo PDF debería haberse creado");
 	     
 	   
 	     
-	     // Limpieza: eliminar el archivo PDF después de la prueba para evitar acumulación de archivos de prueba
+	     //eliminamos el archivo PDF después de la prueba para evitar acumulación de archivos de prueba
 	     file.delete();
 	 }
 	 
-	 
+	 /**
+	  * Test que comprueba que se crea el boton de Logout
+	  */
 	 @Test
-	    void testLogoutButtonCreation() {
+	    void testLogoutCreacion() {
 	        TiendaPrincipal tienda = new TiendaPrincipal(1); //Inicializamos la ventana con el id de usuario 1
 	        JButton logoutButton = tienda.getLogoutButton(); //Llamamos al getter que previamente hemos creado en la vista para el btn logout
 	        assertNotNull(logoutButton, "El botón de logout debería crearse");
 	    }
 	 
 	 
+	 /**
+	  * Test realizado con Hamcrest que permite comprobar que la lista de productos no venga vacía
+	  * y que tenga un tamaño de 16
+	  */
 	 
-	 
-	 
-	 
+	 @Test
+	    public void testRecuperarProductosHamcrest() {
+	        //Llamamos al método
+	        ArrayList<Producto> productos = new ArrayList<Producto>();
+	        productos =ConsultasBD2.recuperarProductos();
+	        
+	        //Comprobar que la lista de productos no está vacía
+	        assertThat(productos, is(not(empty())));
+
+	        //Comprobar que la lista tiene un tamaño esperado (16 productos, que son los que tenemos en la base de datos
+	        assertThat(productos, hasSize(16));
+
+	       
+	        
+	 }
 	 
 	 
 	 
 	 
 	 
 	
-
-	
 	 
 	 
 	 
-
+	    
+	 
+	 
+	 
 }
+	 
+	 
+	 
+	 
+	 
+	 
+	
+
+	
+	 
+	 
+	 
+
