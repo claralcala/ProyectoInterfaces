@@ -59,7 +59,7 @@ public class TestCarrito {
 	public void testBuscarYMostrarProductosDelBuscador() {
 		// Se inicializa el producto a buscar, se crea un array y se añade el producto.
 		String nombreABuscar = "Producto";
-		ArrayList<Producto> productosStub = new ArrayList<>();
+		ArrayList<Producto> productosStub = new ArrayList<Producto>();
 		productosStub.add(new Producto(1, "Producto", 10.0));
 
 		// hace la llamada estática y simula la busqueda en la base de datos.
@@ -82,7 +82,7 @@ public class TestCarrito {
 	 */
 	@Test
 	public void testObtenerProductosDelCarrito() {
-		ArrayList<Producto> productosStub = new ArrayList<>();
+		ArrayList<Producto> productosStub = new ArrayList<Producto>();
 		productosStub.add(new Producto(5, "Producto", 10.0));
 
 		// Mockito hace la llamada estática.
