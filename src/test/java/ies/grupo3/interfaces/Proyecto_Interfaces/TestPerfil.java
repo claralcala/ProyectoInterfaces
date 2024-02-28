@@ -115,6 +115,24 @@ public class TestPerfil {
 	    }
 	    
 	    @Test
+	    void testNumeroString() {
+	        // Arrange
+	        Editar editar = new Editar(1);
+	        editar.txtNombre.setText("Jesus");
+	        editar.txtApellidos.setText("Bautista");
+	        editar.txtCorreo.setText("jbaupar475@iescarrillo.es");
+	        editar.txtTelefono.setText("adc");
+	        editar.txtDireccion.setText("Lora del rio");
+	        editar.txtPassword.setText("1234");
+	        
+	        // Act
+	        editar.metodoBtnAceptar();;
+	        
+	        // Assert
+	        assertFalse(editar.logoutInvocado);
+	    }
+	    
+	    @Test
 	    void testApellidoVacio() {
 	        // Arrange
 	        Editar editar = new Editar(1);
@@ -181,7 +199,7 @@ public class TestPerfil {
 	    }
 
 	    @Test
-	    void testEsNumericoConValorNoNumerico() {
+	    void testEsNumericoConString() {
 	        // Arrange
 	        String valor = "abc";
 
