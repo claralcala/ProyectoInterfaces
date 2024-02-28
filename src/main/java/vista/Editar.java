@@ -34,14 +34,16 @@ public class Editar extends JFrame {
 	Usuario u = new Usuario();
 	
 	ConsultasBD consultasBD = new ConsultasBD();
+	public ConsultasBD2 consultasBD2 = new ConsultasBD2();
 	
 	private JPanel contentPane, panelX;
 	
-	private JTextField txtNombre, txtApellidos, txtCorreo, txtTelefono, txtDireccion, txtUsername, txtPassword;
+	public JTextField txtNombre, txtApellidos, txtCorreo, txtTelefono, txtDireccion, txtUsername, txtPassword;
 	private KeyStroke atajo;
 	
 	
 	private JLabel lblBack;
+	public JButton btnAceptar;
 
 	/**
 	 * Launch the application.
@@ -288,33 +290,15 @@ public class Editar extends JFrame {
         
         
         //botones para registrarse y volver
-        JButton btnAceptar = new JButton("Aceptar");
+        btnAceptar = new JButton("Aceptar");
         btnAceptar.setBackground(new Color(254, 250, 192));
         btnAceptar.setBounds(606, 552, 220, 33);
         panel.add(btnAceptar);
         btnAceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	
-            	
-            	String nombre = txtNombre.getText();
-            	String contrasena = txtPassword.getText();
-            	String email = txtCorreo.getText();
-            	String direccion = txtDireccion.getText();
-            	String apellidos = txtApellidos.getText();
-            	String tlf = txtTelefono.getText();
-            	if(!contrasena.isEmpty()) {
-            		
-            		ConsultasBD2.actualizarUsuarioPorId(id_usuario, nombre, apellidos, email, tlf, direccion);
-            		JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
-            		logout();
-            		
-            	}else {
-            		JOptionPane.showMessageDialog(null, "Por favor, Introduzca una contraseña.");
-            	}
-            	
-            	
-            	
-                
+               	
+            	metodoBtnAceptar();
+          
             }
         });
 
@@ -370,6 +354,8 @@ public class Editar extends JFrame {
        
     }
 	
+	public boolean logoutInvocado = false;
+	
 	public void borrarCampos(){
 		
 		txtNombre.setText("");
@@ -381,13 +367,50 @@ public class Editar extends JFrame {
 		
 	}
 	
-	private void logout() {
+	public void logout() {
 	    // Cierra la ventana actual
 	    this.dispose();
+	    logoutInvocado=true;
 	    
 	    // Abre la ventana de login
 	   
 	}
+	public void metodoBtnAceptar() {
+		String nombre = txtNombre.getText();
+    	String contrasena = txtPassword.getText();
+    	String email = txtCorreo.getText();
+    	String direccion = txtDireccion.getText();
+    	String apellidos = txtApellidos.getText();
+    	String tlf = txtTelefono.getText();
+    	
+    	if(!contrasena.isEmpty() && !nombre.isEmpty() && !email.isEmpty() && !direccion.isEmpty() && !apellidos.isEmpty() && !tlf.isEmpty() ) {
+    		
+    		if(esNumerico(tlf) && tlf.length()==9) {
+    			ConsultasBD2.actualizarUsuarioPorId(id_usuario, nombre, apellidos, email, tlf, direccion);
+        		JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+        		borrarCampos();
+        		logout();
+    		}else {
+    			JOptionPane.showMessageDialog(null, "Por favor, el numero de telefono deben ser nueve numeros");
+    		}
+    			
+    		
+   	
+    	}else {
+    		JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos");
+    	}
+	}
 	
-
+	public static boolean esNumerico(String valor){     
+	    try{
+	        if(valor!= null){
+	            Integer.parseInt(valor);
+	            return true;
+	        }
+	    }catch(NumberFormatException nfe){
+	         return false; 
+	    }
+	    return false;
+	}
+	
 }
