@@ -34,7 +34,9 @@ public class Editar extends JFrame {
 	Usuario u = new Usuario();
 	
 	ConsultasBD consultasBD = new ConsultasBD();
+
 	public ConsultasBD2 consultasBD2 = new ConsultasBD2();
+
 	
 	private JPanel contentPane, panelX;
 	
@@ -290,15 +292,43 @@ public class Editar extends JFrame {
         
         
         //botones para registrarse y volver
+
         btnAceptar = new JButton("Aceptar");
+
+        JButton btnAceptar = new JButton("Aceptar");
+
         btnAceptar.setBackground(new Color(254, 250, 192));
         btnAceptar.setBounds(606, 552, 220, 33);
         panel.add(btnAceptar);
         btnAceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+
                	
             	metodoBtnAceptar();
           
+
+            	
+            	
+            	String nombre = txtNombre.getText();
+            	String contrasena = txtPassword.getText();
+            	String email = txtCorreo.getText();
+            	String direccion = txtDireccion.getText();
+            	String apellidos = txtApellidos.getText();
+            	String tlf = txtTelefono.getText();
+            	if(!contrasena.isEmpty()) {
+            		
+            		ConsultasBD2.actualizarUsuarioPorId(id_usuario, nombre, apellidos, email, tlf, direccion);
+            		JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+            		logout();
+            		
+            	}else {
+            		JOptionPane.showMessageDialog(null, "Por favor, Introduzca una contraseña.");
+            	}
+            	
+            	
+            	
+                
+
             }
         });
 
@@ -367,6 +397,7 @@ public class Editar extends JFrame {
 		
 	}
 	
+
 	public void logout() {
 	    // Cierra la ventana actual
 	    this.dispose();
@@ -413,4 +444,9 @@ public class Editar extends JFrame {
 	    return false;
 	}
 	
+
+	
+	
+
+
 }
