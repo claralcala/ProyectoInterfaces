@@ -167,6 +167,55 @@ public class TestPerfil {
 	        // Assert
 	        assertFalse(editar.logoutInvocado);
 	    }
+	    
+	    @Test
+	    void testEsNumericoConValorNumerico() {
+	        // Arrange
+	        String valor = "123";
+
+	        // Act
+	        boolean resultado = editar.esNumerico(valor);
+
+	        // Assert
+	        assertTrue(resultado);
+	    }
+
+	    @Test
+	    void testEsNumericoConValorNoNumerico() {
+	        // Arrange
+	        String valor = "abc";
+
+	        // Act
+	        boolean resultado = editar.esNumerico(valor);
+
+	        // Assert
+	        assertFalse(resultado);
+	    }
+
+	    @Test
+	    void testEsNumericoConValorNulo() {
+	        // Arrange
+	        String valor = null;
+
+	        // Act
+	        boolean resultado = editar.esNumerico(valor);
+
+	        // Assert
+	        assertFalse(resultado);
+	    }
+
+	    @Test
+	    void testEsNumericoConValorVacio() {
+	        // Arrange
+	        String valor = "";
+
+	        // Act
+	        boolean resultado = editar.esNumerico(valor);
+
+	        // Assert
+	        assertFalse(resultado);
+	    }
+	    
 	}
 	
 
