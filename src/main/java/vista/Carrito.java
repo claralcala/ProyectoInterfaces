@@ -456,7 +456,12 @@ public class Carrito extends JFrame {
 		ConsultasBD3.crearPedido(id_usuario);
 		System.out.println("Compra realizada");
 	}
-
+	/**
+	 * 	(TEST)(REALIZADO)
+	 * 
+	 * @param id_usuario2
+	 * @param id_producto2
+	 */
 	public void borrarProductoDelCarrito(int id_usuario2, int id_producto2) {
 		ConsultasBD3.eliminarProductoDelCarrito(id_usuario2, id_producto2);
 		

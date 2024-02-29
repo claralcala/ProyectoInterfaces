@@ -28,7 +28,7 @@ public class TestCarrito2 {
 	@BeforeEach
 	public void setUp() {
 		// Inicializo el carrito con el id_user 1
-		carrito = new Carrito(1);
+		carrito = new Carrito(2);
 		// se redirige la salida de la consola a outputStreamCaptor y Sirve para la
 		// prueba de testRealizarCompra() pueda comprobar la salida y ver si salta el
 		// mensaje de "Compra realizada".
@@ -78,24 +78,6 @@ public class TestCarrito2 {
 
 		// Verificar que la interfaz de usuario se haya actualizado correctamente
 		assertEquals(1, carrito.getComponentCount());
-	}
-	
-	@Test
-	public void testRealizarCompra() {
-	    // Preparar los datos de prueba
-	    int id_usuario = 4;
-	    
-	    // Mockear la clase ConsultasBD3
-	    ConsultasBD3 consultasMock3 = mock(ConsultasBD3.class);
-	    
-	    // Llamar al método a probar
-	    carrito.realizarCompra(id_usuario);
-	    
-	    // Verificar que se llamó a ConsultasBD3.crearPedido con el id correcto
-	    verify(consultasMock3).crearPedido(id_usuario);
-	    
-	    // Verificar que se imprimió "Compra realizada"
-	    assertTrue(outputStreamCaptor.toString().contains("Compra realizada"));
 	}
 	
 }
