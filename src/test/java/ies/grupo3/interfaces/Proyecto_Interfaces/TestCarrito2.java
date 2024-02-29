@@ -2,6 +2,8 @@ package ies.grupo3.interfaces.Proyecto_Interfaces;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -10,6 +12,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import controlador.ConsultasBD3;
 import modelo.Producto;
 import vista.Carrito;
 
@@ -75,6 +78,24 @@ public class TestCarrito2 {
 
 		// Verificar que la interfaz de usuario se haya actualizado correctamente
 		assertEquals(1, carrito.getComponentCount());
+	}
+	
+	@Test
+	public void testRealizarCompra() {
+	    // Preparar los datos de prueba
+	    int id_usuario = 4;
+	    
+	    // Mockear la clase ConsultasBD3
+	    ConsultasBD3 consultasMock3 = mock(ConsultasBD3.class);
+	    
+	    // Llamar al método a probar
+	    carrito.realizarCompra(id_usuario);
+	    
+	    // Verificar que se llamó a ConsultasBD3.crearPedido con el id correcto
+	    verify(consultasMock3).crearPedido(id_usuario);
+	    
+	    // Verificar que se imprimió "Compra realizada"
+	    assertTrue(outputStreamCaptor.toString().contains("Compra realizada"));
 	}
 	
 }
